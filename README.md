@@ -24,8 +24,8 @@ Proposition 2.1, Proposition 2.2, and both forms of Lemma 3.1.
 [`GlobalParseval.lean`](BretecheTenenbaumMean/GlobalParseval.lean) supplies the
 Parseval identity and absolute integrability, giving ten results checked by
 Comparator. The proof development has no admitted proofs, new axioms, or
-additional analytic hypotheses. The separate [Challenge](Challenge.lean)
-contains ten intentional proof holes used to check the [Solution](Solution.lean).
+additional analytic hypotheses. The separate [Challenge](BretecheTenenbaumMeanPalomar/Challenge.lean)
+contains ten intentional proof holes used to check the [Solution](BretecheTenenbaumMeanPalomar/Solution.lean).
 
 [BLUEPRINT.md](BLUEPRINT.md) maps the paper to the Lean modules and records the
 source issues. Provenance and the Tau Ceti reuse survey are in
@@ -102,8 +102,8 @@ expectations match §2.1, and normalization is proved by a finite Euler product.
 ## Palomar submission
 
 [PALOMAR.md](PALOMAR.md) records the submission instructions and verification results.
-The independent [Challenge](Challenge.lean) states all ten compared results using
-only Mathlib; [Solution](Solution.lean) imports their proofs.
+The independent [Challenge](BretecheTenenbaumMeanPalomar/Challenge.lean) states all ten compared results using
+only Mathlib; [Solution](BretecheTenenbaumMeanPalomar/Solution.lean) imports their proofs.
 [formalization.yaml](formalization.yaml) records authorship, AI assistance,
 source fidelity, licenses, and the absence of independent human review.
 For the complete local submission checks, also install Ruby and bubblewrap, then run:

@@ -749,9 +749,9 @@ assembles every named target.
 ## Independent Palomar comparison surface
 
 `Definitions.lean` centralizes the thirty statement definitions, preserving
-their original values and names. `Challenge.lean` mirrors that ordinary
+their original values and names. `BretecheTenenbaumMeanPalomar/Challenge.lean` mirrors that ordinary
 Mathlib-only block and states all eight named targets plus the exact Parseval
-formula and integrability. `Solution.lean` imports the proved versions.
+formula and integrability. `BretecheTenenbaumMeanPalomar/Solution.lean` imports the proved versions.
 Comparator recursively compares the fixed definitions; there are no definition
 holes. The ten intentional Challenge proof holes are kept outside the Solution
 and the exhaustive proof-development axiom audit. See `PALOMAR.md` for validation.

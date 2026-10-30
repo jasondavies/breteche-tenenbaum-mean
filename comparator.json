@@ -1,6 +1,6 @@
 {
-  "challenge_module": "Challenge",
-  "solution_module": "Solution",
+  "challenge_module": "BretecheTenenbaumMeanPalomar.Challenge",
+  "solution_module": "BretecheTenenbaumMeanPalomar.Solution",
   "theorem_names": [
     "BretecheTenenbaumMean.theoremOne",
     "BretecheTenenbaumMean.theoremTwo",

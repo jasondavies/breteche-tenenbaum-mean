@@ -6,7 +6,7 @@ public import Mathlib
 
 /-! # Definitions for the independent mathematical statement surface
 
-This Mathlib-only block is mirrored in `Challenge.lean`. Keeping it together
+This Mathlib-only block is mirrored in `BretecheTenenbaumMeanPalomar.Challenge`. Keeping it together
 also keeps Lean's generated helper declarations identical for Comparator.
 The definitions and quantified targets retain their original mathematical values.
 -/

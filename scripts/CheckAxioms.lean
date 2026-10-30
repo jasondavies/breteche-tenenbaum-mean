@@ -1,7 +1,7 @@
 module
 
 import all BretecheTenenbaumMean
-import all Solution
+import all BretecheTenenbaumMeanPalomar.Solution
 import all BretecheTenenbaumMean.AffineContent
 import all BretecheTenenbaumMean.AllMomentGoodSet
 import all BretecheTenenbaumMean.AllMomentMaximum

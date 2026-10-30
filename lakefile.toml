@@ -31,6 +31,8 @@ globs = ["IwaniecLinearSieveVendor.+"]
 
 [[lean_lib]]
 name = "Challenge"
+roots = ["BretecheTenenbaumMeanPalomar.Challenge"]
 
 [[lean_lib]]
 name = "Solution"
+roots = ["BretecheTenenbaumMeanPalomar.Solution"]

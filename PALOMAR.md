@@ -21,7 +21,10 @@ is reviewed; local uncommitted files do not count.
 
 ## Statement surface
 
-`Challenge.lean` imports only Mathlib and has 210 lines (about 10 KiB).
+`BretecheTenenbaumMeanPalomar/Challenge.lean` imports only Mathlib and has 210 lines (about 10 KiB).
+It and its Solution live under `BretecheTenenbaumMeanPalomar/` because Palomar refuses a Challenge
+whose top-level name is also a top-level entry of a dependency
+(`challenge.module_root_shadowed`), and Nair–Tenenbaum has its own `Challenge`.
 Its thirty definitions give their full mathematical meanings. They are mirrored
 from the Mathlib-only `BretecheTenenbaumMean/Definitions.lean` so that generated
 helper declarations also match. `definition_names` is empty: no mathematical
@@ -29,7 +32,7 @@ notion is an unspecified definition hole.
 
 `comparator.json` names ten results: the eight targets assembled by
 `paper_main_results`, the exact Parseval formula, and absolute integrability.
-`Solution.lean` imports their proved declarations. It does not import Challenge.
+`BretecheTenenbaumMeanPalomar/Solution.lean` imports their proved declarations. It does not import Challenge.
 The Challenge has ten deliberate theorem-proof holes; the Solution development
 has none. The separate axiom audit never loads the Challenge.
 

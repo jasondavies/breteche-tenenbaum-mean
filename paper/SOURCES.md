@@ -207,10 +207,10 @@ No additional Tau Ceti modules are imported for this argument.
 
 ## Palomar submission preparation
 
-The standalone `Challenge.lean` imports only Mathlib. Its thirty ordinary
+The standalone `BretecheTenenbaumMeanPalomar/Challenge.lean` imports only Mathlib. Its thirty ordinary
 mathematical definitions are mirrored from `BretecheTenenbaumMean/Definitions.lean`;
 no definition is left unspecified. Ten theorem proofs are deliberate Challenge
-holes, and `Solution.lean` imports the proved versions under the same names.
+holes, and `BretecheTenenbaumMeanPalomar/Solution.lean` imports the proved versions under the same names.
 Comparator recursively compares the fixed definitions as well as the named
 statements. The proof-development axiom audit excludes the Challenge.
 

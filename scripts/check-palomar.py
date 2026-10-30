@@ -65,6 +65,10 @@ def check_dependency(manifest, specs, package, namespace, record_file, check_sou
             imports = re.findall(r"^(?:public )?import (?:all )?(" +
                                  re.escape(namespace) + r"\.\S+)", source.read_text(), re.M)
             require(set(imports) <= expected, f"Unaudited {package} import in {source}")
+        # Palomar refuses a Challenge whose top-level name a dependency also has.
+        root = json.loads((ROOT / "comparator.json").read_text())["challenge_module"].split(".")[0]
+        require(not (base / root).is_dir() and not (base / f"{root}.lean").is_file(),
+                f"Challenge root {root} is shadowed by {package} (challenge.module_root_shadowed)")
     return len(expected)
 
 
@@ -76,12 +80,13 @@ def main():
     config = json.loads((ROOT / "comparator.json").read_text())
     require(set(config) == {"challenge_module", "solution_module", "theorem_names",
                             "definition_names", "permitted_axioms"}, "Unexpected Comparator fields")
-    require(config["challenge_module"] == "Challenge" and config["solution_module"] == "Solution",
+    require(config["challenge_module"] == "BretecheTenenbaumMeanPalomar.Challenge" and
+            config["solution_module"] == "BretecheTenenbaumMeanPalomar.Solution",
             "Unexpected statement/solution modules")
     require(config["definition_names"] == [], "This submission must have no definition holes")
     require(set(config["permitted_axioms"]) == {"propext", "Classical.choice", "Quot.sound"},
             "Unexpected permitted axioms")
-    challenge = (ROOT / "Challenge.lean").read_text()
+    challenge = (ROOT / "BretecheTenenbaumMeanPalomar/Challenge.lean").read_text()
     require(len(challenge.encode()) <= 100 * 1024 and len(challenge.splitlines()) <= 1000,
             "Challenge exceeds Palomar's hard size limit")
     require(re.findall(r"^(?:public )?import (.+)$", challenge, re.M) == ["Mathlib"],
@@ -98,7 +103,9 @@ def main():
     proof_block = definitions.split("namespace BretecheTenenbaumMean\n", 1)[1].split(
         "end BretecheTenenbaumMean", 1)[0]
     require(statement_block == proof_block, "Challenge and Definitions blocks diverged")
-    require("import Challenge" not in (ROOT / "Solution.lean").read_text(),
+    require("Challenge" not in "\n".join(re.findall(
+        r"^(?:public )?import .+$",
+        (ROOT / "BretecheTenenbaumMeanPalomar/Solution.lean").read_text(), re.M)),
             "Solution must not import the deliberate Challenge holes")
     counts = []
     snapshot = json.loads((ROOT / "vendor/strong-pnt/SNAPSHOT.json").read_text())
@@ -113,7 +120,8 @@ def main():
     tau_count = check_dependency(manifest, specs, "TauCeti", "TauCeti",
                                  "TAU_CETI_SOURCES.json", args.check_dependencies)
     # Ensure a normal git add will retain every required submission/provenance file.
-    required = ["Challenge.lean", "Solution.lean", "comparator.json", "formalization.yaml",
+    required = ["BretecheTenenbaumMeanPalomar/Challenge.lean",
+                "BretecheTenenbaumMeanPalomar/Solution.lean", "comparator.json", "formalization.yaml",
                 "LICENSE", "lake-manifest.json", "lean-toolchain"] + [
                     str(p.relative_to(ROOT)) for p in (ROOT / "paper").glob("*.json")]
     ignored = subprocess.run(["git", "check-ignore", "--", *required], cwd=ROOT,
