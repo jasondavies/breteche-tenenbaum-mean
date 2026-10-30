@@ -119,37 +119,6 @@ theorem normalizedPolynomial_mul_eq_twoFrequencyWeight (n : ℕ) (a b θ φ : �
   unfold twoFrequencyWeight
   field_simp
 
-/-- Finite-expectation version of the good-set extraction. The single fixed layer
-on the right is unconditional; only the coefficient retains the good-set bounds. -/
-theorem dyadicGoodSet_expectation_le_layer {δ T x a b θ φ : ℝ} (j : ℕ)
-    (hT : 0 < T) (ha : 1 ≤ a) (hb : 1 ≤ b) :
-    ∃ r : ℕ,
-      expectation x ((dyadicGoodSet δ T a j).indicator
-        (fun n ↦ normalizedPolynomial n θ * normalizedPolynomial n φ)) ≤
-      (sqrt (goodEnvelope δ T a * goodEnvelope δ T b) / sqrt ((2 : ℝ) ^ j)) *
-        ((∑ n ∈ smoothSupport x, if (smallPrimePart n a).primeFactors.card = r
-          then twoFrequencyWeight n a b θ φ / n else 0) / normalizer x) := by
-  classical
-  obtain ⟨r, hr⟩ := dyadicGoodSet_fixed_prime_count δ T a j
-  refine ⟨r, ?_⟩
-  let A := sqrt (goodEnvelope δ T a * goodEnvelope δ T b) / sqrt ((2 : ℝ) ^ j)
-  have hA : 0 ≤ A := div_nonneg (sqrt_nonneg _) (sqrt_nonneg _)
-  calc _ ≤ expectation x (fun n ↦ A *
-      (if (smallPrimePart n a).primeFactors.card = r then twoFrequencyWeight n a b θ φ else 0)) := by
-        apply expectation_mono
-        intro n _
-        by_cases hn : n ∈ dyadicGoodSet δ T a j
-        · rw [Set.indicator_of_mem hn, ite_eq_left (hr n hn),
-            normalizedPolynomial_mul_eq_twoFrequencyWeight n a b θ φ]
-          exact mul_le_mul_of_nonneg_right (dyadicGoodSet_sqrt_tau_le hT ha hb hn)
-            (twoFrequencyWeight_nonneg n a b θ φ)
-        · rw [Set.indicator_of_notMem hn]
-          exact mul_nonneg hA (by split_ifs; exact twoFrequencyWeight_nonneg n a b θ φ; rfl)
-    _ = _ := by
-      rw [expectation_const_mul]
-      simp only [expectation, ite_div, zero_div]
-      rfl
-
 /-- Only finitely many layers can be nonempty at a fixed cutoff. -/
 theorem exists_dyadicGoodSet_cutoff (δ T y : ℝ) : ∃ N : ℕ,
     ∀ n j, n ∈ dyadicGoodSet δ T y j → j < N := by
@@ -190,16 +159,6 @@ theorem goodSet_indicator_eq_dyadic_sum {δ T y : ℝ} (hy : 1 ≤ y) {N : ℕ}
     intro j _
     exact Set.indicator_of_notMem (fun hj ↦ hn hj.1) f
 
-/-- Expectations commute with the finite dyadic partition. -/
-theorem goodSet_expectation_eq_dyadic_sum {δ T y : ℝ} (hy : 1 ≤ y) {N : ℕ}
-    (hN : ∀ n j, n ∈ dyadicGoodSet δ T y j → j < N) (x : ℝ) (f : ℕ → ℝ) :
-    expectation x ((goodSet δ T).indicator f) =
-      ∑ j ∈ range N, expectation x ((dyadicGoodSet δ T y j).indicator f) := by
-  classical
-  unfold expectation
-  simp_rw [goodSet_indicator_eq_dyadic_sum hy hN f, sum_div]
-  rw [sum_comm]
-
 /-- The geometric square-root saving is summable, with an explicit universal bound. -/
 theorem sum_inv_sqrt_two_pow_le (N : ℕ) :
     (∑ j ∈ range N, (sqrt ((2 : ℝ) ^ j))⁻¹) ≤ 4 := by
@@ -222,19 +181,5 @@ theorem sum_inv_sqrt_two_pow_le (N : ℕ) :
       (summable_geometric_of_lt_one (by norm_num) (by norm_num)).sum_le_tsum _
         (fun _ _ ↦ by positivity)
     _ = 4 := by rw [tsum_geometric_of_lt_one (by norm_num) (by norm_num)]; norm_num
-
-/-- Uniform layer bounds can be summed before integration, so no measurability
-of the frequency-dependent layers is needed for this step. -/
-theorem goodSet_expectation_le_of_dyadic {δ T y x A : ℝ} (hy : 1 ≤ y)
-    (hA : 0 ≤ A) (f : ℕ → ℝ)
-    (hbound : ∀ j, expectation x ((dyadicGoodSet δ T y j).indicator f) ≤
-      A / sqrt ((2 : ℝ) ^ j)) :
-    expectation x ((goodSet δ T).indicator f) ≤ 4 * A := by
-  obtain ⟨N, hN⟩ := exists_dyadicGoodSet_cutoff δ T y
-  rw [goodSet_expectation_eq_dyadic_sum hy hN]
-  calc _ ≤ ∑ j ∈ range N, A / sqrt ((2 : ℝ) ^ j) := sum_le_sum (fun j _ ↦ hbound j)
-    _ = A * ∑ j ∈ range N, (sqrt ((2 : ℝ) ^ j))⁻¹ := by simp_rw [div_eq_mul_inv]; rw [mul_sum]
-    _ ≤ A * 4 := mul_le_mul_of_nonneg_left (sum_inv_sqrt_two_pow_le N) hA
-    _ = _ := by ring
 
 end BretecheTenenbaumMean

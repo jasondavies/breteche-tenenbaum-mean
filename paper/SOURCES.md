@@ -49,9 +49,8 @@ divisor sums in `ArithmeticFunction/TwistedDivisorSum.lean` involve Dirichlet
 characters and integral exponents, so they do not directly supply `τ(n,θ)`.
 The snapshot uses Lean 4.36.0-rc1; this project uses 4.35.0.
 
-Initial decision: retain Mathlib as the only remote Lake dependency and
-use no Tau Ceti code for the unweighted results. For the later polynomial
-input, the Dedekind-zeta closure is now vendored as described below.
+No Tau Ceti code is used for the unweighted results. The polynomial input
+imports the Dedekind-zeta closure, as described below.
 
 ## Prime number theorem and Mertens estimates
 
@@ -101,16 +100,12 @@ cited in §2.3 of the target paper. The local proof retains the exact tuple
 overlap lengths, including endpoint conventions, and proves the short-interval
 input by Selberg's sieve.
 
-Six files from the current local `../nair-tenenbaum/NairTenenbaum` tree were
-adapted into `BretecheTenenbaumMean/Sieve`. They construct optimized Selberg
-coefficients, bound the denominator and remainder, and provide two elementary
-prime-factor/prime-sum utilities. Their exact source hashes and destination
-paths are in [SIEVE_SOURCES.json](SIEVE_SOURCES.json). The source tree has no
-Git metadata and uses Lean 4.35.0. Only imports, namespace and provenance
-comments were changed; all mathematical proofs were retained and rebuilt.
-The broad source imports for polynomial root counts and arithmetic tuples
-were replaced by Mathlib: no results from those unrelated modules were used.
-This introduces no Lake dependency on that project.
+The Selberg sieve comes from the pinned Nair–Tenenbaum dependency:
+`NairTenenbaum.SelbergWeights`, `SelbergDenominator`, `SelbergCoefficientBounds`,
+`SelbergRemainder`, `PrimeLogSums` and `PrimeFactorBounds` construct optimized
+Selberg coefficients, bound the denominator and remainder, and provide two
+elementary prime-factor and prime-sum utilities. A former local copy differed
+only in namespace, imports and a provenance comment, so it was removed.
 
 `Sieve/Interval.lean`, `PrimeSums/ShortIntervals.lean`, `TupleWindows.lean`
 and `PrimeWindowAverage.lean` are local applications and proofs. They give
@@ -224,5 +219,4 @@ adds checks for this repository's configuration and provenance inventories.
 
 Jason Davies confirmed authorship/maintenance and Apache-2.0 licensing for this
 project, and ownership and Apache-2.0 licensing of the reused Nair–Tenenbaum
-sources. Their original file hashes remain unchanged. The six adapted sieve
-files now also have destination hashes, for reproducible local validation.
+sources. Their original file hashes remain unchanged.

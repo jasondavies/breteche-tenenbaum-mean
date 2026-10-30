@@ -15,9 +15,9 @@ This is the substantive proof development, not a wrapper around another reposito
 | Relationship | Responsible author/maintainer, confirmed by Jason Davies |
 | Existing Palomar ID | Leave blank for a new result |
 
-No submission or publication has been performed. The working repository has no
-commit or remote configured at preparation time, so there is no submission SHA yet.
-Only the immutable public snapshot is reviewed; local uncommitted files do not count.
+No submission or publication has been performed. The repository has no remote
+configured yet, so there is no submission SHA. Only the immutable public snapshot
+is reviewed; local uncommitted files do not count.
 
 ## Statement surface
 
@@ -53,7 +53,7 @@ The metadata has also been validated against the upstream formalization.yaml
 v0.4 JSON Schema. The module/size scan covers all local Lean sources, including
 vendored modules. The project-specific preflight checks all ten comparison
 targets, the definition block, dependency revisions, and the hashes of 15
-vendored modules plus six adapted sieve modules. After fetching dependencies,
+vendored modules. After fetching dependencies,
 `python3 scripts/check-palomar.py --check-dependencies` also checks all 127
 imported Nair–Tenenbaum module hashes against the pinned Git revision
 `0f778ee8366de1204c118e212264ef096ec82b49`, plus all 109 imported Tau Ceti
@@ -70,26 +70,23 @@ On this hosted environment bubblewrap required elevated process permissions;
 the first sandbox-restricted attempt failed to create its network namespace.
 The CI configuration enables the necessary namespaces on its disposable runner.
 
-The full Lean build passed (9,534 jobs). The exhaustive axiom audit checked
-7,731 project, vendor, and imported dependency declarations and found only `propext`,
+The full Lean build passed (9,514 jobs). The exhaustive axiom audit checked
+7,347 project, vendor, and imported dependency declarations and found only `propext`,
 `Classical.choice`, and `Quot.sound`. Metadata validation, the source scan,
 and the provenance preflight all passed.
 
-Comparator passed all ten statement comparisons after switching Tau Ceti
-to its v4.35.0 release, finishing with `Your solution is okay!`. Lean's
-default kernel, NanoDa, and con-ron each accepted the Solution; con-ron
-reported 88,781 accepted declarations in the exported dependency closure.
+Comparator passed all ten statement comparisons, finishing with
+`Your solution is okay!`. Lean's default kernel, NanoDa, and con-ron each
+accepted the Solution; con-ron reported 88,550 accepted declarations in the
+exported dependency closure.
 These local checks completed on 2026-10-30 with Lean 4.35.0. GitHub CI has
 not yet run because the snapshot has not been pushed.
 
 ## Publish the reviewed snapshot
 
-After reviewing the prepared files, commit and push them to the public repository.
-For this initially uncommitted repository, the sequence is:
+After reviewing the prepared files, commit them and push to the public repository:
 
 ```sh
-git add .
-git commit -m "Formalize the Delta-function mean bounds and prepare Palomar submission"
 git remote add origin https://github.com/jasondavies/breteche-tenenbaum-mean.git
 git push -u origin HEAD
 git status --short

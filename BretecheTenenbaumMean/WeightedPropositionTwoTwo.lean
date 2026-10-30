@@ -1,6 +1,5 @@
 module
 
-public import BretecheTenenbaumMean.PropositionTwoTwo
 public import BretecheTenenbaumMean.WeightedThirdMomentBase
 public import BretecheTenenbaumMean.WeightedMomentInductionKernel
 public import BretecheTenenbaumMean.WeightedThresholdRecursion

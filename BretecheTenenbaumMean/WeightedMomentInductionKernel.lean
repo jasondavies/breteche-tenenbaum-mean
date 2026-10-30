@@ -1,6 +1,5 @@
 module
 
-public import BretecheTenenbaumMean.MomentInductionKernel
 public import BretecheTenenbaumMean.WeightedInductionProducts
 public import BretecheTenenbaumMean.WeightedRecursionKernels
 

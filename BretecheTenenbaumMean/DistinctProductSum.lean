@@ -76,10 +76,4 @@ theorem distinctProductSum_le {α : Type*} (s : Finset α) (w : α → ℝ) (r :
                   have h := pow_add_mul_le_add_pow hS (show 0 ≤ 2 * (∑ b ∈ s, w b) + w a by positivity) (r + 1)
                   simpa only [Nat.add_sub_cancel, add_comm (∑ b ∈ s, w b) (w a)] using h
 
-/-- The uniform factorial estimate gives the square-root saving used in §2.2. -/
-theorem distinctProductSum_uniform {α : Type*} (s : Finset α) (w : α → ℝ) (r : ℕ)
-    (hw : ∀ a ∈ s, 0 ≤ w a) :
-    distinctProductSum s w r ≤ 8 * exp (∑ a ∈ s, w a) / sqrt (1 + ∑ a ∈ s, w a) :=
-  (distinctProductSum_le s w r hw).trans (factorial_term_uniform (sum_nonneg hw) r)
-
 end BretecheTenenbaumMean

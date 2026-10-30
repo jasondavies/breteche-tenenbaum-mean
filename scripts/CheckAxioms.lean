@@ -15,7 +15,6 @@ import all BretecheTenenbaumMean.Delta
 import all BretecheTenenbaumMean.DeltaConvolution
 import all BretecheTenenbaumMean.DeltaExpectation
 import all BretecheTenenbaumMean.DeltaLogAverage
-import all BretecheTenenbaumMean.DeltaProbabilityTail
 import all BretecheTenenbaumMean.DeltaSubmultiplicative
 import all BretecheTenenbaumMean.DistinctProductLower
 import all BretecheTenenbaumMean.DistinctProductSum
@@ -41,12 +40,10 @@ import all BretecheTenenbaumMean.FrequencyEstimates
 import all BretecheTenenbaumMean.FullPaper
 import all BretecheTenenbaumMean.GaussianGrid
 import all BretecheTenenbaumMean.GlobalParseval
-import all BretecheTenenbaumMean.GoodSetExceptional
 import all BretecheTenenbaumMean.GoodSetGrid
 import all BretecheTenenbaumMean.GoodSetReduction
 import all BretecheTenenbaumMean.GoodSets
 import all BretecheTenenbaumMean.GridEntropy
-import all BretecheTenenbaumMean.GridTail
 import all BretecheTenenbaumMean.GridThreshold
 import all BretecheTenenbaumMean.HalfIntervalSummation
 import all BretecheTenenbaumMean.HalfRange
@@ -58,9 +55,7 @@ import all BretecheTenenbaumMean.HighFrequencyMean
 import all BretecheTenenbaumMean.HighFrequencyPrimeBound
 import all BretecheTenenbaumMean.HighFrequencyRegions
 import all BretecheTenenbaumMean.HigherDegreePrimeIdeals
-import all BretecheTenenbaumMean.InductionProducts
 import all BretecheTenenbaumMean.IntegralNormalizationRoots
-import all BretecheTenenbaumMean.IntegralRecursion
 import all BretecheTenenbaumMean.IntermediateFrequency
 import all BretecheTenenbaumMean.InverseSquareConvolution
 import all BretecheTenenbaumMean.JointPrimeLayers
@@ -73,7 +68,6 @@ import all BretecheTenenbaumMean.LogarithmicPenaltyIntegral
 import all BretecheTenenbaumMean.LogisticIntegral
 import all BretecheTenenbaumMean.LowerTailReduction
 import all BretecheTenenbaumMean.MomentConvexity
-import all BretecheTenenbaumMean.MomentInductionKernel
 import all BretecheTenenbaumMean.MomentInterpolation
 import all BretecheTenenbaumMean.MomentRecurrence
 import all BretecheTenenbaumMean.Moments
@@ -120,7 +114,6 @@ import all BretecheTenenbaumMean.PrimeSmoothingTail
 import all BretecheTenenbaumMean.PrimeSums.Abel
 import all BretecheTenenbaumMean.PrimeSums.Cosine
 import all BretecheTenenbaumMean.PrimeSums.CosineIntegral
-import all BretecheTenenbaumMean.PrimeSums.Endpoints
 import all BretecheTenenbaumMean.PrimeSums.Error
 import all BretecheTenenbaumMean.PrimeSums.Grid
 import all BretecheTenenbaumMean.PrimeSums.Intervals
@@ -129,7 +122,6 @@ import all BretecheTenenbaumMean.PrimeSums.LogTail
 import all BretecheTenenbaumMean.PrimeSums.Mertens
 import all BretecheTenenbaumMean.PrimeSums.Product
 import all BretecheTenenbaumMean.PrimeSums.ProductLower
-import all BretecheTenenbaumMean.PrimeSums.RealProduct
 import all BretecheTenenbaumMean.PrimeSums.ShortIntervals
 import all BretecheTenenbaumMean.PrimeSums.Strict
 import all BretecheTenenbaumMean.PrimeSums.Tilted
@@ -146,7 +138,6 @@ import all BretecheTenenbaumMean.QuadraticLogAverage
 import all BretecheTenenbaumMean.QuadraticLower
 import all BretecheTenenbaumMean.QuadraticUpper
 import all BretecheTenenbaumMean.RangeCheck
-import all BretecheTenenbaumMean.RecursionDecay
 import all BretecheTenenbaumMean.RecursionEndpoints
 import all BretecheTenenbaumMean.RecursionErrorProducts
 import all BretecheTenenbaumMean.RecursionKernels
@@ -158,22 +149,12 @@ import all BretecheTenenbaumMean.SecondMomentPigeonhole
 import all BretecheTenenbaumMean.SecondMomentTail
 import all BretecheTenenbaumMean.SeparatedEvents
 import all BretecheTenenbaumMean.Sieve.Interval
-import all BretecheTenenbaumMean.Sieve.PrimeFactorBounds
-import all BretecheTenenbaumMean.Sieve.PrimeLogSums
-import all BretecheTenenbaumMean.Sieve.SelbergCoefficientBounds
-import all BretecheTenenbaumMean.Sieve.SelbergDenominator
-import all BretecheTenenbaumMean.Sieve.SelbergRemainder
-import all BretecheTenenbaumMean.Sieve.SelbergWeights
 import all BretecheTenenbaumMean.SmallPrimeDistribution
 import all BretecheTenenbaumMean.SmallPrimeFrequency
 import all BretecheTenenbaumMean.SmallPrimePolynomial
 import all BretecheTenenbaumMean.SmoothSums
-import all BretecheTenenbaumMean.SmoothedRecursion
-import all BretecheTenenbaumMean.SqrtDivisorAverage
 import all BretecheTenenbaumMean.SquareDivisorSum
 import all BretecheTenenbaumMean.SquarefreeTransfer
-import all BretecheTenenbaumMean.TailToMean
-import all BretecheTenenbaumMean.Targets
 import all BretecheTenenbaumMean.TheoremOne
 import all BretecheTenenbaumMean.TheoremTwo
 import all BretecheTenenbaumMean.ThirdMomentBase
@@ -182,9 +163,9 @@ import all BretecheTenenbaumMean.ThresholdConvolution
 import all BretecheTenenbaumMean.ThresholdRecursion
 import all BretecheTenenbaumMean.TiltedPrimeLayers
 import all BretecheTenenbaumMean.TriangleTransform
-import all BretecheTenenbaumMean.TruncatedProducts
 import all BretecheTenenbaumMean.TupleWindows
 import all BretecheTenenbaumMean.TwoFrequencyWeight
+import all BretecheTenenbaumMean.UnitWeight
 import all BretecheTenenbaumMean.WeightedAllMomentGoodSet
 import all BretecheTenenbaumMean.WeightedDeltaExpectation
 import all BretecheTenenbaumMean.WeightedDeltaProbabilityTail
@@ -222,7 +203,6 @@ import all BretecheTenenbaumMean.WeightedRecursionErrorProducts
 import all BretecheTenenbaumMean.WeightedRecursionKernels
 import all BretecheTenenbaumMean.WeightedRecursionPrimeAverage
 import all BretecheTenenbaumMean.WeightedSecondMomentTail
-import all BretecheTenenbaumMean.WeightedSmallPrimeFrequency
 import all BretecheTenenbaumMean.WeightedSmoothSums
 import all BretecheTenenbaumMean.WeightedSmoothedRecursion
 import all BretecheTenenbaumMean.WeightedSqrtDivisorAverage

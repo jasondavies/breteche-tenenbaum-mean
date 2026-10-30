@@ -77,41 +77,4 @@ theorem expectation_normalizedPolynomial_le_of_cosine (w : MultiplicativeWeight)
       exp_le_exp.2 (by linarith [sum_prime_weight_sq_le w hw])
     _ = _ := by rw [exp_add, exp_log hr]
 
-/-- The weighted normalized second moment has the same logarithmic mean
-once the weighted cosine estimate is supplied. -/
-theorem expectation_moment_two_log_bound_of_cosine (w : MultiplicativeWeight)
-    {A B x : ℝ} (hx : 2 ≤ x)
-    (hw : ∀ p ∈ primesLT x, w p ≤ A)
-    (hcos : ∀ θ ∈ Set.Icc (0 : ℝ) 1,
-      cosinePrimeSum w x θ ≤ B + log (log x / (1 + θ * log x))) :
-    expectation w x (fun n ↦ moment 2 n / tau n) ≤
-      ((π ^ 2 / 2) * exp (A ^ 2 + B)) * log (1 + log x) := by
-  have hl : 0 < log x := log_pos (by linarith)
-  have hcont : ContinuousOn (fun θ ↦ exp (A ^ 2 + B) *
-      (log x / (1 + θ * log x))) (Set.uIcc (0 : ℝ) 1) := by
-    apply ContinuousOn.mul continuousOn_const
-    apply ContinuousOn.div (by fun_prop) (by fun_prop)
-    intro θ hθ
-    rw [Set.uIcc_of_le zero_le_one] at hθ
-    have : 0 ≤ θ := hθ.1
-    positivity
-  have hi : (∫ θ in (0 : ℝ)..1, expectation w x (fun n ↦ normalizedPolynomial n θ)) ≤
-      exp (A ^ 2 + B) * log (1 + log x) := by
-    calc
-      _ ≤ ∫ θ in (0 : ℝ)..1, exp (A ^ 2 + B) * (log x / (1 + θ * log x)) := by
-        apply intervalIntegral.integral_mono_on zero_le_one
-          ((continuous_expectation_normalizedPolynomial w x).intervalIntegrable _ _)
-          hcont.intervalIntegrable
-        intro θ hθ
-        exact expectation_normalizedPolynomial_le_of_cosine w hx hθ.1 hw (hcos θ hθ)
-      _ = _ := by
-        rw [intervalIntegral.integral_const_mul,
-          BretecheTenenbaumMean.integral_log_div_one_add hx zero_le_one, one_mul]
-  calc
-    _ ≤ (π ^ 2 / 2) * ∫ θ in (0 : ℝ)..1,
-        expectation w x (fun n ↦ normalizedPolynomial n θ) := expectation_moment_two_le w x
-    _ ≤ (π ^ 2 / 2) * (exp (A ^ 2 + B) * log (1 + log x)) :=
-      mul_le_mul_of_nonneg_left hi (by positivity)
-    _ = _ := by ring
-
 end BretecheTenenbaumMean.WeightedModel

@@ -54,12 +54,6 @@ lemma delta_product_eq_sum (m n : ℕ) (c u : ℝ) :
       windowIndicator (log a) u * windowIndicator (log b) (c - u) := by
   simp only [delta_eq_sum_indicator, windowIndicator, sum_mul_sum]
 
-lemma integrable_delta_convolution (m n : ℕ) (c : ℝ) :
-    Integrable (fun u ↦ delta m u * delta n (c - u)) := by
-  simp_rw [delta_product_eq_sum]
-  exact integrable_finsetSum _ (fun a _ ↦ integrable_finsetSum _
-    (fun b _ ↦ integrable_windowIndicator_convolution (log (a : ℕ)) (log (b : ℕ)) c))
-
 /-- The tent kernel arises from overlap lengths, with no Fourier theorem required. -/
 theorem deltaConvolution_eq_sum (m n : ℕ) (c : ℝ) :
     deltaConvolution m n c = ∑ a ∈ m.divisors, ∑ b ∈ n.divisors,

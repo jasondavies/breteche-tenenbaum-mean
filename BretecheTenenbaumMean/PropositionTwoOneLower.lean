@@ -1,7 +1,6 @@
 module
 
 public import BretecheTenenbaumMean.DyadicLowerTail
-public import BretecheTenenbaumMean.Targets
 
 @[expose] public section
 

@@ -72,14 +72,14 @@ related_formalizations:
       dependency cone matches the former vendored snapshot byte-for-byte;
       the revision and file hashes are recorded in
       paper/NAIR_TENENBAUM_SOURCES.json. The short-sum input specializes
-      Nair–Tenenbaum Corollary 3, proved from Theorem 1. Six further sieve files have
-      import/namespace adaptations recorded in paper/SIEVE_SOURCES.json.
+      Nair–Tenenbaum Corollary 3, proved from Theorem 1. The Selberg sieve
+      used for prime averaging is imported from the same dependency.
   - id: "https://github.com/jasondavies/iwaniec-linear-sieve"
     relationship: adapts
     note: >-
       The local example guided layout and the StrongPNT integration. Prime
       sums also adapt its proofs from snapshot
-      84dfeff69393f31bbdcd126531f0ad8976069dad. The snapshot's MIT notice is
+      84dfeff69393f31bbdcd126531f0ad8976069dad. The snapshot's Apache-2.0 notice is
       retained at vendor/strong-pnt/IWANIEC-LICENSE; see paper/SOURCES.md.
 
 status:
@@ -111,6 +111,17 @@ automation:
         The human selected arXiv:2309.03958, requested full formalization,
         supplied the Iwaniec example, authorized StrongPNT vendoring, and
         preferred limited Tau Ceti reuse when it avoided substantial duplication.
+    - method: agent
+      models: ["claude-opus-5-5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        An AI agent consolidated the finished development: it proved the
+        unit-weight bridge in UnitWeight and the (2.12) range extension,
+        removed redundant unweighted proofs, and reran the same Lean build,
+        axiom audit and Comparator checks.
+      prompting_notes: >-
+        The human asked for a review for consolidation and cleanup, then
+        approved the recommended steps.
   notes: >-
     The human selected and directed the work; no human-authored proof edits
     or independent human mathematical review are claimed. Existing vendored

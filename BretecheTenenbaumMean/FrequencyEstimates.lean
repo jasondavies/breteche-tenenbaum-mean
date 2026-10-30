@@ -107,33 +107,6 @@ theorem integral_log_div_one_add {x b : ℝ} (hx : 2 ≤ x) (hb : 0 ≤ b) :
       rfl
     · simp only [id_eq, one_mul]
 
-/-- The very low frequencies in §2.2 have bounded mean contribution. -/
-theorem initial_frequency_integral_le : ∃ C > 0, ∀ x b,
-    2 ≤ x → 0 ≤ b → b ≤ 1 → b * log x ≤ 1 →
-    (∫ θ in (0 : ℝ)..b, expectation x (fun n ↦ normalizedPolynomial n θ)) ≤ C := by
-  obtain ⟨C, hC, h⟩ := expectation_normalizedPolynomial_le
-  refine ⟨C, hC, fun x b hx hb hb1 hbL ↦ ?_⟩
-  have hl : 0 < log x := log_pos (by linarith)
-  have hcont : ContinuousOn (fun θ ↦ C * (log x / (1 + θ * log x))) (Set.uIcc 0 b) := by
-    apply ContinuousOn.mul continuousOn_const
-    apply ContinuousOn.div (by fun_prop) (by fun_prop)
-    intro θ hθ
-    rw [Set.uIcc_of_le hb] at hθ
-    have : 0 ≤ θ := hθ.1
-    positivity
-  calc _ ≤ ∫ θ in (0 : ℝ)..b, C * (log x / (1 + θ * log x)) := by
-          apply intervalIntegral.integral_mono_on hb
-            ((continuous_expectation_normalizedPolynomial x).intervalIntegrable _ _)
-            hcont.intervalIntegrable
-          intro θ hθ
-          exact h x θ hx hθ.1 (hθ.2.trans hb1)
-       _ = C * log (1 + b * log x) := by
-          rw [intervalIntegral.integral_const_mul, integral_log_div_one_add hx hb]
-       _ ≤ C := by
-          have hp : 0 < 1 + b * log x := by positivity
-          have hlog := log_le_sub_one_of_pos hp
-          nlinarith
-
 /-- The unrestricted normalized second moment has logarithmic-logarithmic mean. -/
 theorem expectation_moment_two_log_bound : ∃ C > 0, ∀ x ≥ 2,
     expectation x (fun n ↦ moment 2 n / tau n) ≤ C * log (1 + log x) := by

@@ -39,19 +39,6 @@ theorem expectation_normalizedPolynomial (x θ : ℝ) :
   congr 1
   exact Finset.prod_congr rfl (fun p hp => by rw [normalizedPolynomial_prime (mem_primesLT.mp hp).1])
 
-/-- The unrestricted two-frequency mean, before imposing `E_T` and its dyadic layers. -/
-theorem expectation_normalizedPolynomial_mul (x θ φ : ℝ) :
-    expectation x (fun n => normalizedPolynomial n θ * normalizedPolynomial n φ) =
-      (∏ p ∈ primesLT x,
-        (1 + (1 + cos (θ * log p)) * (1 + cos (φ * log p)) / p)) / normalizer x := by
-  rw [expectation_multiplicative x _ (by simp) (fun m n h => by
-    rw [normalizedPolynomial_mul h θ, normalizedPolynomial_mul h φ]
-    ring)]
-  congr 1
-  exact Finset.prod_congr rfl (fun p hp => by
-    rw [normalizedPolynomial_prime (mem_primesLT.mp hp).1,
-      normalizedPolynomial_prime (mem_primesLT.mp hp).1])
-
 /-- The elementary trigonometric identity in (2.12). -/
 theorem cosine_product_identity (a b : ℝ) :
     (1 + cos a) * (1 + cos b) =

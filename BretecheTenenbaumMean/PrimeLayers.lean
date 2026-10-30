@@ -49,22 +49,6 @@ theorem probability_prime_layer_eq (x : ℝ) (r : ℕ) :
   intro n _
   by_cases hn : n.primeFactors.card = r <;> simp [Set.indicator, hn]
 
-/-- The factorial upper bound for a reciprocal prime layer, uniform in its index. -/
-theorem reciprocal_prime_layer_le (x : ℝ) (r : ℕ) :
-    (∑ n ∈ smoothSupport x, if n.primeFactors.card = r then (n : ℝ)⁻¹ else 0) ≤
-      (∑ p ∈ primesLT x, (p : ℝ)⁻¹) ^ r / (r.factorial : ℝ) := by
-  rw [reciprocal_prime_layer_eq]
-  exact distinctProductSum_le _ _ _ (fun _ _ ↦ by positivity)
-
-/-- The square-root saving for every layer simultaneously. -/
-theorem probability_prime_layer_uniform (x : ℝ) (r : ℕ) :
-    probability x {n | n.primeFactors.card = r} ≤
-      (8 * exp (∑ p ∈ primesLT x, (p : ℝ)⁻¹)) /
-        (sqrt (1 + ∑ p ∈ primesLT x, (p : ℝ)⁻¹) * normalizer x) := by
-  rw [probability_prime_layer_eq, ← div_div]
-  exact div_le_div_of_nonneg_right
-    (distinctProductSum_uniform _ _ _ (fun _ _ ↦ by positivity)) (normalizer_pos x).le
-
 /-- A squarefree integer has two divisor choices for each prime factor. -/
 theorem tau_squarefree {n : ℕ} (hn : Squarefree n) : tau n = (2 : ℝ) ^ n.primeFactors.card := by
   have h : n.divisors.card = 2 ^ n.primeFactors.card := by

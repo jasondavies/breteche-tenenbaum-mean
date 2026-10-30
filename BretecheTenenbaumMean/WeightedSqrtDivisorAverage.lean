@@ -1,7 +1,7 @@
 module
 
 public import BretecheTenenbaumMean.WeightedPrimeConsequences
-public import BretecheTenenbaumMean.SqrtDivisorAverage
+public import BretecheTenenbaumMean.SmoothSums
 
 @[expose] public section
 

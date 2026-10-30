@@ -2,7 +2,7 @@ module
 
 public import BretecheTenenbaumMean.DivisorSquareLower
 public import BretecheTenenbaumMean.WindowBounds
-public import BretecheTenenbaumMean.Targets
+public import BretecheTenenbaumMean.GoodSets
 
 @[expose] public section
 

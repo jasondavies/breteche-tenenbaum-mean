@@ -36,10 +36,6 @@ noncomputable def divisorMangoldt : ArithmeticFunction ℝ :=
 
 @[simp] lemma divisorMangoldt_apply (n : ℕ) : divisorMangoldt n = tau n * Λ n := rfl
 
-lemma divisorMangoldt_nonneg (n : ℕ) : 0 ≤ divisorMangoldt n := by
-  simp only [divisorMangoldt_apply]
-  exact mul_nonneg (by unfold tau; positivity) ArithmeticFunction.vonMangoldt_nonneg
-
 lemma sum_divisorMangoldt_le_theta_psi {x : ℝ} (hx : 1 ≤ x) :
     (∑ n ∈ Ioc 0 ⌊x⌋₊, divisorMangoldt n) ≤
       2 * Chebyshev.theta x + (1 + log x / log 2) *

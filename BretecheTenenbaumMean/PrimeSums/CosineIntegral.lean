@@ -224,4 +224,55 @@ theorem cosinePrimeSum_log_ratio : ∃ K ≥ 0, ∀ x ψ,
         (hK x ψ hx (by rw [abs_of_nonneg hψ]; linarith))
         (integral_cosineWeight_log_ratio hx hψ hψ1)
 
+/-- Beyond frequency one the logarithmic main term of (2.12) is itself bounded. -/
+theorem abs_log_ratio_le {ψ L : ℝ} (hψ : 1 ≤ ψ) (hψ2 : ψ ≤ 2) (hL : log 2 ≤ L) :
+    |log (L / (1 + ψ * L))| ≤ 2 := by
+  have hl2 := log_two_gt_d9
+  have hl2' := log_two_lt_d9
+  have hL0 : 0 < L := by linarith
+  have hp : 0 < 1 + ψ * L := by positivity
+  have hr : 0 < L / (1 + ψ * L) := div_pos hL0 hp
+  have hup : L / (1 + ψ * L) ≤ 1 := by rw [div_le_one hp]; nlinarith
+  have hlow : (1 : ℝ) / 4 ≤ L / (1 + ψ * L) := by
+    rw [le_div_iff₀ hp]
+    nlinarith
+  have hu := log_nonpos hr.le hup
+  have hd := log_le_log (by norm_num : (0 : ℝ) < 1 / 4) hlow
+  have h4 : log ((1 : ℝ) / 4) = -(2 * log 2) := by
+    rw [show (1 : ℝ) / 4 = 2⁻¹ ^ 2 by norm_num, log_pow, log_inv]
+    norm_num
+  rw [abs_le]
+  constructor <;> linarith
+
+/-- The continuous counterpart of (2.12) on the remaining range `1 ≤ ψ ≤ 2`. -/
+theorem integral_cosineWeight_log_ratio_high {x ψ : ℝ} (hx : 2 ≤ x)
+    (hψ : 1 ≤ ψ) (hψ2 : ψ ≤ 2) :
+    |(∫ t in 2..x, cosineWeight ψ t) - log (log x / (1 + ψ * log x))| ≤ 7 := by
+  rw [integral_cosineWeight_eq hx]
+  have hl2 := log_two_gt_d9
+  have hL : log 2 ≤ log x := log_le_log (by norm_num) hx
+  have ht := cosineIntegral_tail (by linarith : 0 < ψ) (log_pos one_lt_two) hL
+  have hb : 3 / (ψ * log 2) ≤ 5 := by
+    rw [div_le_iff₀ (by positivity)]
+    nlinarith
+  have hr := abs_log_ratio_le hψ hψ2 hL
+  calc
+    _ ≤ |∫ t in log 2..log x, cos (ψ * t) / t| + |log (log x / (1 + ψ * log x))| := abs_sub _ _
+    _ ≤ 7 := by linarith
+
+/-- Formula (2.12) on the full frequency range `0 ≤ ψ ≤ 2` of `PrimeEstimates`. -/
+theorem cosinePrimeSum_log_ratio_two : ∃ K ≥ 0, ∀ x ψ,
+    2 ≤ x → 0 ≤ ψ → ψ ≤ 2 →
+    |cosinePrimeSum x ψ - log (log x / (1 + ψ * log x))| ≤ K := by
+  obtain ⟨K₁, hK₁, h₁⟩ := cosinePrimeSum_log_ratio
+  obtain ⟨K₂, hK₂, h₂⟩ := cosinePrimeSum_integral_error
+  refine ⟨K₁ + K₂ + 7, by positivity, fun x ψ hx hψ hψ2 ↦ ?_⟩
+  rcases le_total ψ 1 with h | h
+  · linarith [h₁ x ψ hx hψ h]
+  · have ha := h₂ x ψ hx (by rwa [abs_of_nonneg hψ])
+    have hb := integral_cosineWeight_log_ratio_high hx h hψ2
+    have := abs_sub_le (cosinePrimeSum x ψ) (∫ t in 2..x, cosineWeight ψ t)
+      (log (log x / (1 + ψ * log x)))
+    linarith
+
 end BretecheTenenbaumMean.PrimeSums

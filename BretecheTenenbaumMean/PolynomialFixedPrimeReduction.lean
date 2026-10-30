@@ -1,7 +1,6 @@
 module
 
 public import BretecheTenenbaumMean.PolynomialProgressions
-public import BretecheTenenbaumMean.Targets
 
 @[expose] public section
 

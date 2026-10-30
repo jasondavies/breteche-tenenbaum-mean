@@ -3,6 +3,5 @@
 *.ilean
 paper/*
 !paper/SOURCES.md
-!paper/SIEVE_SOURCES.json
 !paper/NAIR_TENENBAUM_SOURCES.json
 !paper/TAU_CETI_SOURCES.json

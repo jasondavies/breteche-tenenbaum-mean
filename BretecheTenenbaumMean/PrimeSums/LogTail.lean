@@ -1,6 +1,6 @@
 module
 
-public import BretecheTenenbaumMean.Sieve.PrimeLogSums
+public import NairTenenbaum.PrimeLogSums
 public import BretecheTenenbaumMean.PrimeSums.Strict
 
 @[expose] public section
@@ -11,32 +11,32 @@ namespace BretecheTenenbaumMean.PrimeSums
 
 open Finset Real MeasureTheory intervalIntegral
 
-noncomputable def primeLogReciprocal (n : ℕ) : ℝ := Sieve.primeLogWeight n / n
+noncomputable def primeLogReciprocal (n : ℕ) : ℝ := NairTenenbaum.primeLogWeight n / n
 
 theorem primeLogReciprocal_nonneg (n : ℕ) : 0 ≤ primeLogReciprocal n := by
-  unfold primeLogReciprocal Sieve.primeLogWeight
+  unfold primeLogReciprocal NairTenenbaum.primeLogWeight
   split_ifs with h
   · exact div_nonneg (log_nonneg (by exact_mod_cast h.one_le)) (Nat.cast_nonneg n)
   · simp
 
 theorem sum_primeLogReciprocal (t : ℝ) :
-    (∑ n ∈ Icc 0 ⌊t⌋₊, primeLogReciprocal n) = Sieve.primeLogSum t := by
-  simp only [Sieve.primeLogSum, sum_filter, primeLogReciprocal, Sieve.primeLogWeight]
+    (∑ n ∈ Icc 0 ⌊t⌋₊, primeLogReciprocal n) = NairTenenbaum.primeLogSum t := by
+  simp only [NairTenenbaum.primeLogSum, sum_filter, primeLogReciprocal, NairTenenbaum.primeLogWeight]
   apply sum_congr rfl
   intro n _
   split_ifs <;> simp
 
-theorem primeLogSum_nonneg (t : ℝ) : 0 ≤ Sieve.primeLogSum t := by
+theorem primeLogSum_nonneg (t : ℝ) : 0 ≤ NairTenenbaum.primeLogSum t := by
   rw [← sum_primeLogReciprocal]
   exact sum_nonneg (fun n _ ↦ primeLogReciprocal_nonneg n)
 
-theorem primeLogSum_mono : Monotone Sieve.primeLogSum := by
+theorem primeLogSum_mono : Monotone NairTenenbaum.primeLogSum := by
   intro a b hab
   rw [← sum_primeLogReciprocal, ← sum_primeLogReciprocal]
   exact sum_le_sum_of_subset_of_nonneg (Icc_subset_Icc le_rfl (Nat.floor_mono hab))
     (fun n _ _ ↦ primeLogReciprocal_nonneg n)
 
-theorem primeLogSum_le_mul_log : ∃ B > 0, ∀ t : ℝ, 2 ≤ t → Sieve.primeLogSum t ≤ B * log t := by
+theorem primeLogSum_le_mul_log : ∃ B > 0, ∀ t : ℝ, 2 ≤ t → NairTenenbaum.primeLogSum t ≤ B * log t := by
   let B := log 4 * (1 + (log 2)⁻¹)
   have hl2 : 0 < log 2 := log_pos (by norm_num)
   have hl4 : 0 < log 4 := log_pos (by norm_num)
@@ -44,7 +44,7 @@ theorem primeLogSum_le_mul_log : ∃ B > 0, ∀ t : ℝ, 2 ≤ t → Sieve.prime
   have hlt := log_le_log (by norm_num : (0 : ℝ) < 2) ht
   have h : 1 ≤ log t * (log 2)⁻¹ := (le_div_iff₀ hl2).2 (by simpa using hlt)
   have hmul := mul_le_mul_of_nonneg_left h hl4.le
-  have hbound := Sieve.primeLogSum_le ht
+  have hbound := NairTenenbaum.primeLogSum_le ht
   dsimp only [B]
   nlinarith
 
@@ -75,21 +75,21 @@ theorem prime_inv_log_Ioc_bound : ∃ C > 0, ∀ a b : ℝ, 2 ≤ a → a ≤ b 
     (fun t ht ↦ (hder t ht).differentiableAt) hi
   simp only [sum_primeLogReciprocal] at habel
   rw [setIntegral_congr_fun measurableSet_Ioc
-    (g := fun t : ℝ ↦ -(2 / (t * log t ^ 3)) * Sieve.primeLogSum t)
+    (g := fun t : ℝ ↦ -(2 / (t * log t ^ 3)) * NairTenenbaum.primeLogSum t)
     (fun t ht ↦ by rw [(hder t (Set.Ioc_subset_Icc_self ht)).deriv]),
     ← intervalIntegral.integral_of_le hab] at habel
   have hsum : (∑ p ∈ Ioc ⌊a⌋₊ ⌊b⌋₊, (log (p : ℝ) ^ 2)⁻¹ * primeLogReciprocal p) =
       ∑ p ∈ Ioc ⌊a⌋₊ ⌊b⌋₊, if p.Prime then 1 / ((p : ℝ) * log p) else 0 := by
     apply sum_congr rfl
     intro p _
-    unfold primeLogReciprocal Sieve.primeLogWeight
+    unfold primeLogReciprocal NairTenenbaum.primeLogWeight
     split_ifs with hp
     · have hl : 0 < log (p : ℝ) := log_pos (by exact_mod_cast hp.one_lt)
       field_simp
     · simp
   rw [hsum] at habel
-  have hneg : (∫ t in a..b, -(2 / (t * log t ^ 3)) * Sieve.primeLogSum t) =
-      -(∫ t in a..b, (2 / (t * log t ^ 3)) * Sieve.primeLogSum t) := by
+  have hneg : (∫ t in a..b, -(2 / (t * log t ^ 3)) * NairTenenbaum.primeLogSum t) =
+      -(∫ t in a..b, (2 / (t * log t ^ 3)) * NairTenenbaum.primeLogSum t) := by
     rw [← intervalIntegral.integral_neg]
     apply integral_congr
     intro t _
@@ -100,7 +100,7 @@ theorem prime_inv_log_Ioc_bound : ∃ C > 0, ∀ a b : ℝ, 2 ≤ a → a ≤ b 
     have h := hc.neg
     change ContinuousOn (fun t : ℝ ↦ -(-(2 / (t * log t ^ 3)))) _ at h
     simpa only [neg_neg] using h
-  have hiU : IntervalIntegrable (fun t : ℝ ↦ (2 / (t * log t ^ 3)) * Sieve.primeLogSum t) volume a b :=
+  have hiU : IntervalIntegrable (fun t : ℝ ↦ (2 / (t * log t ^ 3)) * NairTenenbaum.primeLogSum t) volume a b :=
     primeLogSum_mono.intervalIntegrable.continuousOn_mul hc'
   have hcM : ContinuousOn (fun t : ℝ ↦ t⁻¹ / log t ^ 2) (Set.uIcc a b) := by
     rw [Set.uIcc_of_le hab]
@@ -109,7 +109,7 @@ theorem prime_inv_log_Ioc_bound : ∃ C > 0, ∀ a b : ℝ, 2 ≤ a → a ≤ b 
     have hlog : 0 < log t := log_pos (hpos t ht)
     apply ContinuousAt.continuousWithinAt
     fun_prop (disch := positivity)
-  have hint : (∫ t in a..b, (2 / (t * log t ^ 3)) * Sieve.primeLogSum t) ≤
+  have hint : (∫ t in a..b, (2 / (t * log t ^ 3)) * NairTenenbaum.primeLogSum t) ≤
       2 * B * ((log a)⁻¹ - (log b)⁻¹) := by
     rw [← integral_inv_div_log_sq (by linarith : 1 < a) (by linarith : 1 < b), ← intervalIntegral.integral_const_mul]
     apply integral_mono_on hab hiU (hcM.intervalIntegrable.const_mul _)
@@ -122,11 +122,11 @@ theorem prime_inv_log_Ioc_bound : ∃ C > 0, ∀ a b : ℝ, 2 ≤ a → a ≤ b 
       _ = _ := by field_simp
   have hloga : 0 < log a := log_pos (by linarith)
   have hlogb : 0 < log b := log_pos (by linarith)
-  have hupper : (log b ^ 2)⁻¹ * Sieve.primeLogSum b ≤ B / log b := by
+  have hupper : (log b ^ 2)⁻¹ * NairTenenbaum.primeLogSum b ≤ B / log b := by
     have h := mul_le_mul_of_nonneg_left (hbound b (by linarith)) (by positivity : 0 ≤ (log b ^ 2)⁻¹)
     convert h using 1
     field_simp
-  have hlower : 0 ≤ (log a ^ 2)⁻¹ * Sieve.primeLogSum a :=
+  have hlower : 0 ≤ (log a ^ 2)⁻¹ * NairTenenbaum.primeLogSum a :=
     mul_nonneg (by positivity) (primeLogSum_nonneg a)
   have hlast : 0 ≤ B / log b := by positivity
   rw [habel]

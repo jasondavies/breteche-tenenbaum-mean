@@ -94,15 +94,4 @@ theorem poissonTerm_le_rate {u : ℝ} (hu : 0 < u) {k : ℕ} (hk : k ≠ 0) :
   convert h using 1
   ring
 
-/-- A factorial tail with the sharp exponential and square-root prefactor. -/
-theorem sum_poissonTerm_tail_le_rate {u ρ : ℝ} {k : ℕ}
-    (hu : 0 < u) (hρ : 0 ≤ ρ) (hρ1 : ρ < 1) (hk0 : k ≠ 0)
-    (hk : u ≤ ρ * (k + 1)) (s : Finset ℕ) (hs : ∀ r ∈ s, k ≤ r) :
-    (∑ r ∈ s, poissonTerm u r) ≤
-      exp (u * (1 - poissonRate (k / u))) / ((1 - ρ) * sqrt (2 * π * k)) := by
-  calc _ ≤ poissonTerm u k / (1 - ρ) := sum_poissonTerm_tail_le hu.le hρ hρ1 hk s hs
-    _ ≤ (exp (u * (1 - poissonRate (k / u))) / sqrt (2 * π * k)) / (1 - ρ) :=
-      div_le_div_of_nonneg_right (poissonTerm_le_rate hu hk0) (by linarith)
-    _ = _ := by rw [div_div]; congr 1; ring
-
 end BretecheTenenbaumMean

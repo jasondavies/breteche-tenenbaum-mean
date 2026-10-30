@@ -2,7 +2,6 @@ module
 
 public import BretecheTenenbaumMean.PrimeLayerCentral
 public import BretecheTenenbaumMean.GridThreshold
-public import BretecheTenenbaumMean.Targets
 
 @[expose] public section
 

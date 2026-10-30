@@ -11,11 +11,6 @@ namespace BretecheTenenbaumMean
 
 open Real
 
-theorem criticalSlope_ge_one : 1 ≤ criticalSlope := by
-  have hp := criticalSlope_pos
-  have hl : log (2 : ℝ) < 1 := by linarith [log_two_lt_d9]
-  nlinarith [criticalSlope_log_identity, mul_lt_mul_of_pos_left hl hp]
-
 /-- Every scale in the window has the required size, count range, and
 quadratic distance from the tilted mean. -/
 theorem central_dyadic_window_bounds {h t : ℕ} (ht : (1 : ℝ) ≤ t)
@@ -27,7 +22,7 @@ theorem central_dyadic_window_bounds {h t : ℕ} (ht : (1 : ℝ) ≤ t)
   have ht0 : 0 ≤ (t : ℝ) := Nat.cast_nonneg _
   have hh0 : 0 ≤ (h : ℝ) := Nat.cast_nonneg _
   have hγ := criticalSlope_pos
-  have hγ1 := criticalSlope_ge_one
+  have hγ1 := one_le_criticalSlope
   have hγ3 := criticalSlope_le_three
   have hlhalf : (1 / 2 : ℝ) < log 2 := by linarith [log_two_gt_d9]
   have hlone : log (2 : ℝ) < 1 := by linarith [log_two_lt_d9]

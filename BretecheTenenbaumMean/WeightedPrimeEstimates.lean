@@ -50,44 +50,6 @@ theorem cosine_tail_eq_sub (w : MultiplicativeWeight) {x y : ℝ} (hyx : y ≤ x
   change _ + cosinePrimeSum w y θ = cosinePrimeSum w x θ at hs
   linarith
 
-/-- Beyond `exp(1/θ)`, the cosine tail is uniformly bounded. The strict
-endpoints are handled by exact set difference, with no endpoint approximation. -/
-theorem PrimeEstimates.cosine_tail_le {w : MultiplicativeWeight} (h : PrimeEstimates w)
-    (x : ℝ) {θ : ℝ} (hθ : 0 < θ) (hθ1 : θ ≤ 1) :
-    (∑ p ∈ (primesLT x).filter (fun p : ℕ ↦ exp θ⁻¹ ≤ (p : ℝ)),
-      w p * cos (θ * log p) / p) ≤ 2 * h.errorBound + log 2 := by
-  let y := exp θ⁻¹
-  have hy : 2 ≤ y := PrimeSums.two_le_exp_inv hθ hθ1
-  rcases le_total y x with hyx | hxy
-  · rw [cosine_tail_eq_sub w hyx]
-    have hx : 2 ≤ x := hy.trans hyx
-    have hxL : 0 < log x := log_pos (by linarith)
-    have hd : 0 < 1 + θ * log x := by positivity
-    have hi : 0 < θ⁻¹ := inv_pos.2 hθ
-    have hratio : log x / (1 + θ * log x) ≤ θ⁻¹ := by
-      rw [div_le_iff₀ hd]
-      have he : θ⁻¹ * (1 + θ * log x) = θ⁻¹ + log x := by field_simp
-      rw [he]
-      linarith
-    have hlog : log (log x / (1 + θ * log x)) ≤ log θ⁻¹ :=
-      log_le_log (div_pos hxL hd) hratio
-    have he : log (log y / (1 + θ * log y)) = log θ⁻¹ - log 2 := by
-      dsimp only [y]
-      rw [log_exp, mul_inv_cancel₀ hθ.ne']
-      norm_num only [show (1 : ℝ) + 1 = 2 by norm_num]
-      exact log_div hi.ne' (by norm_num)
-    have hupper := (abs_le.1 (h.cosine_error x θ hx (by rw [abs_of_pos hθ]; linarith))).2
-    have hlower := (abs_le.1 (h.cosine_error y θ hy (by rw [abs_of_pos hθ]; linarith))).1
-    rw [abs_of_pos hθ] at hupper hlower
-    rw [he] at hlower
-    linarith
-  · have he : (primesLT x).filter (fun p : ℕ ↦ y ≤ (p : ℝ)) = ∅ := by
-      apply filter_eq_empty_iff.2
-      intro p hp hpy
-      exact (not_lt_of_ge (hxy.trans hpy)) (mem_primesLT.1 hp).2
-    rw [he, sum_empty]
-    linarith [h.errorBound_nonneg, log_pos (by norm_num : (1 : ℝ) < 2)]
-
 /-- A general nonnegative multiplicative test function is bounded by its
 linear prime sum, with only the normalizer's quadratic correction. -/
 theorem expectation_multiplicative_le_exp (w : MultiplicativeWeight) (x : ℝ)

@@ -63,16 +63,6 @@ theorem probability_tau_ge_eq (w : MultiplicativeWeight) (x : ℝ) {R : ℝ} (hR
   intro n hn
   exact tau_ge_iff_prime_count_ge_ceil (mem_smoothSupport.1 hn).1 hR
 
-/-- Explicit factorial-tail bound for a real divisor threshold. -/
-theorem probability_tau_ge_le (w : MultiplicativeWeight) (x : ℝ) {R ρ : ℝ} (hR : 0 < R)
-    (hρ : 0 ≤ ρ) (hρ1 : ρ < 1)
-    (hk : (∑ p ∈ primesLT x, w p / p) ≤ ρ * (⌈log R / log 2⌉₊ + 1)) :
-    probability w x {n | R ≤ tau n} ≤
-      poissonTerm (∑ p ∈ primesLT x, w p / p) ⌈log R / log 2⌉₊ /
-        ((1 - ρ) * normalizer w x) := by
-  rw [probability_tau_ge_eq w x hR]
-  exact probability_prime_ge_le w x hρ hρ1 hk
-
 /-- Normalization cancels the leading Poisson exponential with a bounded
 prime-weight correction. -/
 theorem probability_prime_ge_exp_rate (w : MultiplicativeWeight) (x : ℝ) {A ρ : ℝ} {k : ℕ}

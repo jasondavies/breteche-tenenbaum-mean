@@ -61,12 +61,4 @@ theorem integralPrimitive_exponent_pos {K : Type*} [Field K] [NumberField K]
       ← Int.cast_mem_ideal_iff, Int.cast_natCast]
   exact Nat.pos_of_dvd_of_pos hdvd hcard
 
-/-- Only finitely many rational primes are excluded from Kummer–Dedekind
-for an integral primitive element. -/
-theorem integralPrimitive_finite_badPrimes {K : Type*} [Field K] [NumberField K]
-    (θ : 𝓞 K) (hθ : Algebra.adjoin ℚ {(θ : K)} = ⊤) :
-    Set.Finite {p : ℕ | p.Prime ∧ p ∣ RingOfIntegers.exponent θ} := by
-  exact (Set.finite_Iic (RingOfIntegers.exponent θ)).subset
-    (fun _ hp ↦ Nat.le_of_dvd (integralPrimitive_exponent_pos θ hθ) hp.2)
-
 end BretecheTenenbaumMean

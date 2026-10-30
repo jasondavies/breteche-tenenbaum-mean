@@ -81,13 +81,4 @@ noncomputable def minpolyRootsEquivDegreeOnePrimes {K : Type*} [Field K] [Number
     apply Subtype.ext
     exact e.symm_apply_apply P.val
 
-/-- Outside the conductor exponent, the root-count weight is precisely the
-number of prime ideals above the rational prime with residue degree one. -/
-theorem rootCount_minpoly_eq_degreeOnePrimes {K : Type*} [Field K] [NumberField K]
-    (θ : 𝓞 K) (p : ℕ) [Fact p.Prime] (hp : ¬ p ∣ RingOfIntegers.exponent θ) :
-    NairTenenbaum.rootCount (minpoly ℤ θ) p =
-      Nat.card {P : Ideal.primesOver (Ideal.span {(p : ℤ)}) (𝓞 K) //
-        Ideal.inertiaDeg P.val ℤ = 1} :=
-  Nat.card_congr (minpolyRootsEquivDegreeOnePrimes θ p hp)
-
 end BretecheTenenbaumMean

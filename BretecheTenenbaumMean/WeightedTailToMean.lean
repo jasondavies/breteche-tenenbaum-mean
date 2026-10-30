@@ -1,6 +1,6 @@
 module
 
-public import BretecheTenenbaumMean.TailToMean
+public import BretecheTenenbaumMean.DyadicTailScale
 public import BretecheTenenbaumMean.WeightedFiniteTailExpectation
 
 @[expose] public section

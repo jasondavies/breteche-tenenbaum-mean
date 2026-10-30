@@ -1,6 +1,6 @@
 module
 
-public import BretecheTenenbaumMean.Sieve.SelbergRemainder
+public import NairTenenbaum.SelbergRemainder
 public import BretecheTenenbaumMean.PrimeSums.Product
 
 @[expose] public section
@@ -9,7 +9,7 @@ public import BretecheTenenbaumMean.PrimeSums.Product
 
 namespace BretecheTenenbaumMean.Sieve
 
-open Finset Real
+open Finset Real NairTenenbaum
 
 /-- Exact count of multiples in an interval with strict lower endpoint. -/
 theorem card_multiples_Ioc (a b d : ℕ) :

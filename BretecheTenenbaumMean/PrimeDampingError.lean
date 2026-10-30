@@ -14,12 +14,6 @@ open Real Finset
 noncomputable def primeCutoff (x : ℝ) : Finset Nat.Primes :=
   (primesLT x).subtype Nat.Prime
 
-@[simp] theorem mem_primeCutoff (x : ℝ) (p : Nat.Primes) :
-    p ∈ primeCutoff x ↔ (p.val : ℝ) < x := by
-  change (⟨p.val, p.prop⟩ : {n : ℕ // n.Prime}) ∈ (primesLT x).subtype Nat.Prime ↔ _
-  rw [Finset.mem_subtype, mem_primesLT]
-  exact and_iff_right p.prop
-
 theorem sum_primeCutoff (x : ℝ) (f : ℕ → ℝ) :
     (∑ p ∈ primeCutoff x, f p.val) = ∑ p ∈ primesLT x, f p :=
   sum_subtype_of_mem f (fun _ hp ↦ (mem_primesLT.mp hp).1)

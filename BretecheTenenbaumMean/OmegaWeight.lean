@@ -1,8 +1,8 @@
 module
 
 public import BretecheTenenbaumMean.WeightedMangoldt
-public import BretecheTenenbaumMean.Sieve.SelbergDenominator
 public import BretecheTenenbaumMean.PrimeSums.ProductLower
+public import NairTenenbaum.SelbergDenominator
 
 @[expose] public section
 
@@ -88,7 +88,7 @@ lemma omegaThreeProduct_pos (y : ℝ) : 0 < omegaThreeProduct y := by
 lemma omegaThreeProduct_log_moment (y : ℝ) :
     (∑ n ∈ smoothSupport y, omegaThree n / n * log n) =
       omegaThreeProduct y * ∑ p ∈ primesLT y, (3 / (p + 3 : ℝ)) * log p := by
-  have h := Sieve.squarefree_divisor_log_moment omegaThreeHarmonic omegaThreeHarmonic_multiplicative
+  have h := NairTenenbaum.squarefree_divisor_log_moment omegaThreeHarmonic omegaThreeHarmonic_multiplicative
     (primeProduct_squarefree y) (fun p hp ↦ by
       have hp' := Nat.prime_of_mem_primeFactors hp
       simp only [omegaThreeHarmonic_apply, omegaThree_prime hp']

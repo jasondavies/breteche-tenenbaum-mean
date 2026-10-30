@@ -1,6 +1,6 @@
 module
 
-public import BretecheTenenbaumMean.InductionProducts
+public import BretecheTenenbaumMean.ThresholdConvolution
 public import BretecheTenenbaumMean.WeightedRecursionEndpoints
 
 @[expose] public section

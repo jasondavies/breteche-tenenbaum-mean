@@ -1,6 +1,6 @@
 module
 
-public import BretecheTenenbaumMean.DeltaProbabilityTail
+public import BretecheTenenbaumMean.AllMomentMaximum
 public import BretecheTenenbaumMean.FiniteTailExpectation
 
 @[expose] public section

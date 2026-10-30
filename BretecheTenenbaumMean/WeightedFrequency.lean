@@ -39,19 +39,6 @@ theorem expectation_normalizedPolynomial (w : MultiplicativeWeight) (x θ : ℝ)
   exact prod_congr rfl (fun p hp ↦ by
     rw [normalizedPolynomial_prime (mem_primesLT.mp hp).1])
 
-theorem expectation_normalizedPolynomial_mul (w : MultiplicativeWeight) (x θ φ : ℝ) :
-    expectation w x (fun n ↦ normalizedPolynomial n θ * normalizedPolynomial n φ) =
-      (∏ p ∈ primesLT x,
-        (1 + w p * ((1 + cos (θ * log p)) * (1 + cos (φ * log p))) / p)) /
-      normalizer w x := by
-  rw [expectation_multiplicative w x _ (by simp) (fun m n h ↦ by
-    rw [normalizedPolynomial_mul h θ, normalizedPolynomial_mul h φ]
-    ring)]
-  congr 1
-  exact prod_congr rfl (fun p hp ↦ by
-    rw [normalizedPolynomial_prime (mem_primesLT.mp hp).1,
-      normalizedPolynomial_prime (mem_primesLT.mp hp).1])
-
 @[fun_prop]
 theorem continuous_expectation_normalizedPolynomial (w : MultiplicativeWeight) (x : ℝ) :
     Continuous (fun θ ↦ expectation w x (fun n ↦ normalizedPolynomial n θ)) := by
@@ -61,21 +48,6 @@ theorem continuous_expectation_normalizedPolynomial (w : MultiplicativeWeight) (
   intro n _
   exact (((((continuous_divisorPolynomial n).norm.pow 2).div_const (tau n)).const_mul
     (w n)).div_const (n : ℝ))
-
-/-- The compact-frequency comparison survives arbitrary nonnegative weights. -/
-theorem expectation_moment_two_le (w : MultiplicativeWeight) (x : ℝ) :
-    expectation w x (fun n ↦ moment 2 n / tau n) ≤ (π ^ 2 / 2) *
-      ∫ θ in (0 : ℝ)..1, expectation w x (fun n ↦ normalizedPolynomial n θ) := by
-  have hi (n : ℕ) : IntervalIntegrable (normalizedPolynomial n) volume 0 1 :=
-    (((continuous_divisorPolynomial n).norm.pow 2).div_const (tau n)).intervalIntegrable _ _
-  calc
-    _ ≤ expectation w x (fun n ↦ (π ^ 2 / 2) *
-        ∫ θ in (0 : ℝ)..1, normalizedPolynomial n θ) :=
-      expectation_mono w x (fun n _ ↦ normalized_moment_two_le_fourier_integral n)
-    _ = (π ^ 2 / 2) * expectation w x
-        (fun n ↦ ∫ θ in (0 : ℝ)..1, normalizedPolynomial n θ) :=
-      expectation_const_mul _ _ _ _
-    _ = _ := by rw [integral_expectation w x 0 1 normalizedPolynomial (fun n _ ↦ hi n)]
 
 /-- An exact local-factor form separates the oscillation from normalization. -/
 theorem expectation_normalizedPolynomial_eq_product (w : MultiplicativeWeight) (x θ : ℝ) :

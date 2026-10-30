@@ -104,9 +104,6 @@ def main():
     snapshot = json.loads((ROOT / "vendor/strong-pnt/SNAPSHOT.json").read_text())
     counts.append(check_files(ROOT / "vendor/strong-pnt",
         [{"path": p, "sha256": h} for p, h in snapshot["files"].items()], "sha256"))
-    for row in json.loads((ROOT / "paper/SIEVE_SOURCES.json").read_text())["files"]:
-        require(digest(ROOT / row["destination"]) == row["destination_sha256"],
-                f"Adapted sieve source changed: {row['destination']}")
     manifest = json.loads((ROOT / "lake-manifest.json").read_text())
     require(all(p["type"] == "git" and re.fullmatch(r"[0-9a-f]{40}", p["rev"])
                 for p in manifest["packages"]), "Dependencies must have immutable Git revisions")
@@ -115,8 +112,6 @@ def main():
                                   "NAIR_TENENBAUM_SOURCES.json", args.check_dependencies)
     tau_count = check_dependency(manifest, specs, "TauCeti", "TauCeti",
                                  "TAU_CETI_SOURCES.json", args.check_dependencies)
-    require(not (ROOT / "vendor/nair-tenenbaum").exists(), "Obsolete Nair–Tenenbaum vendor copy remains")
-    require(not (ROOT / "vendor/tau-ceti").exists(), "Obsolete Tau Ceti vendor copy remains")
     # Ensure a normal git add will retain every required submission/provenance file.
     required = ["Challenge.lean", "Solution.lean", "comparator.json", "formalization.yaml",
                 "LICENSE", "lake-manifest.json", "lean-toolchain"] + [
@@ -126,7 +121,7 @@ def main():
     require(ignored.returncode in (0, 1), ignored.stderr)
     require(not ignored.stdout, "Required files are ignored:\n" + ignored.stdout)
     print(f"Palomar preflight: {len(names)} theorems, Mathlib-only Challenge, "
-          f"{sum(counts)} vendor modules and 6 adapted sieve files verified; "
+          f"{sum(counts)} vendor modules verified; "
           f"dependency pins and audit inventories verified "
           f"({nair_count} Nair–Tenenbaum, {tau_count} Tau Ceti modules)")
     if args.check_dependencies:

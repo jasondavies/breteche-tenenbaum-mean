@@ -1,6 +1,5 @@
 module
 
-public import BretecheTenenbaumMean.DeltaExpectation
 public import BretecheTenenbaumMean.WeightedDeltaProbabilityTail
 public import BretecheTenenbaumMean.WeightedTailToMean
 

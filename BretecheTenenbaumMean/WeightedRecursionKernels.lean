@@ -16,11 +16,9 @@ noncomputable def recursionMainKernel (w : MultiplicativeWeight) (δ T : ℝ) (�
   ∑ j ∈ Icc 1 (q / 2), (q.choose j : ℝ) * momentProductSum w δ T θ q j y /
     (y * log (3 * y) ^ 3)
 
-
 noncomputable def recursionDecayKernel (w : MultiplicativeWeight) (δ T : ℝ) (θ : ℕ → ℝ) (q : ℕ) (y : ℝ) : ℝ :=
   ∑ j ∈ Icc 1 (q / 2), (q.choose j : ℝ) * 2 ^ j * momentProductSum w δ T θ q j y /
     (y * y ^ (1 / 4 : ℝ) * log (3 * y) ^ 2)
-
 
 theorem recursionMainKernel_nonneg (w : MultiplicativeWeight) (δ T : ℝ) (θ : ℕ → ℝ) (q : ℕ)
     {y : ℝ} (hy : 1 ≤ y) : 0 ≤ recursionMainKernel w δ T θ q y := by
@@ -28,16 +26,6 @@ theorem recursionMainKernel_nonneg (w : MultiplicativeWeight) (δ T : ℝ) (θ :
   intro j _
   exact div_nonneg (mul_nonneg (Nat.cast_nonneg _) (momentProductSum_nonneg w ..))
     (mul_nonneg (by linarith) (pow_nonneg (log_nonneg (by linarith)) _))
-
-
-theorem recursionDecayKernel_nonneg (w : MultiplicativeWeight) (δ T : ℝ) (θ : ℕ → ℝ) (q : ℕ)
-    {y : ℝ} (hy : 1 ≤ y) : 0 ≤ recursionDecayKernel w δ T θ q y := by
-  apply sum_nonneg
-  intro j _
-  have hZ := momentProductSum_nonneg w δ T θ q j y
-  have hy0 : 0 < y := by linarith
-  positivity
-
 
 theorem intervalIntegrable_recursionMainKernel (w : MultiplicativeWeight) (δ T : ℝ) (θ : ℕ → ℝ) (q : ℕ)
     {X : ℝ} (hX : 1 ≤ X) : IntervalIntegrable (recursionMainKernel w δ T θ q) volume 1 X := by
@@ -58,7 +46,6 @@ theorem intervalIntegrable_recursionMainKernel (w : MultiplicativeWeight) (δ T 
   convert h using 1
   ext y
   simp only [recursionMainKernel, Finset.sum_apply]
-
 
 theorem intervalIntegrable_recursionDecayKernel (w : MultiplicativeWeight) (δ T : ℝ) (θ : ℕ → ℝ) (q : ℕ)
     {X : ℝ} (hX : 1 ≤ X) : IntervalIntegrable (recursionDecayKernel w δ T θ q) volume 1 X := by
@@ -83,7 +70,6 @@ theorem intervalIntegrable_recursionDecayKernel (w : MultiplicativeWeight) (δ T
   ext y
   simp only [recursionDecayKernel, Finset.sum_apply]
 
-
 theorem recursionIntegralKernel_split (w : MultiplicativeWeight) (δ T : ℝ) (θ : ℕ → ℝ) (q : ℕ)
     {y : ℝ} (hy : 1 ≤ y) :
     recursionIntegralKernel w δ T θ q y / log (3 * y) =
@@ -98,7 +84,6 @@ theorem recursionIntegralKernel_split (w : MultiplicativeWeight) (δ T : ℝ) (�
   have hr : 0 < y ^ (1 / 4 : ℝ) := rpow_pos_of_pos hy0 _
   generalize hL : log (3 * y) = L at hl ⊢
   field_simp
-
 
 theorem recursionDecayKernel_bound (w : MultiplicativeWeight) (hpw : PrimeEstimates w) : ∃ C > 0, ∀ δ T (θ : ℕ → ℝ) (q : ℕ),
     0 ≤ δ → 1 ≤ T → 2 ≤ q → ∀ y : ℝ, 1 ≤ y →
@@ -135,6 +120,5 @@ theorem recursionDecayKernel_bound (w : MultiplicativeWeight) (hpw : PrimeEstima
     _ = (∑ j ∈ Icc 1 (q / 2), (q.choose j : ℝ) * 2 ^ j) * K := (sum_mul ..).symm
     _ ≤ 3 ^ q * K := mul_le_mul_of_nonneg_right (sum_choose_two_pow_half_le q) hK
     _ = _ := by dsimp only [K]; ring
-
 
 end BretecheTenenbaumMean.WeightedModel

@@ -1,6 +1,6 @@
 module
 
-public import BretecheTenenbaumMean.IntegralRecursion
+public import BretecheTenenbaumMean.PrimeSmoothingTail
 public import BretecheTenenbaumMean.WeightedSmoothedRecursion
 
 @[expose] public section

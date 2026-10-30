@@ -2,7 +2,7 @@ module
 
 public import BretecheTenenbaumMean.WeightedMangoldtSquare
 public import BretecheTenenbaumMean.DeltaLogAverage
-public import BretecheTenenbaumMean.Targets
+public import BretecheTenenbaumMean.GoodSets
 
 @[expose] public section
 

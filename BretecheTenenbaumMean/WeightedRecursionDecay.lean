@@ -1,6 +1,5 @@
 module
 
-public import BretecheTenenbaumMean.RecursionDecay
 public import BretecheTenenbaumMean.WeightedRecursionKernels
 
 @[expose] public section

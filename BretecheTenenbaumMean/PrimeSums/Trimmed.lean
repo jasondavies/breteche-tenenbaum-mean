@@ -14,9 +14,6 @@ noncomputable def trimmedPrimes (P : ℕ) (y : ℝ) : Finset ℕ := (primesLT y)
 
 lemma trimmedPrimes_subset (P : ℕ) (y : ℝ) : trimmedPrimes P y ⊆ primesLT y := filter_subset _ _
 
-lemma trimmed_prime_sum_nonneg (P : ℕ) (y : ℝ) :
-    0 ≤ ∑ p ∈ trimmedPrimes P y, (p : ℝ)⁻¹ := sum_nonneg (fun _ _ ↦ by positivity)
-
 lemma removed_prime_sum_le (P : ℕ) (y : ℝ) :
     (∑ p ∈ primesLT y with ¬P ≤ p, (p : ℝ)⁻¹) ≤ P := by
   have hsub : (primesLT y).filter (fun p ↦ ¬P ≤ p) ⊆ range P := by

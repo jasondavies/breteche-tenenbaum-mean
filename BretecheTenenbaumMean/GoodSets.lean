@@ -97,30 +97,4 @@ theorem momentGoodSet_succ (δ T : ℝ) (θ : ℕ → ℝ) (q : ℕ) :
     · exact hq
     · exact h.2 j hj (by omega)
 
-/-- The Markov step of §2.4, with denominator `θ(q+1)`. -/
-theorem probability_momentGoodSet_drop (δ T x : ℝ) (θ : ℕ → ℝ) (q : ℕ)
-    (hθ : 0 < θ (q + 1)) :
-    probability x (momentGoodSet δ T θ q \ momentGoodSet δ T θ (q + 1)) ≤
-      truncatedMoment δ T θ (q + 1) x / θ (q + 1) := by
-  classical
-  let f : ℕ → ℝ := (momentGoodSet δ T θ q).indicator
-    (fun n => moment (q + 1) n / tau n)
-  have he : momentGoodSet δ T θ q \ momentGoodSet δ T θ (q + 1) =
-      {n | θ (q + 1) < f n} := by
-    rw [momentGoodSet_succ]
-    ext n
-    by_cases hn : n ∈ momentGoodSet δ T θ q
-    · have hτ := tau_pos hn.1.1.1.ne_zero
-      simp only [Set.mem_sdiff, Set.mem_inter_iff, Set.mem_ofPred_eq, hn, true_and,
-        not_le, f, Set.indicator_of_mem hn]
-      rw [lt_div_iff₀ hτ, mul_comm (θ (q + 1))]
-    · simp [hn, f, not_lt.mpr hθ.le]
-  rw [he]
-  have hf : ∀ n ∈ smoothSupport x, 0 ≤ f n := by
-    intro n _
-    apply Set.indicator_nonneg _ n
-    intro k _
-    exact div_nonneg (moment_nonneg _ _) (Nat.cast_nonneg _)
-  simpa [truncatedMoment, f] using probability_gt_le x hf hθ
-
 end BretecheTenenbaumMean

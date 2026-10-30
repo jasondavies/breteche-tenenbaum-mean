@@ -10,6 +10,18 @@ All implemented proofs must use only `propext`, `Classical.choice`, and
 advertised as the paper's unconditional result. An open target is a `Prop`
 definition, not a theorem.
 
+## One proof of §2, through the weighted model
+
+The moment, frequency and good-set arguments of §2 are proved once, for a
+general weight satisfying `WeightedModel.PrimeEstimates`. `UnitWeight` proves
+that structure for the constant weight, which recovers the paper's finite model
+exactly: `abs_cosinePrimeSum_unit_sub_le` compares strict and weak prime cutoffs,
+and `PrimeSums.cosinePrimeSum_log_ratio_two` extends (2.12) from `0 ≤ ψ ≤ 1` to
+`0 ≤ ψ ≤ 2`. `hooleyDelta_expectation_bound`, `propositionTwoOneUpper` and
+`propositionTwoTwo` are specializations. Polynomial root weights use the same
+theorems through `PolynomialPrimeCosine`. The narrative sections below describe
+the unweighted argument, which is the unit-weight case of those proofs.
+
 ## Checked foundations
 
 | Paper material | Module | Declarations |
@@ -31,49 +43,49 @@ definition, not a theorem.
 | §2.2, divisor Dirichlet polynomial | `DivisorPolynomial` | `divisorPolynomial_mul`, `norm_divisorPolynomial_le`, `normSq_divisorPolynomial_prime` |
 | Global Parseval identity (2.6) | `FejerIntegrable`, `TriangleTransform`, `FejerInversion`, `GlobalParseval` | `fourier_triangleKernel`, `integral_sinc_sq_cos`, `integrable_parseval_integrand`, `moment_two_parseval_sine`; exact `1/(2π)` normalization, convergent global integral, null singleton handled |
 | Compact-frequency comparison (2.7) | `FejerKernel`, `FourierComparison` | `normalized_moment_two_le_fourier_integral`, explicit constant `π²/2` |
-| One- and two-frequency Euler products | `PolynomialExpectation` | `expectation_normalizedPolynomial`, `expectation_normalizedPolynomial_mul` |
+| One- and two-frequency Euler products | `PolynomialExpectation` | `expectation_normalizedPolynomial` |
 | Averaged Fourier comparison | `FrequencyAverage` | `integral_expectation`, `expectation_moment_two_le` |
 | PNT and strong Mertens estimate | `PrimeSums.Error`, `PrimeSums.Mertens`, `PrimeSums.Strict` | `theta_asymp`, `S_asymp`, `SLT_asymp`, exact endpoint control `S_sub_SLT` |
-| Mertens products and divisor-count moments | `PrimeSums.Product` | `normalizer_bounds`, `normalizer_ratio_bounds`, `abs_log_prod_sub_sum_le`, `expectation_tau_pow_le` |
+| Mertens products and divisor-count moments | `PrimeSums.Product`, `WeightedPrimeConsequences` | `normalizer_bounds`, `normalizer_ratio_bounds`, `abs_log_prod_sub_sum_le`, `WeightedModel.PrimeEstimates.expectation_tau_pow_bound` |
 | Cosine prime-sum formula (2.12) | `PrimeSums.CosineIntegral` | `cosinePrimeSum_log_ratio`, uniform for `x ≥ 2`, `0 ≤ ψ ≤ 1`, including the transition `ψ log x = 1` |
 | Uniform weighted prime sums | `PrimeSums.Abel`, `PrimeSums.Cosine` | `weighted_prime_error_bound`, `cosinePrimeSum_integral_error` for `|ψ| ≤ 2` |
-| Interval prime-sum estimates (2.9)–(2.11) | `PrimeSums.Intervals` | `primeSum_U1`, `primeSum_U2`, `primeSum_U3`; difference-frequency and sum-frequency cases included |
-| One-frequency mean and initial frequency range | `FrequencyEstimates` | `expectation_normalizedPolynomial_le`, `initial_frequency_integral_le`, `expectation_moment_two_log_bound` |
+| Interval prime-sum estimates (2.9)–(2.11) | `PrimeSums.Intervals`, `WeightedPrimeIntervals` | `abs_S_sub_loglog_le`, `WeightedModel.PrimeEstimates.interval_difference_frequency`, `WeightedModel.PrimeEstimates.halfOpen_U2`, `WeightedModel.PrimeEstimates.halfOpen_U3`; (2.9) is Mertens at `exp(1/φ)`, and (2.10)–(2.11) use half-open prime intervals, with difference-frequency and sum-frequency cases included |
+| One-frequency mean and initial frequency range | `FrequencyEstimates`, `WeightedInitialFrequency` | `expectation_normalizedPolynomial_le`, `WeightedModel.initial_frequency_integral_le`, `expectation_moment_two_log_bound` |
 | Small-prime-weighted frequency estimate | `SmallPrimePolynomial`, `SmallPrimeFrequency` | `expectation_smallPrimePolynomial_le`, `goodSet_frequency_bound`; strict cutoff endpoint controlled |
 | Intermediate-frequency exceptional probability | `Penalty`, `IntermediateFrequency` | `penalty_eq_log`, `intermediate_frequency_mean_bound`, `intermediate_frequency_probability_bound`, explicit `K = 16 + 1/δ` |
 | Uniform factorial and fixed-prime-count bounds | `PoissonBound`, `DistinctProductSum`, `PrimeLayers` | `factorial_term_uniform`, `distinctProductSum_le`, `probability_prime_layer_eq`, `tau_prime_layer_uniform` |
-| Exact three-range multiplicative decomposition | `PrimePartition`, `TwoFrequencyWeight` | `sum_smallPrime_layer_eq_product`, `twoFrequency_layer_uniform`; strict cutoffs and fixed small-prime count |
-| Three-range analytic prime bound | `PrimeSums.Endpoints`, `HighFrequencyPrimeBound` | `halfOpen_U2`, `halfOpen_U3`, `high_frequency_layer_bound`; square-root saving from both sides of Mertens' estimate |
-| Exact dyadic good-set partition | `DyadicGoodSets` | `dyadicGoodSet_index_unique`, `dyadicGoodSet_fixed_prime_count`, `goodSet_expectation_eq_dyadic_sum`, `goodSet_expectation_le_of_dyadic` |
-| Full high-frequency good-set integrand bound | `HighFrequencyDyadic`, `HighFrequencyKernel` | `high_frequency_goodSet_bound`, `highFrequencyKernel_eq_regularized`, `high_frequency_goodSet_one_penalty_bound`; both penalty factors retained before dropping one |
+| Exact three-range multiplicative decomposition | `PrimePartition`, `TwoFrequencyWeight`, `WeightedTwoFrequency` | `sum_smallPrime_layer_eq_product`, `WeightedModel.twoFrequency_layer_uniform`; strict cutoffs and fixed small-prime count |
+| Three-range analytic prime bound | `HighFrequencyPrimeBound`, `WeightedPrimeIntervals`, `WeightedHighFrequencyPrimeBound` | `WeightedModel.PrimeEstimates.halfOpen_U2`, `WeightedModel.PrimeEstimates.halfOpen_U3`, `WeightedModel.high_frequency_layer_bound`; square-root saving from both sides of Mertens' estimate |
+| Exact dyadic good-set partition | `DyadicGoodSets`, `WeightedDyadicGoodSets` | `dyadicGoodSet_index_unique`, `dyadicGoodSet_fixed_prime_count`, `WeightedModel.goodSet_expectation_eq_dyadic_sum`, `WeightedModel.goodSet_expectation_le_of_dyadic` |
+| Full high-frequency good-set integrand bound | `HighFrequencyDyadic`, `HighFrequencyKernel`, `WeightedHighFrequencyDyadic`, `WeightedHighFrequencyIntegration` | `WeightedModel.high_frequency_goodSet_bound`, `highFrequencyKernel_eq_regularized`, `WeightedModel.high_frequency_goodSet_one_penalty_bound`; both penalty factors retained before dropping one |
 | Integration in the larger frequency | `HighFrequencyLogWeight`, `HighFrequencyRegions`, `HighFrequencyIntegration` | `integral_regularizedHighKernel_le`, explicit constant `816`; near-diagonal square-root and far-diagonal power bounds |
 | Uniform penalty integral | `PenaltyGaussian`, `PenaltyIntegral` | `frequency_penalty_integral_le`; exact coordinate `√log(log 3 + 1/θ)`, two Gaussian majorants, bound independent of `T` and lower endpoint |
-| High-frequency second moment and tail | `HighFrequencyMean`, `EventBounds`, `SecondMomentTail` | `high_frequency_triangle_bound`, `high_frequency_second_moment_bound`, `high_frequency_probability_bound`; all admissible cutoffs, no comparison of `T^K` with `log x` |
-| §2.2, second-moment exception inside the good set | `SecondMomentTail` | `goodSet_second_moment_probability_bound`, `probability_goodSetStar_compl_le`; unconditional `Oδ(1/T)` bound inside `E_T` and reduction of (2.4) to (2.1) |
-| Refined Poisson tails and entropy | `PoissonTail`, `PoissonRate`, `PrimeCountTail` | `sum_poissonTerm_tail_le_rate`, `poissonRate_quadratic_lower`, `probability_prime_ge_le_rate`, exact ceiling convention for divisor thresholds |
-| Small-prime marginal distributions | `SmallPrimeDistribution` | `probability_smallPrime_tau_ge_eq`, `probability_smallPrime_tau_ge_le`; cutoffs beyond the ambient support included |
-| Good-set grid reduction | `GoodSetGrid`, `GoodSetReduction` | `goodSet_failure_grid`, `goodSet_compl_le_finite_grid_sum`; exact envelope, grid `exp(exp j)/3`, explicit `exp 7` loss |
-| Entropy and Mertens on the grid | `PrimeSums.Grid`, `PenaltyComparison` | `abs_SLT_grid_sub_index_le`, `probability_prime_ge_exp_rate`, `poissonRate_scaled_global_lower`, global quadratic and Gaussian comparisons for the clipped penalty |
-| Uniform grid tails and their summation | `GridThreshold`, `GridEntropy`, `GridTail`, `GaussianGrid` | `grid_entropy_lower`, `grid_divisor_tail_bound`, `sum_gaussian_sqrt_grid_le`; rounding and Mertens errors retained uniformly |
-| Good-set exception (2.1) and Proposition 2.1 upper (2.4) | `GoodSetExceptional`, `PropositionTwoOne` | `goodSet_exceptional_probability_bound`, `propositionTwoOneUpper`; unconditional, with `δ = 10⁻⁶` admissible |
+| High-frequency second moment and tail | `HighFrequencyMean`, `EventBounds`, `SecondMomentTail`, `WeightedHighFrequencyMean`, `WeightedSecondMomentTail` | `WeightedModel.high_frequency_triangle_bound`, `WeightedModel.high_frequency_second_moment_bound`, `WeightedModel.high_frequency_probability_bound`; all admissible cutoffs, no comparison of `T^K` with `log x` |
+| §2.2, second-moment exception inside the good set | `SecondMomentTail`, `WeightedSecondMomentTail` | `WeightedModel.goodSet_second_moment_probability_bound`, `WeightedModel.probability_goodSetStar_compl_le`; unconditional `Oδ(1/T)` bound inside `E_T` and reduction of (2.4) to (2.1) |
+| Refined Poisson tails and entropy | `PoissonTail`, `PoissonRate`, `PrimeCountTail`, `WeightedPrimeCountTail` | `sum_poissonTerm_tail_le`, `poissonTerm_le_rate`, `poissonRate_quadratic_lower`, `WeightedModel.probability_prime_ge_le_rate`, exact ceiling convention for divisor thresholds |
+| Small-prime marginal distributions | `SmallPrimeDistribution`, `WeightedGoodSetReduction` | `probability_smallPrime_tau_ge_eq`, `WeightedModel.probability_smallPrime_tau_ge_le`; cutoffs beyond the ambient support included |
+| Good-set grid reduction | `GoodSetGrid`, `GoodSetReduction`, `WeightedGoodSetReduction` | `goodSet_failure_grid`, `WeightedModel.goodSet_compl_le_finite_grid_sum`; exact envelope, grid `exp(exp j)/3`, explicit `exp 7` loss |
+| Entropy and Mertens on the grid | `PrimeSums.Grid`, `PenaltyComparison`, `WeightedPrimeCountTail` | `WeightedModel.probability_prime_ge_exp_rate`, `poissonRate_scaled_global_lower`, global quadratic and Gaussian comparisons for the clipped penalty |
+| Uniform grid tails and their summation | `GridThreshold`, `GridEntropy`, `GaussianGrid`, `WeightedGridTail` | `grid_entropy_lower`, `WeightedModel.grid_divisor_tail_bound`, `sum_gaussian_sqrt_grid_le`; rounding and Mertens errors retained uniformly |
+| Good-set exception (2.1) and Proposition 2.1 upper (2.4) | `PropositionTwoOne`, `WeightedGoodSetExceptional` | `WeightedModel.goodSet_exceptional_probability_bound`, `propositionTwoOneUpper`; unconditional, with `δ = 10⁻⁶` admissible |
 | Good sets and divisor closure | `GoodSets` | `goodSet`, `goodSetStar`, `momentGoodSet`, their `_of_dvd` lemmas |
-| Corrected §2.4 Markov step | `GoodSets` | `probability_momentGoodSet_drop`, with denominator `θ(q+1)` |
-| Largest-prime recursion and its finite iteration (2.15) | `LargestPrime`, `OrderedRecursion`, `PrimeRecursion` | `sum_smoothSupport_by_largest_prime`, `truncatedMoment_largest_prime_le`, `sum_ordered_recursion_le`, `truncatedMoment_recursion_bound`; one constant uniform in all moment and threshold data |
-| Moment-product estimate (2.17) and exceptional midpoint | `TruncatedProducts` | `momentProductSum_le`, `momentProductSum_bound`, `momentProductSum_four_two_le`; exact normalizer bound before Mertens |
+| Corrected §2.4 Markov step | `GoodSets`, `WeightedAllMomentGoodSet` | `WeightedModel.probability_momentGoodSet_drop`, with denominator `θ(q+1)` |
+| Largest-prime recursion and its finite iteration (2.15) | `LargestPrime`, `OrderedRecursion`, `PrimeRecursion`, `WeightedLargestPrime`, `WeightedPrimeRecursion` | `sum_smoothSupport_by_largest_prime`, `WeightedModel.truncatedMoment_largest_prime_le`, `sum_ordered_recursion_le`, `WeightedModel.truncatedMoment_recursion_bound`; one constant uniform in all moment and threshold data |
+| Moment-product estimate (2.17) and exceptional midpoint | `WeightedTruncatedProducts` | `WeightedModel.momentProductSum_le`, `WeightedModel.momentProductSum_four_two_le`; exact normalizer bound before Mertens |
 | Penalty integral in (2.19) | `LogarithmicPenaltyIntegral` | `logarithmic_penalty_integral_bound`; explicit `(1/δ + sqrt(π/δ)) sqrt(log T)` bound independent of the upper endpoint |
-| Optimized finite Selberg sieve | `Sieve.SelbergWeights`, `Sieve.SelbergDenominator`, `Sieve.SelbergCoefficientBounds`, `Sieve.SelbergRemainder` | Locally adapted proofs; `exists_selberg_upper_bound`, with explicit cutoff and remainder; see `paper/SIEVE_SOURCES.json` |
+| Optimized finite Selberg sieve | `NairTenenbaum.SelbergWeights`, `NairTenenbaum.SelbergDenominator`, `NairTenenbaum.SelbergCoefficientBounds`, `NairTenenbaum.SelbergRemainder` | Imported from the pinned Nair–Tenenbaum dependency; `NairTenenbaum.exists_selberg_upper_bound`, with explicit cutoff and remainder |
 | Short prime intervals | `Sieve.Interval`, `PrimeSums.ShortIntervals` | `card_multiples_Ioc_error`, `prime_interval_sieve_bound`, `prime_count_real_interval_le`, `prime_reciprocal_interval_bound`; square-root errors and both endpoints |
 | Divisor tuples and arbitrary positive-order overlaps | `TupleWindows` | `moment_eq_tuple_sum`, `coherent_tuple_count_le`; the tuple-count error is at most `2^j M_j(n)` |
 | Prime averaging in §2.3 | `PrimeWindowAverage` | `delta_pow_prime_average_bound`, `mixedMoment_prime_average_bound`, `mixedMoment_prime_band_bound`; uniform constant, exact `log(3y)` offset and fourth-root error |
 | Smoothing and reciprocal-logarithmic prime tails | `SmoothSums`, `PrimeSmoothing`, `PrimeSums.LogTail`, `PrimeSmoothingTail` | `prime_sum_le_smoothed_integral`, `prime_inv_log_tail_bound`, `prime_integral_tail_bound`; exact endpoint and integrability control |
-| Integrated moment recursion | `RecursionPrimeAverage`, `SmoothedRecursion`, `IntegralRecursion` | `recursionPrimeTerm_band_bound`, `recursionError_integral_bound`, `truncatedMoment_integral_bound`; uniform constants and exact fourth-root error |
-| Accumulated error and threshold absorption (2.16) | `RecursionErrorProducts`, `LogPowerIntegral`, `RecursionKernels`, `RecursionDecay`, `ThresholdRecursion` | `recursionDecay_integral_bound`, `factorial_error_le_threshold`, `truncatedMoment_threshold_recursion`; factorial majorant and geometric saving, uniform for all sufficiently large threshold constants |
-| Real-weight Euler products and square-root divisor counts | `PrimeSums.RealProduct`, `SqrtDivisorAverage` | `prod_one_add_real_div_le`, `sum_sqrt_tau_div_eq_prod`, `sum_sqrt_tau_div_bound`; exponent `sqrt 2`, uniform down to `y=1` |
-| Third-moment base case (2.18) | `ThirdMomentProducts`, `LogisticIntegral`, `ThirdMomentBase` | `momentProductSum_three_one_bound`, `integral_logarithmic_transition_le`, `truncatedMoment_three_bound`; unconditional `S₃(x) ≪ T log T`, independent of the thresholds |
-| Moment induction and Proposition 2.2 | `RecursionEndpoints`, `ThresholdConvolution`, `InductionProducts`, `MomentInductionKernel`, `PropositionTwoTwo` | `recursionMain_integral_induction_bound`, `propositionTwoTwo_for_delta`, `propositionTwoTwo`; exceptional midpoint included and all constants selected before the varying parameters |
+| Integrated moment recursion | `RecursionPrimeAverage`, `WeightedRecursionPrimeAverage`, `WeightedSmoothedRecursion`, `WeightedIntegralRecursion` | `WeightedModel.recursionPrimeTerm_band_bound`, `WeightedModel.recursionError_integral_bound`, `WeightedModel.truncatedMoment_integral_bound`; uniform constants and exact fourth-root error |
+| Accumulated error and threshold absorption (2.16) | `RecursionErrorProducts`, `LogPowerIntegral`, `RecursionKernels`, `ThresholdRecursion`, `WeightedRecursionDecay`, `WeightedThresholdRecursion` | `WeightedModel.recursionDecay_integral_bound`, `factorial_error_le_threshold`, `WeightedModel.truncatedMoment_threshold_recursion`; factorial majorant and geometric saving, uniform for all sufficiently large threshold constants |
+| Real-weight Euler products and square-root divisor counts | `WeightedSqrtDivisorAverage` | `WeightedModel.sum_sqrt_tau_div_eq_prod`, `WeightedModel.sum_sqrt_tau_div_bound`; exponent `sqrt 2`, uniform down to `y=1` |
+| Third-moment base case (2.18) | `ThirdMomentProducts`, `LogisticIntegral`, `ThirdMomentBase`, `WeightedThirdMomentProducts`, `WeightedThirdMomentBase` | `WeightedModel.momentProductSum_three_one_bound`, `integral_logarithmic_transition_le`, `WeightedModel.truncatedMoment_three_bound`; unconditional `S₃(x) ≪ T log T`, independent of the thresholds |
+| Moment induction and Proposition 2.2 | `RecursionEndpoints`, `ThresholdConvolution`, `PropositionTwoTwo`, `WeightedMomentInductionKernel`, `WeightedPropositionTwoTwo` | `WeightedModel.recursionMain_integral_induction_bound`, `WeightedModel.propositionTwoTwo_for_delta`, `propositionTwoTwo`; exceptional midpoint included and all constants selected before the varying parameters |
 | Explicit thresholds in §2.4 | `InverseSquareConvolution`, `ExplicitThresholds` | `explicitThreshold_eq_paper`, `explicitThreshold_admissible`; exact `2π²/3` constant, using Mathlib's Basel sum |
-| Simultaneous moment control and maximum tail | `AllMomentGoodSet`, `AllMomentMaximum`, `DeltaProbabilityTail` | `allMomentGoodSet_probability_bound`, `moment_order_floor_bounds`, `hooleyDelta_probability_tail_bound`; all positive moments, corrected Markov denominator, explicit cutoff `exp(exp 4)` |
-| Finite-model mean in §2.4 | `FiniteTailExpectation`, `DyadicTailScale`, `TailToMean`, `DeltaExpectation` | `expectation_le_of_logarithmic_tail`, `hooleyDelta_expectation_bound`; unconditional `E_x(Δ) ≪ (log log x)^(5/2)`, with a second-moment remainder |
+| Simultaneous moment control and maximum tail | `AllMomentGoodSet`, `AllMomentMaximum`, `WeightedAllMomentGoodSet`, `WeightedDeltaProbabilityTail` | `WeightedModel.allMomentGoodSet_probability_bound`, `moment_order_floor_bounds`, `WeightedModel.hooleyDelta_probability_tail_bound`; all positive moments, corrected Markov denominator, explicit cutoff `exp(exp 4)` |
+| Finite-model mean in §2.4 | `FiniteTailExpectation`, `DyadicTailScale`, `DeltaExpectation`, `WeightedTailToMean` | `WeightedModel.expectation_le_of_logarithmic_tail`, `hooleyDelta_expectation_bound`; unconditional `E_x(Δ) ≪ (log log x)^(5/2)`, with a second-moment remainder |
 | Arithmetic transfer and Theorem 1.1 | `DeltaSubmultiplicative`, `WeightedMangoldt`, `DeltaLogAverage`, `SquareDivisorSum`, `SquarefreeTransfer`, `TheoremOne` | `hooleyDelta_mul_le_tau`, `sum_divisorMangoldt_le`, `meanSum_le_harmonic`, `sum_tau_square_div_sq_le`, `harmonic_delta_le_expectation`, `theoremOne`; unconditional ordinary mean bound, with explicit cutoff `exp(exp 4)` |
 | Product-moment bound in §4 | `DeltaConvolution` | `deltaConvolution_eq_sum`, `deltaConvolution_sq_le`, `hooleyDelta_mul_sq_le_moments`; exact tent overlap formula, endpoint reflection almost everywhere, no coprimality |
 | Finite-model quadratic upper bound | `DivisorConvolutionBounds`, `QuadraticExpectation` | `harmonic_convolution_smooth_le`, `squarefree_delta_sq_le_convolution`, `expectation_delta_sq_bound`; factor `4` retained, existing Fourier mean supplies the analytic input |
@@ -90,7 +102,7 @@ definition, not a theorem.
 | Completion of Proposition 2.1 lower | `CentralDyadicWindow`, `ScaleWindowCount`, `DyadicLowerTail`, `PropositionTwoOneLower` | `central_dyadic_marginal_lower`, `scaleWindow_card_lower`, `dyadic_second_moment_lower_tail`, `propositionTwoOneLower_quantitative`, `propositionTwoOneLower`; explicit range `x≥exp((B*T)^4)`, strict tail, integer rounding |
 | Lower-tail range obstruction | `RangeCheck` | `not_uniform_lower_tail` |
 | Polynomial consequence (1.7) | `PolynomialPrimeCosine`, `FullPaper` | `polynomialPrimeCosineEstimates`, `polynomialMeanBound`, `paper_main_results`; general irreducible integer polynomials, with no extra analytic hypotheses |
-| Named statements | `Targets` | Proposition definitions; `TheoremOne`, `TheoremTwo`, `PropositionTwoOneUpper`, `PropositionTwoOneLower`, `PropositionTwoTwo`, `LemmaThreeOne` and `LemmaThreeOneCentral`, together with `PolynomialMeanBound`, have unconditional proofs. `paper_main_results` in `FullPaper` assembles all eight. |
+| Named statements | `Definitions` | Proposition definitions; `TheoremOne`, `TheoremTwo`, `PropositionTwoOneUpper`, `PropositionTwoOneLower`, `PropositionTwoTwo`, `LemmaThreeOne` and `LemmaThreeOneCentral`, together with `PolynomialMeanBound`, have unconditional proofs. `paper_main_results` in `FullPaper` assembles all eight. |
 
 ## Completion of the proof obligations
 
@@ -532,9 +544,8 @@ multiplicative weight `w`, with exact normalizer `∏(1+w(p)/p)`.
 Normalization, multiplicative Euler products, divisor-count moments, and
 Markov’s inequality are proved. `WeightedMarginal` proves exact smaller-cutoff
 marginals and prime-count layer distributions. `WeightedFrequency` proves
-one- and two-frequency identities, finite interchange with integration, and
-the compact-frequency comparison with constant `π²/2`. Its exponential
-majorant retains the explicit correction `Σ(w(p)/p)²`.
+the one-frequency identity and finite interchange with integration. Its
+exponential majorant retains the explicit correction `Σ(w(p)/p)²`.
 
 `PolynomialWeight` uses CRT to instantiate this model with `ρ_F`.
 `PolynomialSquareFactor` proves
@@ -625,20 +636,13 @@ hypothesis for polynomial root weights or the complete weighted mean.
 records a nonnegative bound on prime weights and the uniform estimate
 `|Σ_{p<x} w(p) cos(θ log p)/p - log(log x/(1+|θ| log x))|≤B`
 for `x≥2`, `|θ|≤2`. It has no field asserting a Delta or moment bound.
-At frequency zero it implies the weighted Mertens hypothesis. Exact strict
-cutoff differences give a uniformly bounded cosine tail beyond `exp(1/θ)`.
-A general multiplicative-expectation inequality bounds the Euler product by
+At frequency zero it implies the weighted Mertens hypothesis. A general multiplicative-expectation inequality bounds the Euler product by
 its linear prime sum plus the normalizer's quadratic error.
 
-`WeightedSmallPrimeFrequency` applies this inequality to the normalized
-frequency polynomial divided by the small-prime divisor count. The small
-primes contribute nonpositively after normalization. This proves the bounded
-small-prime frequency mean and the good-set frequency bound with the full
-penalty retained, without changing strict endpoints to weak ones.
-
-`WeightedIntermediateFrequency` proves continuity, interchange of weighted
-expectation and integration, the bounded intermediate-frequency mean, and
-its `C/R` exceptional-probability bound. The exponent remains `16+1/δ`.
+`WeightedIntermediateFrequency` proves the interchange of weighted
+expectation and integration that the high-frequency argument uses. The
+intermediate-frequency estimate itself is unnecessary for the assembly, so
+only its unweighted form is kept, in `IntermediateFrequency`.
 `WeightedInitialFrequency` proves the one-frequency majorant, the bounded
 initial-frequency integral, and its corresponding `C/R` tail.
 `WeightedPrimeConsequences` also derives normalizer bounds, all fixed natural

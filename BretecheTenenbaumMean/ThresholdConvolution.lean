@@ -1,6 +1,6 @@
 module
 
-public import BretecheTenenbaumMean.Targets
+public import BretecheTenenbaumMean.GoodSets
 
 @[expose] public section
 

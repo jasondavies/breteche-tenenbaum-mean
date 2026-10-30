@@ -57,24 +57,4 @@ theorem penalty_nonneg {δ T y : ℝ} (hδ : 0 ≤ δ) (hT : 1 ≤ T) (hy : 1 �
   exact mul_nonneg hδ (le_min (log_nonneg hprod)
     (div_nonneg (sq_nonneg _) (log_nonneg hT)))
 
-/-- One penalty factor may be dropped when integrating in the larger frequency. -/
-theorem high_frequency_goodSet_one_penalty_bound : ∃ C > 0, ∀ δ T x θ φ,
-    0 ≤ δ → 1 ≤ T → 0 < θ → θ ≤ φ → φ ≤ 1 → exp θ⁻¹ ≤ x →
-    expectation x ((goodSet δ T).indicator
-      (fun n ↦ normalizedPolynomial n θ * normalizedPolynomial n φ)) ≤
-      C * T * exp (-penalty δ T (exp θ⁻¹) / 2) *
-        regularizedHighKernel (log x)⁻¹ θ φ := by
-  obtain ⟨C, hC, hbound⟩ := high_frequency_goodSet_bound
-  refine ⟨C, hC, fun δ T x θ φ hδ hT hθ hθφ hφ1 hx ↦ ?_⟩
-  have hT0 : 0 < T := by linarith
-  have hφ : 0 < φ := hθ.trans_le hθφ
-  have hx1 : 1 < x := (one_lt_exp_iff.2 (inv_pos.2 hθ)).trans_le hx
-  have hp := penalty_nonneg hδ hT (one_le_exp_iff.2 (inv_nonneg.2 hφ.le))
-  have he : exp (-(penalty δ T (exp θ⁻¹) + penalty δ T (exp φ⁻¹)) / 2) ≤
-      exp (-penalty δ T (exp θ⁻¹) / 2) := exp_le_exp.2 (by linarith)
-  rw [← highFrequencyKernel_eq_regularized hx1 hθ hθφ]
-  exact (hbound δ T x θ φ hT0 hθ hθφ hφ1 hx).trans
-    (mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left he (mul_pos hC hT0).le)
-      (highFrequencyKernel_nonneg hx1.le hθ.le hφ.le))
-
 end BretecheTenenbaumMean

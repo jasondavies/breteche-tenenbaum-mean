@@ -29,21 +29,6 @@ theorem rootCount_minpoly_eq_normPrimes {K : Type*} [Field K] [NumberField K]
       Nat.card {P : HeightOneSpectrum (𝓞 K) // Ideal.absNorm P.asIdeal = p} :=
   Nat.card_congr (minpolyRootsEquivNormPrimes θ p hp)
 
-/-- For an integral primitive element, the root/prime-ideal identity holds
-outside an explicitly finite set of rational primes. -/
-theorem integralPrimitive_rootCount_eq_normPrimes_cofinite {K : Type*}
-    [Field K] [NumberField K] (θ : 𝓞 K) (hθ : Algebra.adjoin ℚ {(θ : K)} = ⊤) :
-    ∃ S : Finset ℕ, ∀ p : ℕ, p.Prime → p ∉ S →
-      NairTenenbaum.rootCount (minpoly ℤ θ) p =
-        Nat.card {P : HeightOneSpectrum (𝓞 K) // Ideal.absNorm P.asIdeal = p} := by
-  classical
-  let S := (integralPrimitive_finite_badPrimes θ hθ).toFinset
-  refine ⟨S, fun p hp hS ↦ ?_⟩
-  let : Fact p.Prime := ⟨hp⟩
-  apply rootCount_minpoly_eq_normPrimes θ p
-  intro hdvd
-  exact hS ((Set.Finite.mem_toFinset _).mpr ⟨hp, hdvd⟩)
-
 /-- Every irreducible nonconstant integer polynomial has a number field whose
 prime-norm ideal counts equal its root counts at all but finitely many primes.
 The integer `N` contains both the conductor and the leading-coefficient exceptions. -/

@@ -1,7 +1,7 @@
 module
 
 public import BretecheTenenbaumMean.PrimeSums.Strict
-public import BretecheTenenbaumMean.Sieve.PrimeLogSums
+public import NairTenenbaum.PrimeLogSums
 
 @[expose] public section
 
@@ -39,12 +39,12 @@ theorem tilted_prime_sum_le : ∃ H ≥ 0, ∀ y : ℝ, 2 ≤ y →
       have h := mul_le_mul_of_nonneg_left (log_le_log (by norm_num) hy) (inv_nonneg.2 hl2.le)
       rwa [inv_mul_cancel₀ hl2.ne'] at h
     calc
-      _ ≤ Sieve.primeLogSum y := by
+      _ ≤ NairTenenbaum.primeLogSum y := by
         apply sum_le_sum_of_subset_of_nonneg hsub
         intro p hp _
         exact div_nonneg (log_nonneg (by exact_mod_cast (mem_filter.1 hp).2.one_le))
           (Nat.cast_nonneg _)
-      _ ≤ log 4 * (1 + log y) := Sieve.primeLogSum_le hy
+      _ ≤ log 4 * (1 + log y) := NairTenenbaum.primeLogSum_le hy
       _ ≤ _ := by dsimp [D]; nlinarith [mul_le_mul_of_nonneg_left hone hl4.le]
   have hterm : ∀ p ∈ primesLT y,
       (p : ℝ) ^ (1 / log y) / p ≤ (p : ℝ)⁻¹ + (exp 1 / log y) * (log p / p) := by

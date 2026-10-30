@@ -104,16 +104,6 @@ theorem expectation_multiplicative (w : MultiplicativeWeight) (x : ℝ) (f : ℕ
   intro p _
   ring
 
-/-- The divisor-count moment retains the exact weighted local factor. -/
-theorem expectation_tau_pow (w : MultiplicativeWeight) (x : ℝ) (k : ℕ) :
-    expectation w x (fun n ↦ tau n ^ k) =
-      (∏ p ∈ primesLT x, (1 + w p * (2 : ℝ) ^ k / p)) / normalizer w x := by
-  rw [expectation_multiplicative w x _ (by simp) (fun m n h ↦ by rw [tau_mul_of_coprime h, mul_pow])]
-  congr 1
-  apply prod_congr rfl
-  intro p hp
-  rw [tau_prime (mem_primesLT.1 hp).1]
-
 theorem probability_nonneg (w : MultiplicativeWeight) (x : ℝ) (E : Set ℕ) :
     0 ≤ probability w x E :=
   expectation_nonneg w x (fun n _ ↦ Set.indicator_nonneg (fun _ _ ↦ zero_le_one) n)
@@ -146,6 +136,10 @@ def unitWeight : MultiplicativeWeight where
   unfold expectation
   rw [normalizer_unit]
   simp only [unitWeight, one_mul, BretecheTenenbaumMean.expectation]
+
+@[simp] theorem probability_unit (x : ℝ) (E : Set ℕ) :
+    probability unitWeight x E = BretecheTenenbaumMean.probability x E := by
+  simp only [probability, BretecheTenenbaumMean.probability, expectation_unit]
 
 end WeightedModel
 

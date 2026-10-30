@@ -78,7 +78,7 @@ theorem primeDamping_lower_loss_bound : ∃ B > (0 : ℝ), ∀ x : ℝ, 2 ≤ x 
           (log x)⁻¹ * log p by linarith) hp0.le
       convert h using 1 <;> ring
   refine ⟨sum_nonneg (fun p hp ↦ (hlocal p hp).1), ?_⟩
-  have hlogs : (∑ p ∈ primesLT x, log p / p) ≤ Sieve.primeLogSum x := by
+  have hlogs : (∑ p ∈ primesLT x, log p / p) ≤ NairTenenbaum.primeLogSum x := by
     apply sum_le_sum_of_subset_of_nonneg
     · intro p hp
       exact mem_filter.mpr ⟨mem_Icc.mpr ⟨Nat.zero_le _, Nat.le_floor (mem_primesLT.mp hp).2.le⟩,

@@ -71,11 +71,4 @@ theorem probability_smallPrimePart (w : MultiplicativeWeight) {x y : ℝ}
   rw [← expectation_smallPrimePart w hyx]
   congr 1
 
-/-- The weighted count distribution at a smaller cutoff is its marginal. -/
-theorem probability_smallPrime_layer_eq (w : MultiplicativeWeight) {x y : ℝ}
-    (hyx : y ≤ x) (k : ℕ) :
-    probability w x {n | (smallPrimePart n y).primeFactors.card = k} =
-      probability w y {n | n.primeFactors.card = k} :=
-  probability_smallPrimePart w hyx {n | n.primeFactors.card = k}
-
 end BretecheTenenbaumMean.WeightedModel

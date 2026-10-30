@@ -135,45 +135,4 @@ theorem normalizer_ratio_bounds : ∃ c C : ℝ, 0 < c ∧ 0 < C ∧
            div_le_div₀ (by positivity) (h y hy).2 (mul_pos hc hxlog) (h x hx).1
          _ = C / c * (log y / log x) := by ring
 
-/-- Constant-weight Euler products, with constants allowed to depend on the weight. -/
-theorem prod_one_add_nat_div_le (a : ℕ) : ∃ C > 0, ∀ x ≥ 2,
-    (∏ p ∈ primesLT x, (1 + (a : ℝ) / p)) ≤ C * log x ^ a := by
-  obtain ⟨K, hK0, hK⟩ := abs_SLT_sub_loglog_le
-  refine ⟨exp ((a : ℝ) * K + (a : ℝ) ^ 2), exp_pos _, fun x hx ↦ ?_⟩
-  have hxlog : 0 < log x := log_pos (by linarith)
-  have hp : 0 < ∏ p ∈ primesLT x, (1 + (a : ℝ) / p) :=
-    prod_pos (fun _ _ ↦ by positivity)
-  have h := (abs_le.1 (abs_log_prod_sub_sum_le (x := x) (A := a)
-    (w := fun _ ↦ a) (fun _ _ ↦ ⟨Nat.cast_nonneg a, le_rfl⟩))).2
-  have hs : ∑ p ∈ primesLT x, (a : ℝ) / p = (a : ℝ) * SLT x := by
-    simp only [SLT, div_eq_mul_inv, mul_sum]
-  rw [hs] at h
-  have hlog : log (∏ p ∈ primesLT x, (1 + (a : ℝ) / p)) ≤
-      (a : ℝ) * K + (a : ℝ) ^ 2 + (a : ℝ) * log (log x) := by
-    have h' := mul_le_mul_of_nonneg_left (abs_le.1 (hK x hx)).2 (Nat.cast_nonneg a)
-    nlinarith
-  calc ∏ p ∈ primesLT x, (1 + (a : ℝ) / p)
-      = exp (log (∏ p ∈ primesLT x, (1 + (a : ℝ) / p))) := (exp_log hp).symm
-    _ ≤ exp ((a : ℝ) * K + (a : ℝ) ^ 2 + (a : ℝ) * log (log x)) := exp_le_exp.2 hlog
-    _ = exp ((a : ℝ) * K + (a : ℝ) ^ 2) * log x ^ a := by
-        rw [exp_add, exp_nat_mul, exp_log hxlog]
-
-/-- `E_x(τ^k) ≪_k (log x)^(2^k-1)`, including `k = 0`. -/
-theorem expectation_tau_pow_le (k : ℕ) : ∃ C > 0, ∀ x ≥ 2,
-    expectation x (fun n ↦ tau n ^ k) ≤ C * log x ^ (2 ^ k - 1) := by
-  obtain ⟨c, _, hc, _, h⟩ := normalizer_bounds
-  obtain ⟨C, hC, hprod⟩ := prod_one_add_nat_div_le (2 ^ k)
-  refine ⟨C / c, div_pos hC hc, fun x hx ↦ ?_⟩
-  have hxlog : 0 < log x := log_pos (by linarith)
-  have hprod' : (∏ p ∈ primesLT x, (1 + (2 : ℝ) ^ k / p)) ≤ C * log x ^ (2 ^ k) := by
-    simpa only [Nat.cast_pow, Nat.cast_ofNat] using hprod x hx
-  rw [expectation_tau_pow]
-  calc (∏ p ∈ primesLT x, (1 + (2 : ℝ) ^ k / p)) / normalizer x
-      ≤ (C * log x ^ (2 ^ k)) / (c * log x) :=
-        div_le_div₀ (by positivity) hprod' (mul_pos hc hxlog) (h x hx).1
-    _ = C / c * log x ^ (2 ^ k - 1) := by
-        have he : 2 ^ k = (2 ^ k - 1) + 1 := (Nat.sub_add_cancel (Nat.one_le_pow k 2 (by decide))).symm
-        conv_lhs => rw [he, pow_succ]
-        field_simp
-
 end BretecheTenenbaumMean.PrimeSums

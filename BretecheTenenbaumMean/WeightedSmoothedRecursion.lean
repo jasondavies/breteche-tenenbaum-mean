@@ -1,6 +1,5 @@
 module
 
-public import BretecheTenenbaumMean.SmoothedRecursion
 public import BretecheTenenbaumMean.WeightedRecursionPrimeAverage
 
 @[expose] public section

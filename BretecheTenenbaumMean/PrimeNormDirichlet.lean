@@ -34,13 +34,6 @@ noncomputable def degreeOneFiberEquivNorm (p : Nat.Primes) :
   left_inv _P := rfl
   right_inv _P := rfl
 
-instance degreeOneFiber_finite (p : Nat.Primes) :
-    Finite {P : DegreeOnePrime K // degreeOnePrimeBelow K P = p} := by
-  have : Finite {P : HeightOneSpectrum (𝓞 K) // Ideal.absNorm P.asIdeal = p.val} :=
-    ((Ring.HasFiniteQuotients.finite_absNorm_heightOneSpectrum_le p.val).subset
-      (fun _ h ↦ h.le)).to_subtype
-  exact Finite.of_equiv _ (degreeOneFiberEquivNorm K p).symm
-
 /-- Collecting the degree-one ideals above each prime produces the coefficient
 `primeNormCount K p`; all series here converge absolutely. -/
 theorem degreeOnePrime_sum_eq_primeNorm_sum {s : ℂ} (hs : 1 < s.re) :

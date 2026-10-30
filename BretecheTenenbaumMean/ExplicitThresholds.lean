@@ -1,7 +1,9 @@
 module
 
 public import BretecheTenenbaumMean.InverseSquareConvolution
-public import BretecheTenenbaumMean.PropositionTwoTwo
+public import BretecheTenenbaumMean.ThirdMomentBase
+public import BretecheTenenbaumMean.RecursionEndpoints
+public import BretecheTenenbaumMean.ThresholdRecursion
 
 @[expose] public section
 

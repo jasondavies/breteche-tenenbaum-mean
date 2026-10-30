@@ -93,17 +93,4 @@ theorem smallPrimePart_eq_self_on_support {x y : ℝ} (hxy : x ≤ y) {n : ℕ}
   intro p hpn
   exact (hp p hpn).trans_le hxy
 
-/-- The small-prime upper tail is always bounded by the model at that cutoff,
-including when the cutoff exceeds the ambient one. -/
-theorem probability_smallPrime_tau_ge_le (x y : ℝ) {R : ℝ} (hR : 0 < R) :
-    probability x {n | R ≤ tau (smallPrimePart n y)} ≤ probability y {n | R ≤ tau n} := by
-  rcases le_total y x with hyx | hxy
-  · exact (probability_smallPrime_tau_ge_eq hyx hR).le
-  · have he : probability x {n | R ≤ tau (smallPrimePart n y)} = probability x {n | R ≤ tau n} := by
-      apply probability_congr_on_support
-      intro n hn
-      simp only [Set.mem_ofPred_eq, smallPrimePart_eq_self_on_support hxy hn]
-    rw [he]
-    exact probability_tau_ge_mono hxy hR
-
 end BretecheTenenbaumMean

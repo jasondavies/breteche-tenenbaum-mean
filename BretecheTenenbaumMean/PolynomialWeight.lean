@@ -71,15 +71,6 @@ theorem sieveProduct_mul_weightedNormalizer_le_one_of_cutoff (F : ℤ[X])
       · intro p _
         nlinarith [sq_nonneg ((NairTenenbaum.rootCount F p : ℝ) / p)]
 
-/-- The original strict cutoff is included in the sieve's weak cutoff. -/
-theorem sieveProduct_mul_weightedNormalizer_le_one (F : ℤ[X])
-    (hF : NairTenenbaum.NoFixedPrimeDivisor F) (x : ℝ) :
-    NairTenenbaum.sieveProduct F x * WeightedModel.normalizer (polynomialRootWeight F) x ≤ 1 := by
-  apply sieveProduct_mul_weightedNormalizer_le_one_of_cutoff F hF x x
-  intro p hp
-  obtain ⟨hpprime, hpx⟩ := mem_primesLT.1 hp
-  exact mem_filter.2 ⟨mem_range.2 (Nat.lt_succ_of_le (Nat.le_floor hpx.le)), hpprime⟩
-
 /-- The cutoff `floor(x)+1` includes every integer at most `x` while matching
 exactly the primes used by the sieve product. -/
 theorem sieveProduct_mul_weightedNormalizer_floor_le_one (F : ℤ[X])
@@ -91,16 +82,5 @@ theorem sieveProduct_mul_weightedNormalizer_floor_le_one (F : ℤ[X])
   obtain ⟨hpprime, hpx⟩ := mem_primesLT.1 hp
   have hpn : p < ⌊x⌋₊ + 1 := by exact_mod_cast hpx
   exact mem_filter.2 ⟨mem_range.2 hpn, hpprime⟩
-
-/-- Consequently the sieved squarefree harmonic sum is controlled directly
-by the weighted finite-model expectation. -/
-theorem sieved_squarefree_root_sum_le (F : ℤ[X])
-    (hF : NairTenenbaum.NoFixedPrimeDivisor F) (x : ℝ) :
-    NairTenenbaum.sieveProduct F x * (∑ n ∈ smoothSupport x,
-      (hooleyDelta n : ℝ) * (NairTenenbaum.rootCount F n : ℝ) / n) ≤
-      WeightedModel.expectation (polynomialRootWeight F) x (fun n ↦ (hooleyDelta n : ℝ)) := by
-  rw [squarefree_polynomial_root_sum, ← mul_assoc]
-  exact mul_le_of_le_one_left (WeightedModel.expectation_nonneg _ _ (fun _ _ ↦ Nat.cast_nonneg _))
-    (sieveProduct_mul_weightedNormalizer_le_one F hF x)
 
 end BretecheTenenbaumMean

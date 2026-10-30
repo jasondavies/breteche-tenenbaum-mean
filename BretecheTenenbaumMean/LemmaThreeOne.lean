@@ -1,7 +1,7 @@
 module
 
 public import BretecheTenenbaumMean.PrimeLayerAsymptotic
-public import BretecheTenenbaumMean.Targets
+public import BretecheTenenbaumMean.GoodSets
 
 @[expose] public section
 

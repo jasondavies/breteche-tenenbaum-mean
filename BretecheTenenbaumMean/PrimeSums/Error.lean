@@ -53,12 +53,6 @@ theorem pntE_le_pntE {x y : ℝ} (hx : 0 < x) (hxy : x ≤ y) : pntE y ≤ pntE 
   rw [neg_mul, neg_mul, neg_le_neg_iff]
   exact mul_le_mul_of_nonneg_left (sqrt_le_sqrt (log_le_log hx hxy)) pntκ_pos.le
 
-theorem pntE_antitoneOn : AntitoneOn pntE (Set.Ioi 0) :=
-  fun _ hx _ _ hxy ↦ pntE_le_pntE hx hxy
-
-theorem pntE_antitoneOn_Ici_one : AntitoneOn pntE (Set.Ici 1) :=
-  pntE_antitoneOn.mono fun _ hx ↦ lt_of_lt_of_le one_pos (Set.mem_Ici.1 hx)
-
 theorem tendsto_pntE : Tendsto pntE atTop (𝓝 0) := by
   have h : Tendsto (fun x ↦ -pntκ * √(log x)) atTop atBot :=
     (tendsto_sqrt_atTop.comp tendsto_log_atTop).const_mul_atTop_of_neg (neg_lt_zero.2 pntκ_pos)
@@ -81,19 +75,6 @@ theorem inv_le_pntE {x : ℝ} (hx : 2 ≤ x) : x⁻¹ ≤ pntE x := by
     nlinarith
   rw [mul_self_sqrt (by linarith)] at h1
   linarith
-
-theorem one_div_mul_log_le_pntE {x : ℝ} (hx : 2 ≤ x) : 1 / (x * log x) ≤ 2 * pntE x := by
-  have hx0 : 0 < x := by linarith
-  have hL : 1 / 2 ≤ log x := by
-    have := log_two_gt_d9
-    have := log_le_log (by norm_num) hx
-    linarith
-  calc 1 / (x * log x) = x⁻¹ * (log x)⁻¹ := by rw [one_div, mul_inv]
-    _ ≤ pntE x * 2 := by
-      refine mul_le_mul (inv_le_pntE hx) ?_ (inv_nonneg.2 (by linarith)) (pntE_nonneg _)
-      rw [inv_le_comm₀ (by linarith) (by norm_num)]
-      linarith
-    _ = 2 * pntE x := mul_comm _ _
 
 /-- `pntE` dominates `x ^ (-1/2) * log x`. -/
 theorem sqrt_mul_log_le {x : ℝ} (hx : 1 ≤ x) : √x * log x ≤ 12 * x * pntE x := by

@@ -33,13 +33,13 @@ lemma omegaThree_prime_log_bound : ∃ D > 0, ∀ y : ℝ, 2 ≤ y →
       have h := mul_le_mul_of_nonneg_right
         (div_le_div_of_nonneg_left (show (0 : ℝ) ≤ 3 by norm_num) hp0 (by linarith : (p : ℝ) ≤ p + 3)) hlp
       convert h using 1; ring
-    _ ≤ 3 * Sieve.primeLogSum y := by
+    _ ≤ 3 * NairTenenbaum.primeLogSum y := by
       apply mul_le_mul_of_nonneg_left _ (by norm_num)
       apply sum_le_sum_of_subset_of_nonneg hsub
       intro p hp _
       have hpp := (mem_filter.1 hp).2
       exact div_nonneg (log_nonneg (by exact_mod_cast hpp.one_le)) (Nat.cast_nonneg _)
-    _ ≤ 3 * (log 4 * (1 + log y)) := mul_le_mul_of_nonneg_left (Sieve.primeLogSum_le hy) (by norm_num)
+    _ ≤ 3 * (log 4 * (1 + log y)) := mul_le_mul_of_nonneg_left (NairTenenbaum.primeLogSum_le hy) (by norm_num)
     _ ≤ _ := by nlinarith [mul_le_mul_of_nonneg_left hone (show 0 ≤ 3 * log 4 from by positivity)]
 
 /-- A logarithmic first moment controls the mass above any cutoff. -/

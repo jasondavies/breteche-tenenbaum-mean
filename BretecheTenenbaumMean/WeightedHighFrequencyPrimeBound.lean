@@ -3,7 +3,6 @@ module
 public import BretecheTenenbaumMean.WeightedTwoFrequency
 public import BretecheTenenbaumMean.WeightedPrimeIntervals
 public import BretecheTenenbaumMean.HighFrequencyPrimeBound
-public import BretecheTenenbaumMean.PrimeSums.Endpoints
 
 @[expose] public section
 

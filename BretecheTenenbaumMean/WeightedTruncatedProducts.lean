@@ -1,7 +1,8 @@
 module
 
 public import BretecheTenenbaumMean.WeightedPrimeConsequences
-public import BretecheTenenbaumMean.TruncatedProducts
+public import BretecheTenenbaumMean.PrimeRecursion
+public import BretecheTenenbaumMean.MomentConvexity
 
 @[expose] public section
 
@@ -66,31 +67,6 @@ theorem momentProductSum_le (w : MultiplicativeWeight) (δ : ℝ) {T y : ℝ} (h
     apply div_nonneg _ hmpos.le
     exact mul_nonneg (w.nonneg m) (Set.indicator_nonneg (fun n _ ↦ div_nonneg (moment_nonneg _ _) (Nat.cast_nonneg _)) m)
 
-/-- Equation (2.17), with a single constant independent of the orders and
-thresholds. -/
-theorem momentProductSum_bound (w : MultiplicativeWeight) (hp : PrimeEstimates w) : ∃ C > 0, ∀ δ T y (θ : ℕ → ℝ) (q j : ℕ),
-    0 ≤ T → 2 ≤ y → 1 ≤ j → j ≤ q - 1 → 0 ≤ θ j →
-    momentProductSum w δ T θ q j y ≤ C * θ j * T * log (3 * y) ^ 2 *
-      truncatedMoment w δ T θ (q - j) y * exp (-penalty δ T y) := by
-  obtain ⟨_, C, _, hC, hnormal⟩ := hp.normalizer_bounds
-  refine ⟨C, hC, fun δ T y θ q j hT hy hj hjq hθ ↦ ?_⟩
-  have hl : 0 ≤ log (3 * y) := log_nonneg (by linarith)
-  have hLy : normalizer w y ≤ C * log (3 * y) :=
-    (hnormal y hy).2.trans (mul_le_mul_of_nonneg_left
-      (log_le_log (by linarith) (by linarith)) hC.le)
-  have hS : 0 ≤ truncatedMoment w δ T θ (q - j) y := by
-    apply expectation_nonneg
-    intro m _
-    exact Set.indicator_nonneg (fun n _ ↦ div_nonneg (moment_nonneg _ _) (Nat.cast_nonneg _)) m
-  calc
-    _ ≤ θ j * (T * log (3 * y) * exp (-penalty δ T y)) *
-        normalizer w y * truncatedMoment w δ T θ (q - j) y :=
-      momentProductSum_le w δ hT (by linarith) θ hj hjq hθ
-    _ ≤ θ j * (T * log (3 * y) * exp (-penalty δ T y)) *
-        (C * log (3 * y)) * truncatedMoment w δ T θ (q - j) y :=
-      mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left hLy (by positivity)) hS
-    _ = _ := by ring
-
 /-- The exceptional midpoint `q=4,j=2` reduces to the `j=1` term by
 adjacent moment log-convexity. -/
 theorem momentProductSum_four_two_le (w : MultiplicativeWeight) (δ T y : ℝ) (θ : ℕ → ℝ) :
@@ -105,6 +81,5 @@ theorem momentProductSum_four_two_le (w : MultiplicativeWeight) (δ T y : ℝ) (
     apply div_le_div_of_nonneg_right _ (mul_nonneg (Nat.cast_nonneg m) (Nat.cast_nonneg _))
     simpa only [pow_two] using moment_two_sq_le m
   · simp only [Set.indicator_of_notMem hm, le_refl]
-
 
 end BretecheTenenbaumMean.WeightedModel
