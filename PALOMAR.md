@@ -15,9 +15,8 @@ This is the substantive proof development, not a wrapper around another reposito
 | Relationship | Responsible author/maintainer, confirmed by Jason Davies |
 | Existing Palomar ID | Leave blank for a new result |
 
-No submission or publication has been performed. The repository has no remote
-configured yet, so there is no submission SHA. Only the immutable public snapshot
-is reviewed; local uncommitted files do not count.
+The repository is public, but no Palomar submission has been performed. Only the
+immutable public snapshot is reviewed; local uncommitted files do not count.
 
 ## Statement surface
 
@@ -83,23 +82,19 @@ Comparator passed all ten statement comparisons with Nair–Tenenbaum at
 `Your solution is okay!`. Lean's default kernel, NanoDa, and con-ron each
 accepted the Solution; con-ron reported 88,556 accepted declarations in the
 exported dependency closure. These local checks completed on 2026-10-30
-with Lean 4.35.0. GitHub CI has not yet run because the snapshot has not
-been pushed.
+with Lean 4.35.0. GitHub CI repeats them on every pushed commit.
 
-## Publish the reviewed snapshot
+## Submit the reviewed snapshot
 
-After reviewing the prepared files, commit them and push to the public repository:
+Push the final commit to the public repository, wait for its CI to pass, and
+ensure `git status --short` is empty. Obtain its full SHA:
 
 ```sh
-git remote add origin https://github.com/jasondavies/breteche-tenenbaum-mean.git
-git push -u origin HEAD
 git status --short
 git rev-parse HEAD
 ```
 
-If a remote has since been configured, use that remote instead of adding it again.
-Wait for the committed snapshot's CI to pass and ensure `git status --short` is
-empty. Then submit the full SHA at https://submit.palomar-registry.org/.
+Then submit that SHA at https://submit.palomar-registry.org/.
 Palomar's verification/review and the later choice to register are separate steps.
 For a future automated submission, use Palomar's agent protocol rather than
 browser automation of its form. Preserve the private status-page link returned
