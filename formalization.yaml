@@ -1,0 +1,210 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Mean value of the Erdős–Hooley Delta-function"
+  description: >-
+    Lean 4 formalization of de la Bretèche and Tenenbaum's mean-value
+    bounds for the Erdős–Hooley divisor concentration function. The first
+    moment is O(x (log log x)^(5/2)); the second moment lies between constant
+    multiples of x log x and x log x (log log x)^2. The first-moment bound
+    also holds along every irreducible integer polynomial. The development
+    includes the exceptional-set and truncated-moment estimates, both forms
+    of the prime-factor layer lemma, and the exact global Parseval identity.
+    A necessary dependence of the lower-tail cutoff on the tail parameter
+    is made explicit rather than asserting the false unrestricted reading.
+  authors: ["Jason Davies"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Jason Davies"]
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11N37", "11K65"]
+
+sources:
+  - title: "Note on the mean value of the Erdős–Hooley Delta-function"
+    authors: ["Régis de la Bretèche", "Gérald Tenenbaum"]
+    id: "arXiv:2309.03958v14"
+    type: "paper"
+    location: "https://arxiv.org/abs/2309.03958v14"
+    relationship: formalizes
+    license: "unknown"
+    note: >-
+      Theorems 1.1 and 1.2, polynomial consequence (1.7), Propositions 2.1
+      and 2.2, both forms of Lemma 3.1, and Parseval (2.6). The lower-tail
+      quantification and other corrections are described in fidelity.
+  - title: "An upper bound on the mean value of the Erdős–Hooley Delta function"
+    authors: ["Dimitris Koukoulopoulos", "Terence Tao"]
+    id: "doi:10.1112/plms.12572"
+    type: "paper"
+    location: "https://arxiv.org/abs/2306.08615v2"
+    relationship: background
+    note: >-
+      The good-set exceptional estimate follows the cited argument, with
+      explicit rounding, entropy remainders and the exact log(3y) envelope.
+
+related_formalizations:
+  - id: "https://github.com/AlexKontorovich/PrimeNumberTheoremAnd"
+    relationship: builds-on
+    note: >-
+      The StrongPNT import closure at revision
+      127b50e33f6033e2147921167a117af96d9ba4ea is vendored under
+      IwaniecLinearSieveVendor, with upstream Apache-2.0 notices preserved.
+      vendor/strong-pnt records the source and adapted-file hashes.
+  - id: "https://github.com/TauCetiProject/TauCeti"
+    relationship: builds-on
+    note: >-
+      The v4.35.0 release is a Git dependency pinned to revision
+      1f9b4414105d86e487a4ac4c3d3397076a44d0d2. Its 109-module Dedekind-zeta
+      import closure is used unchanged, with source hashes recorded in
+      paper/TAU_CETI_SOURCES.json. The root project's Mathlib v4.35.0 pin
+      overrides the release's Mathlib revision; the imported closure builds
+      and is audited with this pin. PrimitiveConductor separately adapts
+      the finite-index argument from revision
+      ea7e54cf967c2ab502c7e69bf69501e5a3ae3130, retaining its attribution.
+      All reused code retains Apache-2.0 provenance.
+      Tau Ceti is used only by the Solution, never by the Challenge.
+  - id: "https://github.com/jasondavies/nair-tenenbaum-short-sums"
+    relationship: builds-on
+    note: >-
+      Jason Davies's Apache-2.0 development is a Git dependency pinned to
+      0f778ee8366de1204c118e212264ef096ec82b49. Its 127-module HooleyShortSum
+      dependency cone matches the former vendored snapshot byte-for-byte;
+      the revision and file hashes are recorded in
+      paper/NAIR_TENENBAUM_SOURCES.json. The short-sum input specializes
+      Nair–Tenenbaum Corollary 3, proved from Theorem 1. Six further sieve files have
+      import/namespace adaptations recorded in paper/SIEVE_SOURCES.json.
+  - id: "https://github.com/jasondavies/iwaniec-linear-sieve"
+    relationship: adapts
+    note: >-
+      The local example guided layout and the StrongPNT integration. Prime
+      sums also adapt its proofs from snapshot
+      84dfeff69393f31bbdcd126531f0ad8976069dad. The snapshot's MIT notice is
+      retained at vendor/strong-pnt/IWANIEC-LICENSE; see paper/SOURCES.md.
+
+status:
+  scope: >-
+    The eight named targets assembled by paper_main_results in FullPaper.lean and the exact
+    Parseval identity, with integrability, are proved. Challenge.lean exposes
+    those eight targets and the two Parseval declarations, with complete
+    definitions and no extra analytic hypotheses. The lower side of (2.5)
+    is proved for x sufficiently large depending on T; the library also
+    proves the sufficient quantitative range x >= exp((B*T)^4). The claim
+    uniform for every x >= 2 and T >= 3 is not made and is disproved in
+    RangeCheck. Historical results cited in the introduction are background,
+    not additional advertised comparison targets.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: ["GPT-6"]
+      framework: "Codex"
+      tool_setup: >-
+        AI agents developed the local definitions and Lean proofs, ported
+        selected dependencies, ran Lean builds and the exhaustive axiom
+        audit, and prepared the independent Palomar statement and metadata.
+        Exact model variants for the entire development were not recorded.
+      prompting_notes: >-
+        The human selected arXiv:2309.03958, requested full formalization,
+        supplied the Iwaniec example, authorized StrongPNT vendoring, and
+        preferred limited Tau Ceti reuse when it avoided substantial duplication.
+  notes: >-
+    The human selected and directed the work; no human-authored proof edits
+    or independent human mathematical review are claimed. Existing vendored
+    developments retain their own authorship. Lean and the axiom audit check
+    the proof development; the separate Comparator check compares the
+    independently stated Challenge with the Solution. Deliberate Challenge
+    proof holes are excluded from the status counts.
+
+fidelity:
+  divergences: >-
+    The lower bound (2.5) cannot hold uniformly for every x >= 2 and T >= 3.
+    The formal statement allows a cutoff depending on T, as needed by §3;
+    a sufficient range x >= exp((B*T)^4) is proved and the unrestricted
+    interpretation is refuted. In §2.4 the Markov denominator is theta_q,
+    not theta_(q-1). The §4 product-moment argument retains its factor 4.
+    The real dyadic offset is rounded to an integer, with rounding costs
+    proved. Size exceptions in §3 are retained locally before taking unions;
+    the proof does not assume a same-index bound for the complement of the
+    simultaneous good set. High-frequency estimates retain the exact
+    log(3 exp(1/psi)) envelope. Divisor windows use logarithms and the proved
+    equivalent exponential convention. Delta(0)=0 handles integer roots of
+    a polynomial. Parseval's literal sine quotient differs from the continuous
+    sinc version only at zero, a null singleton. The polynomial argument
+    uses the proved Nair–Tenenbaum short-sum input and an explicit weighted
+    moment proof. Its root-count cosine estimate is derived from
+    Kummer–Dedekind, Dedekind-zeta continuation/nonvanishing, and removal of
+    smoothing; no prime ideal theorem is assumed. BLUEPRINT.md gives details.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Automated proof checking and AI inspection of source statements; no
+    independent human review is recorded. The exhaustive axiom audit permits
+    only propext, Classical.choice and Quot.sound. The submission preparation
+    runs Comparator with the toolchain's Lean checker, NanoDa and con-ron;
+    local execution results and any environmental limitations are recorded
+    in PALOMAR.md. Mechanical success is not a claim of human peer review.
+
+alignment:
+  namespace: "BretecheTenenbaumMean"
+  statements:
+    - source: "Theorem 1.1"
+      lean: "BretecheTenenbaumMean.theoremOne"
+      module: "Challenge"
+      status: "proved"
+      note: "An absolute eventual bound for the ordinary first moment."
+    - source: "Theorem 1.2"
+      lean: "BretecheTenenbaumMean.theoremTwo"
+      module: "Challenge"
+      status: "proved"
+      note: "Both quadratic bounds on the printed range x >= 3."
+    - source: "Equation (1.7)"
+      lean: "BretecheTenenbaumMean.polynomialMeanBound"
+      module: "Challenge"
+      status: "proved"
+      note: "Every irreducible integer polynomial, including nonmonic polynomials and fixed prime divisors."
+    - source: "Proposition 2.1, (2.4)"
+      lean: "BretecheTenenbaumMean.propositionTwoOneUpper"
+      module: "Challenge"
+      status: "proved"
+      note: "Uniform O(1/T) exceptional probability."
+    - source: "Proposition 2.1, (2.5)"
+      lean: "BretecheTenenbaumMean.propositionTwoOneLower"
+      module: "Challenge"
+      status: "adapted"
+      note: "Necessary T-dependent lower cutoff; the unrestricted uniform statement is false."
+    - source: "Proposition 2.2"
+      lean: "BretecheTenenbaumMean.propositionTwoTwo"
+      module: "Challenge"
+      status: "proved"
+      note: "All admissible thresholds, orders q >= 3, and x >= 2."
+    - source: "Lemma 3.1, (3.1)"
+      lean: "BretecheTenenbaumMean.lemmaThreeOne"
+      module: "Challenge"
+      status: "proved"
+      note: "Two-sided probabilities at the dyadic logarithmic scale."
+    - source: "Lemma 3.1, (3.2)"
+      lean: "BretecheTenenbaumMean.lemmaThreeOneCentral"
+      module: "Challenge"
+      status: "proved"
+      note: "Integer prime count k, with real offset t=k-h."
+    - source: "Equation (2.6), convergence"
+      lean: "BretecheTenenbaumMean.integrable_parseval_integrand"
+      module: "Challenge"
+      status: "proved"
+      note: "Absolute integrability on the entire real line."
+    - source: "Equation (2.6)"
+      lean: "BretecheTenenbaumMean.moment_two_parseval_sine"
+      module: "Challenge"
+      status: "proved"
+      note: "Exact 1/(2*pi) normalization and the literal sine quotient."
+
+acknowledgements: >-
+  Lean and Mathlib; the contributors to PrimeNumberTheoremAnd and Tau Ceti;
+  the Nair–Tenenbaum and Iwaniec formalizations; and PalomarRegistry's
+  PalomarTemplate for the local validation and Comparator scripts.

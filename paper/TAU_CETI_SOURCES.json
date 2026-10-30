@@ -1,0 +1,465 @@
+{
+  "source": "https://github.com/TauCetiProject/TauCeti.git",
+  "revision": "1f9b4414105d86e487a4ac4c3d3397076a44d0d2",
+  "release_tag": "v4.35.0",
+  "tag_object": "335f3574f9b1d396d8458e67b7a4d02764edcdf2",
+  "root_module": "TauCeti.NumberTheory.NumberField.DedekindZeta",
+  "lean": "4.35.0",
+  "license": "Apache-2.0",
+  "adaptations": "none: imported unchanged from the pinned release",
+  "upstream_mathlib_revision": "074063781836922cb02701cd12943c9f51731afa",
+  "project_mathlib_revision": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "mathlib_note": "The root project keeps Mathlib v4.35.0; the required Tau Ceti closure builds against this revision.",
+  "files": [
+    {
+      "path": "TauCeti/Algebra/Group/Subgroup/Map.lean",
+      "sha256": "d3035ce6573a00aa91a9789461ed11313e38fd1cbdee87a37cba2e4e738a158c"
+    },
+    {
+      "path": "TauCeti/Algebra/GroupAction/AlgHom.lean",
+      "sha256": "ed471609279137db21b427342644df4796a75ab3abb7a82c6b8db6782565f26d"
+    },
+    {
+      "path": "TauCeti/Algebra/Module/ZLattice/Basic.lean",
+      "sha256": "8962dfd46afd01775a2b864d911079ffbf0ad04d7508c36aad8fe63149410014"
+    },
+    {
+      "path": "TauCeti/Algebra/Order/Ring/Units.lean",
+      "sha256": "2b988dc5a2121a8b2f9fef95648a202de7e8f7a12c5efaf7183d432d9af410f4"
+    },
+    {
+      "path": "TauCeti/Algebra/Ring/Subgroup.lean",
+      "sha256": "3e5f7c954a44639e32f4bf1c9e0ae763ff54ec5a630417f733db3f52d9b41551"
+    },
+    {
+      "path": "TauCeti/Analysis/AbsoluteValue/Equivalence.lean",
+      "sha256": "796a78d8576d81e020bea45fc6b0993a8f7676d8879e2acaa50d95eaee6ad290"
+    },
+    {
+      "path": "TauCeti/Analysis/Asymptotics/InvSubOne.lean",
+      "sha256": "d4a5dacfa52b6ee8ed9a040d5b04dbb288465f28882eaa73590f9b6480a1025f"
+    },
+    {
+      "path": "TauCeti/Analysis/Normed/Ring/Ultra.lean",
+      "sha256": "2ac003e3ffc7a7840deae33d9f5e6216f15096a981841c31f8c4b8ba5c6b80f8"
+    },
+    {
+      "path": "TauCeti/Analysis/SpecialFunctions/Complex/LogBounds.lean",
+      "sha256": "5016a763029d93492a5f2bd24d0477fea4e23b9a5c4368b6b781c6ceae5f38f0"
+    },
+    {
+      "path": "TauCeti/Analysis/SpecialFunctions/Trigonometric/NonnegCombination.lean",
+      "sha256": "88e6afdf446ad3688bd3e8cc1a5928397df25b55ae30ff94c68a01e9cd2520f1"
+    },
+    {
+      "path": "TauCeti/Data/ZMod/Divisibility.lean",
+      "sha256": "9726b876b8c8cb2e5786e93d1c04ad2fe938744223869667cb3c29bcf2b01b3b"
+    },
+    {
+      "path": "TauCeti/FieldTheory/Normal/Embeddings.lean",
+      "sha256": "6df3017eee38380ef41d3143128fbc0bc126f2175c47c8089ac79ebb001b42bd"
+    },
+    {
+      "path": "TauCeti/GroupTheory/GroupAction/Transitive.lean",
+      "sha256": "6df04dd58079b59b82814c86640f20279aab097a88d6e49b8ba637d5dea32651"
+    },
+    {
+      "path": "TauCeti/GroupTheory/Index/Basic.lean",
+      "sha256": "8695d3ef086ef4551c3d0d582987bba828a0aed21abaa13ade07900742e9b6c8"
+    },
+    {
+      "path": "TauCeti/GroupTheory/QuotientGroup/KerEquiv.lean",
+      "sha256": "2be4fad3678becf6577345b72cd64a6c81b4951bbe4ca3475818193f4dd7ddd5"
+    },
+    {
+      "path": "TauCeti/LinearAlgebra/Matrix/Block.lean",
+      "sha256": "61cb29f81f81671dad9f93a857465a09963b373d13235377f2b9a6e08aba0bcb"
+    },
+    {
+      "path": "TauCeti/LinearAlgebra/Pi.lean",
+      "sha256": "01443bd2c5668308fca9d0c31c766991908759cd5a93f1e1a8b5690cfc7cca47"
+    },
+    {
+      "path": "TauCeti/LinearAlgebra/Trace/Pi.lean",
+      "sha256": "200bd3ad97a116630ba612ff77b3f3b38f8ee39b326ea7ee0215a72694bf63fe"
+    },
+    {
+      "path": "TauCeti/MeasureTheory/Group/Measure.lean",
+      "sha256": "07fbb82d7efda385e4e2163189b406684490b88d7b9d838db18721680f8fb359"
+    },
+    {
+      "path": "TauCeti/MeasureTheory/Measure/Haar/Hausdorff.lean",
+      "sha256": "82e35d95764de558f206b85e6525dd26267db75391b1b8b1e66e6b354c062fdd"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/Basic.lean",
+      "sha256": "223a1c9c76eb15543ba9e0f3e345396a42041ead2072fd1419236540715b7911"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/Convolution/Basic.lean",
+      "sha256": "b9bd59e8090ef0ce5223386a1192c3b9f0095af0607686c505c007dc38a89707"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/Counting.lean",
+      "sha256": "73c861018a081d579235f36467051cfff2cc7bb5de83835d06e7d4abc17283ed"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/Estimates.lean",
+      "sha256": "6a1b6bbce54a5ee017a3a2aa584e23aff7006c813f288fe5a0a74bafc8675ad4"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/EulerProduct/Analytic.lean",
+      "sha256": "d6d2e9a5081c39f0e8809d20399826d3d45d04a3eeaed1aa72786c640b03845d"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/EulerProduct/Basic.lean",
+      "sha256": "259fcbf35bdd556b536e9f26f7653a423ea733d5fa606665bdc5960ccf60d24d"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/EulerProduct/Data.lean",
+      "sha256": "e19b76b02143859af8c10e42ad97e4306775c6cc1bbc4e4f16f87287aa617785"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/EulerProduct/Logarithm/Basic.lean",
+      "sha256": "983b8ee2f707becf366ac1c5f83a658087c8949a006c0ce1daa1e47fbc76b374"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/EulerProduct/Restrict.lean",
+      "sha256": "239a793dcf1665c9c8626f9ba8f3f73b167fbe75c3704e133fd5f8f050daa865"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/EulerProduct/ThreeFourOne.lean",
+      "sha256": "1e43b5cf0ffa7cb40c5a2d9dea30feed7ad2cea54495a1575f22242fdcc91938"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/NormCoeff.lean",
+      "sha256": "54d821f12d48bfb7550bff4bbf7511c7b89b0487a146373e1cf9fa665d106834"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/Regroup.lean",
+      "sha256": "38bbd997d86b7ab45e69ee9c77a4286aaec6e7e58dca0b68376dc33986e49f99"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/Trivial.lean",
+      "sha256": "1e33d63a71a7411d9e35fa19e1cb4a08c1d02096304c466d2283cd2085fef49c"
+    },
+    {
+      "path": "TauCeti/NumberTheory/ArithmeticDirichletSeries/Weight.lean",
+      "sha256": "e03f39433e25395a48cf5889a1b8d40044db8be998d27c22665ead026a5f8bfb"
+    },
+    {
+      "path": "TauCeti/NumberTheory/GeometryOfNumbers/BoundaryCount.lean",
+      "sha256": "a902bb2f2c972fc70dbbd8402203a0692ad9d40917e3c061f68f32f95639fd10"
+    },
+    {
+      "path": "TauCeti/NumberTheory/GeometryOfNumbers/LatticePointCount.lean",
+      "sha256": "d50ec87ddf50abf5b8b612eb12ccfb0a880a4ef5503001e36c0658cc0e3ba1f3"
+    },
+    {
+      "path": "TauCeti/NumberTheory/LSeries/Conjugate.lean",
+      "sha256": "89067a579f8a9681d42193e267c52657bf50bed2c3fc308a624e7ebc5270fa0a"
+    },
+    {
+      "path": "TauCeti/NumberTheory/LSeries/Nonvanishing.lean",
+      "sha256": "96b966c2c8dab96c2e3e32e842d0a59538f4555370e650d96dbbbf001b4fcafe"
+    },
+    {
+      "path": "TauCeti/NumberTheory/LSeries/SumCoeff.lean",
+      "sha256": "74c973a5bcda58482ac8b8fee826542e1416556210e69e94dc9a38595a832a69"
+    },
+    {
+      "path": "TauCeti/NumberTheory/LSeries/ThreeFourOne.lean",
+      "sha256": "b7f93f6e53658652903194df21b201ce92fd562d927299afddeae2e5ce8ad3c8"
+    },
+    {
+      "path": "TauCeti/NumberTheory/LSeries/Twist.lean",
+      "sha256": "6d0d51c46cb716711a6f9e66af930af35647d4a61172e7f00331c964176fc06c"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/CanonicalEmbedding/IdealLattice.lean",
+      "sha256": "3bcdcb203a60a5acc2241fd9ec5d4189bf95b1da20a4aef79fe387ee745cd11e"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/CanonicalEmbedding/MulVolume.lean",
+      "sha256": "259a45b726e57a6c9db758d98f00d4fde4d6518dda21fd84aba82249d90d5bf6"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/CanonicalEmbedding/NormLeOne.lean",
+      "sha256": "23dc1c652e2de64e52cbaa6274182e78add5f0dd38d1757484a5c6064825fc00"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/CanonicalEmbedding/NormLeOneLipschitz.lean",
+      "sha256": "d5273c464483fac50882fed3f45ea9c81461efc3aa50979e2bcbc2cde6aa81de"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/CanonicalEmbedding/SignCut.lean",
+      "sha256": "32a88add38252cf00637a5cec8fcb7b6ef80d08a8ab1274b74f7dcec14b33cf5"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/CanonicalEmbedding/UnitAction.lean",
+      "sha256": "7b33a86a354805df711aa224121458720933fe96011c0a2f184913084855d31c"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/DedekindZeta.lean",
+      "sha256": "f640c4068d541711b45b28582d9b65a70f3d32074fec85d8af739609f0c5e7aa"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/FractionalIdeal.lean",
+      "sha256": "d184cfc4cef280a234ab4e0b01aa478edecf8008c7eb52ebef41149d7ede6865"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Approximation/Weak.lean",
+      "sha256": "f587a8c41c21a0ae4cb5aaf70ecf5d58d0120afaa78131d95a0e88331e298713"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/CongruenceLattice.lean",
+      "sha256": "baa39dfe6879b131d15f14f15277df312b1230693547b72ba6b39c176247ef2b"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/Ray/Coset.lean",
+      "sha256": "73f501ba88c3ed3fdb3e643d828b907d7fca97f7b368fde5337cbb2e33979e81"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/Ray/Ideal/Count.lean",
+      "sha256": "3ccd8054f831362c048e64faf0e25eb18236381817530e3d5dff5e23ff5c3a61"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/Ray/Ideal/Set.lean",
+      "sha256": "2276a3e2b9f042237916cc3583a6e2f9ec619d357232a4666d834d3c829dcb54"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/RayFundamentalDomain/Basic.lean",
+      "sha256": "0b4f89d387aed433d61e0013a80efd125700abf4e50ab2c9309dc243e66ac5a2"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/RayFundamentalDomain/IntegerSet.lean",
+      "sha256": "3e6475ad95ff63a4b8559e5350564b30ee3164aa8b80f94be478d99e462cd21c"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/RayFundamentalDomain/LatticeCount.lean",
+      "sha256": "d08f3d01ad82969b56c0c98d2205b007c0b93b5f170f7b01b4412d162331d0b9"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/RayFundamentalDomain/Lipschitz.lean",
+      "sha256": "d19522993090fcb45257bac1b32d5c41bc96cfc9027c715f8268b10dae3cc0bd"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/RayFundamentalDomain/MainTerm.lean",
+      "sha256": "2144cc7ee95d894f3477522bdc9c9d8a869ba670daf84601f09728c7b910d48f"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/RayFundamentalDomain/Orbit.lean",
+      "sha256": "5cc42bc062775193dbe9d99f31e4e825a9bcc21cb4e40b936fe61c6ba5620a23"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/Counting/RayFundamentalDomain/Volume.lean",
+      "sha256": "49a766e0d191f710db8035ffaabb458d63d7e7ff941b866bb73dbb61bbc79f93"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Basic.lean",
+      "sha256": "0dd1574fd67be7341b54299a8144664fc87a1917e453d034af8c593fbb6f3eaf"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/ClassNumber.lean",
+      "sha256": "9855b5c4ef86690a1a3a058596174735aa6650b004b79d1adfa3848e8e7dcea8"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/CongruenceQuotient.lean",
+      "sha256": "347f2480b5c69169cfa64657def26ecf9859deeb7add9fa9e0dc79e52af1cd07"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Count/Asymptotic.lean",
+      "sha256": "2c8c3829a9893025c4678da0118a0bc6e1a6b788bf51e8f460ba7b8b47cfb19f"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Count/Basic.lean",
+      "sha256": "2934856bd0811d67b223648bc2f4b690f2a13ed13d2bf00f36c41d73e35c6298"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Count/Reindex.lean",
+      "sha256": "cfa9b8d46c0155ff4d1352a5280605f24ab6bccc6672fd8f89b9c93b95107f26"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Exact.lean",
+      "sha256": "4bfad5a5afb3b879d5fb86bfa5c2067bc961cadbc01c5e194d3d059c5cbaf979"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Finite.lean",
+      "sha256": "e2529b0d7caa70a73fb24e124f05ded933060be82cd7265ed27fe781bee69480"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Integral.lean",
+      "sha256": "b8719d1d749155c57286cc5ae1f3e5cbd8d091e9b864ede8e5929ce059272242"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/MainTerm.lean",
+      "sha256": "58a9ad8ab2c2ea9a586e0e11f74e981ae9aac11c7a04e82b451865f99e082aaf"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Modulus.lean",
+      "sha256": "a16efdaf281320d37b88839cd67e4603c080ab452a4a7690438d93f77f6130ff"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Global/RayClass/Residue.lean",
+      "sha256": "fd36c4ece78934e854b88d090c2b84aa191bbf2e8d3abd5ed05a34bf6f5e9e7e"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/InfinitePlace/Basic.lean",
+      "sha256": "dddf83ccdbf99e29e559129ba2a428549010bd963e753e10311730edbb5316a9"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/RingOfIntegers/Transport.lean",
+      "sha256": "267dc0e51ddc0d560dca2e571849c0dcba151ee0d59042a3f27d3d96d4ca3c33"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/SignApproximation.lean",
+      "sha256": "c8cbcccd9bcc8e1320880400921f13c36e718c3d5cb22d43cd1c6195f413d63e"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/TotallyPositive.lean",
+      "sha256": "9986f795def1361d1baac3c945568129f63a5e76f0140fd589b223feb877bb64"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Units/Dirichlet.lean",
+      "sha256": "991f82d231c97dd5e66acf01c3490f21fbbfc0b4d4f0a9dc341121f7fd50ed33"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Units/Signature/Basic.lean",
+      "sha256": "a77f02708176a8c3be6d413aa63ea24098e032f9b23c6c3ff41a7f0488993abc"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Units/Signature/Integer.lean",
+      "sha256": "3910aecac55dfbd25ce67d414e7c93d384e97c52b9efd66b591eadca8f0940b8"
+    },
+    {
+      "path": "TauCeti/NumberTheory/NumberField/Units/Signature/Surjective.lean",
+      "sha256": "df5f14c6909d61988dc66d55847bcb0813dedd3596db14f26656f4207e283d1a"
+    },
+    {
+      "path": "TauCeti/NumberTheory/Padics/AlgebraicClosure.lean",
+      "sha256": "35776fb099e647a273b2c11778631e1f21a9a5f1e740c50d3a6f4c287952fe58"
+    },
+    {
+      "path": "TauCeti/Order/Northcott/Basic.lean",
+      "sha256": "118b8bbd96008c1bd12af8d9becc94f6aa34363d39622c7055301418c4e96742"
+    },
+    {
+      "path": "TauCeti/RingTheory/ClassGroup/Basic.lean",
+      "sha256": "0dc10f15c477c9d87c9fdd614bbbd6f6a58e4fad8d2c43ec35d538c57f7c9240"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/Factorization.lean",
+      "sha256": "efd580e580acd739e08989e487b96aebe0810434884a91f9f8ee04c74a0579b3"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/Ideal/Away.lean",
+      "sha256": "001acde3b4c9821223bd1c4b2d09459c3ccfbef48b32ba9690034e936c68d6fd"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/Ideal/Basic.lean",
+      "sha256": "441b884fc0a0af892d60366000a098d72d3c78ded46a17c65bb1c98c0877a9c7"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/Ideal/Congruence.lean",
+      "sha256": "9a731e4ee47a7697e67353855175f91912a92adeb18d7c6d70f0b5647e77d20b"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/Ideal/UnitsAway.lean",
+      "sha256": "0dff916e17b6a16be905025655b9aabf7c4829b562a580b0bf50de646f37ab3a"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/PrimesAbove.lean",
+      "sha256": "cf5ff93b70371d97e73c6010870f49b36f55aa99b1b15503eec4206b7ccac495"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/SInteger/Basic.lean",
+      "sha256": "3526e6714152d0d2a26b493a6d278d4ea145397530897c94b2bdad64e95b6ddf"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/SInteger/Quotient.lean",
+      "sha256": "8631da27965a5be1f3f36ab588946d439081f53d71f297cd67654b9d9109d8da"
+    },
+    {
+      "path": "TauCeti/RingTheory/DedekindDomain/Totient.lean",
+      "sha256": "327cf7469f125e2fca08f1fd2a0a48c232ae5e985375e0390db898658035ca7a"
+    },
+    {
+      "path": "TauCeti/RingTheory/FractionalIdeal/Operations.lean",
+      "sha256": "b39a61ae9c4dbb09aeb42f771aaef18a98bc4ab394a48bd5108f49c333db5eaa"
+    },
+    {
+      "path": "TauCeti/RingTheory/Ideal/CoprimeCoset.lean",
+      "sha256": "a335de3bb91e6e60faf9839919fd98fbc9653f495fccd77fbaee6f106616fe84"
+    },
+    {
+      "path": "TauCeti/RingTheory/Ideal/Norm/AbsNorm.lean",
+      "sha256": "f495f93341be724d7b2a6595a1fccace683ba51c3debb48e6f00025e89dac7dc"
+    },
+    {
+      "path": "TauCeti/RingTheory/Ideal/Operations.lean",
+      "sha256": "0f842e7ba0349a2bdb030e69840f6cea62a1ed1706a4932e3535140e74440568"
+    },
+    {
+      "path": "TauCeti/RingTheory/Ideal/Quotient/DedekindDomain.lean",
+      "sha256": "2b0185aba3be68ececf0309c6526a29fc8eef7d1ab4d8afa7e0b3dbcd8ef58e7"
+    },
+    {
+      "path": "TauCeti/RingTheory/Localization/DenIdeal.lean",
+      "sha256": "17f7ee0c6a7541a67df389448a2d7a03b00e58bd2b2c2bb5d04e68cf1114a692"
+    },
+    {
+      "path": "TauCeti/RingTheory/Norm/Congruence.lean",
+      "sha256": "d2a3ce04840eb604e6193e0ca53dea11b0670aebaa3d3c11df5f6e52bdc62358"
+    },
+    {
+      "path": "TauCeti/RingTheory/Norm/Units.lean",
+      "sha256": "163a94a11a05abfd04741f7b49a15a72c4e2c557423df305f74e2c7e9e2a7724"
+    },
+    {
+      "path": "TauCeti/RingTheory/NormTrace/Pi.lean",
+      "sha256": "dc88b018d0b6f36464bea57ced705fb28aa2d5140fce42989f1ec4a0f16062a6"
+    },
+    {
+      "path": "TauCeti/RingTheory/NormTrace/Prod.lean",
+      "sha256": "ca43d74ac2cb91f9fa18036be0d13c89e79c3eec9d30348882cdc8c99fd0d8ec"
+    },
+    {
+      "path": "TauCeti/RingTheory/Valuation/AbsoluteValue.lean",
+      "sha256": "9849bb5d495193bb85ad309171ee8b0742241c30c473bb3361c3af3e7ec422c9"
+    },
+    {
+      "path": "TauCeti/RingTheory/Valuation/Approximation.lean",
+      "sha256": "b638cd6e9bd49042f0e67ae390b1076ae10b352f950556686d58d977c8ad529f"
+    },
+    {
+      "path": "TauCeti/Topology/Algebra/InfiniteSum/Real.lean",
+      "sha256": "79c248a6336c11d62a7fa132a6fafddb5233240c313878d8441905be753eb26f"
+    },
+    {
+      "path": "TauCeti/Topology/Frontier.lean",
+      "sha256": "7ef137426e8e9b82f9d9cf6be68301dfb5897f1076ad77b097c893332b863da4"
+    },
+    {
+      "path": "TauCeti/Topology/MetricSpace/DiscreteAddSubgroup.lean",
+      "sha256": "4d51bc14fee3592a5c46e2eaec7e91afb5c681d0c14369a47ae20c6f8e5215b7"
+    },
+    {
+      "path": "TauCeti/Topology/MetricSpace/LipschitzParametrizable.lean",
+      "sha256": "232a510f69082ff5697ad02578528e5e10b3900430e0808c3d39575fb5bb353e"
+    }
+  ],
+  "previous_vendored_snapshot": {
+    "revision": "ea7e54cf967c2ab502c7e69bf69501e5a3ae3130",
+    "module_count": 112,
+    "note": "Replaced the 112-module Lean 4.36.0-rc1 snapshot and six local compatibility patches with the unmodified v4.35.0 release."
+  },
+  "local_adaptations_outside_dependency": {
+    "path": "BretecheTenenbaumMean/PrimitiveConductor.lean",
+    "source_revision": "ea7e54cf967c2ab502c7e69bf69501e5a3ae3130",
+    "source_modules": [
+      "TauCeti/NumberTheory/NumberField/Index/Basic.lean",
+      "TauCeti/NumberTheory/NumberField/Index/Exponent.lean"
+    ],
+    "license": "Apache-2.0"
+  }
+}

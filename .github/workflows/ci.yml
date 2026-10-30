@@ -1,0 +1,37 @@
+name: Lean and Palomar
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Check metadata, source limits, and provenance
+        run: |
+          ruby scripts/validate-formalization.rb
+          python3 scripts/check-lean-sources.py
+          python3 scripts/check-palomar.py
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          use-mathlib-cache: true
+      - name: Audit project, vendor, and imported dependency declarations
+        run: |
+          python3 scripts/check-palomar.py --check-dependencies
+          lake env lean scripts/CheckAxioms.lean
+      - name: Enable Comparator sandbox on the disposable runner
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq bubblewrap >/dev/null
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Compare all statements with Lean, NanoDa and con-ron
+        run: bash scripts/verify-comparator.sh

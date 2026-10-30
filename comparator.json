@@ -1,0 +1,22 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "BretecheTenenbaumMean.theoremOne",
+    "BretecheTenenbaumMean.theoremTwo",
+    "BretecheTenenbaumMean.polynomialMeanBound",
+    "BretecheTenenbaumMean.propositionTwoOneUpper",
+    "BretecheTenenbaumMean.propositionTwoOneLower",
+    "BretecheTenenbaumMean.propositionTwoTwo",
+    "BretecheTenenbaumMean.lemmaThreeOne",
+    "BretecheTenenbaumMean.lemmaThreeOneCentral",
+    "BretecheTenenbaumMean.integrable_parseval_integrand",
+    "BretecheTenenbaumMean.moment_two_parseval_sine"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
