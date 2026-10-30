@@ -1,7 +1,7 @@
 module
 
-public import NairTenenbaum.AffinePolynomialSystem
-public import NairTenenbaum.DiscriminantBezout
+public import NairTenenbaum.Progressions.AffinePolynomialSystem
+public import NairTenenbaum.Polynomials.DiscriminantBezout
 public import Mathlib.Algebra.Polynomial.Taylor
 
 @[expose] public section

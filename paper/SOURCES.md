@@ -101,8 +101,9 @@ overlap lengths, including endpoint conventions, and proves the short-interval
 input by Selberg's sieve.
 
 The Selberg sieve comes from the pinned Nair–Tenenbaum dependency:
-`NairTenenbaum.SelbergWeights`, `SelbergDenominator`, `SelbergCoefficientBounds`,
-`SelbergRemainder`, `PrimeLogSums` and `PrimeFactorBounds` construct optimized
+`NairTenenbaum.Sieve.SelbergWeights`, `Sieve.SelbergDenominator`,
+`Sieve.SelbergCoefficientBounds`, `Sieve.SelbergRemainder`,
+`Arithmetic.PrimeLogSums` and `Arithmetic.PrimeFactorBounds` construct optimized
 Selberg coefficients, bound the denominator and remainder, and provide two
 elementary prime-factor and prime-sum utilities. A former local copy differed
 only in namespace, imports and a provenance comment, so it was removed.
@@ -145,11 +146,14 @@ nonconstant polynomial with no fixed prime divisor; its dependency cone is
 that its main short-sum theorem was unfinished. The weighted mean and
 polynomial Euler-product inputs were unfinished in that snapshot.
 The 127-file dependency cone of `NairTenenbaum.HooleyShortSum` was initially
-vendored byte-for-byte. It is now imported from
+vendored byte-for-byte, then replaced by the published Git dependency.
+The current imports use the reorganized library from
 [nair-tenenbaum-short-sums](https://github.com/jasondavies/nair-tenenbaum-short-sums)
-at commit `0f778ee8366de1204c118e212264ef096ec82b49`, with no mathematical
-source changes. Every one of the 127 source hashes matches the former snapshot;
-the revision and hashes are recorded in
+at commit `9c3c9236a66f9ba1e04a237089ff836adde0cd6c`, including its shared
+integer and prime short-sum proof machinery. The entry theorem is now in
+`NairTenenbaum.Hooley.HooleyShortSum`. The 128 modules reached from our direct
+imports are used without local source changes; the root imports, revision,
+and current hashes are recorded in
 [NAIR_TENENBAUM_SOURCES.json](NAIR_TENENBAUM_SOURCES.json).
 All declarations in this cone, including private and generated declarations,
 are included in the project’s standard-axiom audit. Mathlib, Nair–Tenenbaum,

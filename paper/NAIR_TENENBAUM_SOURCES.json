@@ -1,518 +1,531 @@
 {
   "source": "https://github.com/jasondavies/nair-tenenbaum-short-sums.git",
-  "entry_module": "NairTenenbaum.HooleyShortSum",
+  "entry_module": "NairTenenbaum.Hooley.HooleyShortSum",
   "lean": "4.35.0",
-  "adaptations": "none: imported from the pinned Git dependency; all 127 source hashes match the former vendored snapshot",
+  "adaptations": "none: imported unchanged from the pinned Git dependency; local imports follow the reorganized upstream modules",
   "files": [
     {
-      "path": "NairTenenbaum/AffineBadDiscriminant.lean",
-      "sha256": "7c0c23771cb4747e687e2d4247ea725107016ca970539c0e9e5e9973eae10652"
+      "path": "NairTenenbaum/Arithmetic/Arithmetic.lean",
+      "sha256": "578e461ae876b5b17b1f2c1188f3375d5af7d7ba243a3fae375decaef2d05185"
     },
     {
-      "path": "NairTenenbaum/AffineDiscriminant.lean",
-      "sha256": "0d44fa5cc95c6b3af5b48dbc6fe180eb92b92a48cab2a3f53ad2a8c5bc0e9619"
+      "path": "NairTenenbaum/Arithmetic/AuxiliaryFunctions.lean",
+      "sha256": "3334130a41773c930613067a5ff8131cd41be45120d325d59fffb8c0eb47f13c"
     },
     {
-      "path": "NairTenenbaum/AffinePolynomialSystem.lean",
-      "sha256": "2f50bf937a6c710166cd443e18b8b433b863db720e4810b6709ee5e2a7e5a8aa"
+      "path": "NairTenenbaum/Arithmetic/AuxiliarySeries.lean",
+      "sha256": "19f2fff9185f5f14d33ad9b7d193b242d8c121e040ffa3a719ffb3d8ce4de038"
     },
     {
-      "path": "NairTenenbaum/AffineRootCounts.lean",
-      "sha256": "419a6d6b14910cf2ed22c6facf828d3ec77bb80257d46615648771d9084f4f06"
+      "path": "NairTenenbaum/Arithmetic/ComparisonKernel.lean",
+      "sha256": "baca077db5e0b934f3693f4f2d8537e26c077e1d15429f49fcb72a03d8280058"
     },
     {
-      "path": "NairTenenbaum/AffineWeights.lean",
-      "sha256": "6b8e891553f7b9da3532d9d26bb72453518e63ea602738d4c011d34497813344"
+      "path": "NairTenenbaum/Arithmetic/ComparisonLocal.lean",
+      "sha256": "669c8178a93332aac78e6fe3934ae6f26d07f16b6b06a43b211c16f27222ce71"
     },
     {
-      "path": "NairTenenbaum/Arithmetic.lean",
-      "sha256": "f95dde4c45f45bebd80ff45d459e15d5f9ed7e3ee829f332a6c4eb8a9116590b"
+      "path": "NairTenenbaum/Arithmetic/ComparisonUniformity.lean",
+      "sha256": "a0e88bb02686bb82215f21b57d14a03222759f26a41e35ffe39faad07a5998a2"
     },
     {
-      "path": "NairTenenbaum/AuxiliaryFunctions.lean",
-      "sha256": "c06b1aba68d93b3008da64c152dd2879a594d7d61ecc537b1a0e326c4ebb0b7d"
+      "path": "NairTenenbaum/Arithmetic/CongruenceCount.lean",
+      "sha256": "6b1b1636413b7f6090d06186678fe4a5f4858bf9adb476b0e099f3ecb607c12e"
     },
     {
-      "path": "NairTenenbaum/AuxiliarySeries.lean",
-      "sha256": "e91a2044923bd8df724ea7c12589dc51b7cbfd780487adda29434a29d033f6f3"
+      "path": "NairTenenbaum/Arithmetic/DivisorBounds.lean",
+      "sha256": "cdb14ada766a733a79275b694c7e6b4486f5a380c9f100baaf5dd7604abe8411"
     },
     {
-      "path": "NairTenenbaum/BadPrimeCongruence.lean",
-      "sha256": "7a443ab933256490ddca3d892985bd8a43e1d14be420ec876d8e71a5acac297f"
+      "path": "NairTenenbaum/Arithmetic/DivisorTupleDisjointness.lean",
+      "sha256": "220241c7f9ba9a8d874bfcb0fce1add4b6d70246498bc26bdfdfcac4cd14d92a"
     },
     {
-      "path": "NairTenenbaum/BadPrimeMass.lean",
-      "sha256": "a1e093a5ed7b0879ed55746a9419ac5c54f6061d93f51751a5b719493d36a50e"
+      "path": "NairTenenbaum/Arithmetic/FactoredWeightBound.lean",
+      "sha256": "a4270c13c64b05e4460d5c86f94db0d9aabbe433b7526a59272d3a2b709d417f"
     },
     {
-      "path": "NairTenenbaum/BadPrimeMoments.lean",
-      "sha256": "7d0d88ad24937c96ed775dbcdaf0a70cec981c0a5b923e674f48c6cba227cc33"
+      "path": "NairTenenbaum/Arithmetic/FractionalAuxiliary.lean",
+      "sha256": "c8b0c761039a394050ca43495fc50c5c20a5e36df069c8aa1bf46a27794d9c57"
     },
     {
-      "path": "NairTenenbaum/BadPrimeRoots.lean",
-      "sha256": "e2468831b75f4dace1b28bb66e5703f8036582e96835b1710190b6cd45114762"
+      "path": "NairTenenbaum/Arithmetic/MainTermLowerBound.lean",
+      "sha256": "f9cb517434a0239eb89afe600de3765d80078a1e2df171ac7d55fe61c6daa2a1"
     },
     {
-      "path": "NairTenenbaum/BadPrimeSieve.lean",
-      "sha256": "24aba5eb0fdfa6db79113b3f9cf83207d1a0c2de32a8056304cceeb7b2cfb86f"
+      "path": "NairTenenbaum/Arithmetic/MinimalMajorant.lean",
+      "sha256": "3cec5f222e93c938281d5bae7d1e754b010cf689ca44e415e4fc77988fb06a45"
     },
     {
-      "path": "NairTenenbaum/ComparisonKernel.lean",
-      "sha256": "0cff5b624985a412cdcc672fc7f74b2f005ba737158881a3b2bd7ff48fb946dc"
+      "path": "NairTenenbaum/Arithmetic/MultivariableComparison.lean",
+      "sha256": "078dacddfbe597535e009df67a4fa8e9879593b3a9c8587f3c34580f6cec85b3"
     },
     {
-      "path": "NairTenenbaum/ComparisonLocal.lean",
-      "sha256": "0bb791109c4df5ba1219707000a735932e86db20d9a4772f0138294c2a5d9ca4"
+      "path": "NairTenenbaum/Arithmetic/PrimeFactorBounds.lean",
+      "sha256": "8dadce67af76da17fabbb5c70351337be076eff253b5ab558e560fb71572330a"
     },
     {
-      "path": "NairTenenbaum/ComparisonUniformity.lean",
-      "sha256": "bb2f77c483bb836f52b1bacc1840efe5c3dfa70ab89314e7d62b723081087416"
+      "path": "NairTenenbaum/Arithmetic/PrimeLogSums.lean",
+      "sha256": "9a95ee652bde717c518ef0033180117a8e82ed96ed643e514b92518c0a1615b8"
     },
     {
-      "path": "NairTenenbaum/ConditionalPolynomialSieve.lean",
-      "sha256": "7afd0494c39641c24a313e063ee47d5ff2d84ca09eb3db0a6ffb2b2b0e61c1fc"
+      "path": "NairTenenbaum/Arithmetic/PrimeMajorant.lean",
+      "sha256": "9e0b294bf61ef7af90ab842946037f7225ea14a680d7ee89891d2484d3677de6"
     },
     {
-      "path": "NairTenenbaum/CongruenceCount.lean",
-      "sha256": "870caf0d060f26e8eb1afe27e4e0a587fa237b11b23471ccb6e84bce04b998bf"
+      "path": "NairTenenbaum/Arithmetic/PrimePowerComparison.lean",
+      "sha256": "e4bafefb93a6d40b432c47cdd6f49a57e17585abc5a131b6ee567ed515a0dc7d"
     },
     {
-      "path": "NairTenenbaum/CorollaryOne.lean",
-      "sha256": "35ab706824f3db22058273303754a9505cf28f86684b169756d7e72e2cec8d89"
+      "path": "NairTenenbaum/Arithmetic/PrimePowerCounting.lean",
+      "sha256": "46a2006557a3f5adbf11f740db073bca719484d2514c171685d011066a92ee4d"
     },
     {
-      "path": "NairTenenbaum/CorollaryThree.lean",
-      "sha256": "d7d2aafcb316c3e7cc3a7effd51359e9dace68dbf68015d3a68637dcf5a92402"
+      "path": "NairTenenbaum/Arithmetic/PrimePowerRoots.lean",
+      "sha256": "02298ae5b5da878c116b13a11d802d26f4bc55fa0a284631ce14891be73d8f20"
     },
     {
-      "path": "NairTenenbaum/DiscriminantBezout.lean",
-      "sha256": "78b7039cd6fcea66faf8ebda1eef76a1618d73e2462946d217bfa0fcddf6b7c7"
+      "path": "NairTenenbaum/Arithmetic/PrimePowerThreshold.lean",
+      "sha256": "68965ea982e78e13f4a020032a4a40a408bf84006ee73190e1c8a6f8c04d61cc"
     },
     {
-      "path": "NairTenenbaum/DiscriminantSplitting.lean",
-      "sha256": "1640ff6a97b0a2fd803238b3d5795d17abce2ab8b5a2662e7f5ca34594a4d42a"
+      "path": "NairTenenbaum/Arithmetic/PrimeSplitting.lean",
+      "sha256": "567543fadb5f97ed61476250fa45b30b8270414f796e00463c59644040c89c83"
     },
     {
-      "path": "NairTenenbaum/DivisorBounds.lean",
-      "sha256": "c852528ba9e9119de5e35ec04c71a841d2c4b5e32838aafbed6dda895d028100"
+      "path": "NairTenenbaum/Arithmetic/PrimeThreshold.lean",
+      "sha256": "b8b5c293d4c44a50f9816a52cf0706766dc09b690c75a0b3e688e7e91a708875"
     },
     {
-      "path": "NairTenenbaum/DivisorTupleDisjointness.lean",
-      "sha256": "00b27fe96bdc171659705e4efa970a577f61d12a1789fdfca5c47f447d618e77"
+      "path": "NairTenenbaum/Arithmetic/ProductArithmetic.lean",
+      "sha256": "8431d6c91736927f6effc1405bcae5aed6f3b22f7c308db2f8602e2b1e49efdc"
     },
     {
-      "path": "NairTenenbaum/FactoredWeightBound.lean",
-      "sha256": "f5a515dd5dc8192a85289ed6acaeace170e3909ef030339fbb5d08d57bf179fe"
+      "path": "NairTenenbaum/Arithmetic/RootAuxiliary.lean",
+      "sha256": "48395fd1b47e1b5b8c94c1eb745bbd1b62dd9897b929796794a13c62465d7066"
     },
     {
-      "path": "NairTenenbaum/FamilyFactorization.lean",
-      "sha256": "3b1af37a4b088cdff8f26e868cd1e7ac9d7a1c34519b6152a4fedcfd080d2dd6"
+      "path": "NairTenenbaum/Arithmetic/RoughMass.lean",
+      "sha256": "8204c98c7748a63cd88b28ddb072ce352cd7d0ff7415e9583a8b4283f5a13380"
     },
     {
-      "path": "NairTenenbaum/FamilyTheorems.lean",
-      "sha256": "1bcd9ec45b4245fb41cc488040a60677818416afb71db68216676b913c8be410"
+      "path": "NairTenenbaum/Arithmetic/ScalarComparison.lean",
+      "sha256": "1cd541d1597550374d78c33b9f94bfa76e9a646d4d19b7e1e10a5a79e5de4129"
     },
     {
-      "path": "NairTenenbaum/FirstContribution.lean",
-      "sha256": "002db0190851bfde8b09cd4c3f2f8d2e3c2b52944cd64228262436c94c046b7e"
+      "path": "NairTenenbaum/Arithmetic/TotientProducts.lean",
+      "sha256": "696ce55c832c931463b0e4db65c2686d7f8904530fb7a485c865eb8172583560"
     },
     {
-      "path": "NairTenenbaum/FirstContributionReal.lean",
-      "sha256": "498c7a185d7caa36d9300452f58222409a3d0ac6257a41204cd75fd9ac63a94e"
+      "path": "NairTenenbaum/Arithmetic/TotientTwist.lean",
+      "sha256": "c1594b346d5a38e210e100144ec401e6976ddc4b2550bca6756a8fd93d80368f"
     },
     {
-      "path": "NairTenenbaum/FractionalAuxiliary.lean",
-      "sha256": "688e044bec3009dd111413097ca248d59b7337945274a35a83aac1eb16d4696f"
+      "path": "NairTenenbaum/Arithmetic/TupleComparison.lean",
+      "sha256": "1e2d6ff4b85b300fa53c041103ec2e1525c17f8aecc77cd9544c96bb306dc10a"
     },
     {
-      "path": "NairTenenbaum/Hooley.lean",
-      "sha256": "26cc0b7d494c51378b617eca86607114e06ac26504ecac3ccf5ec373a41a32e7"
+      "path": "NairTenenbaum/Arithmetic/UnitaryComparison.lean",
+      "sha256": "04c13ab8090b8e8e07551e44da0c67207c0f5769ad35d2fbd8e68f2388842522"
     },
     {
-      "path": "NairTenenbaum/HooleyShortSum.lean",
-      "sha256": "e28914b789aa8663016b1ce781362a7828d6f5302c818e83e2566d1f0378acf9"
+      "path": "NairTenenbaum/Arithmetic/ValueWeightBounds.lean",
+      "sha256": "70a5c4430647b2c575b060dd718a96d555aa84f00a2fbd3b08d257dcb077ec73"
     },
     {
-      "path": "NairTenenbaum/IntegerIntervalBound.lean",
-      "sha256": "eff25bbf553f0c23a75353b4a4619f543cee30b545a6286db62dc56751853ffd"
+      "path": "NairTenenbaum/Arithmetic/WeightTruncation.lean",
+      "sha256": "56a2b7357de8d13acb9ca8176a2abb8ccb32766920b08e74a69f860013a1dd4d"
     },
     {
-      "path": "NairTenenbaum/IntegerIntervalDecomposition.lean",
-      "sha256": "605cbc86a6321d0e4a000167ea924469bb2d21abb79715650f6404605f447fe5"
+      "path": "NairTenenbaum/Arithmetic/Weights.lean",
+      "sha256": "770c55b757e9db2539b7508abe8a7ac68be6e457f7510f3d0e2d15259746033b"
     },
     {
-      "path": "NairTenenbaum/IntermediateContribution.lean",
-      "sha256": "6a3e72b5ac490718cd7d2d964198a4ecb9d8e1581b8789692e76942f70cb0809"
+      "path": "NairTenenbaum/Contributions/FirstContribution.lean",
+      "sha256": "4e186e50ab35883fbfe19d4689d2a578188c402b2c486b48d8fcddf6cbab22f0"
     },
     {
-      "path": "NairTenenbaum/IntermediateContributionReal.lean",
-      "sha256": "c4ff8e65b83b63527fa42b49187ba48954e5f79bc7d4fb3d088ac3d21d77f9ee"
+      "path": "NairTenenbaum/Contributions/FirstContributionReal.lean",
+      "sha256": "c47e065f59a84eaf3b6a9baa61f2bf2db71d49b0ba232a749dbd4768363bbf33"
     },
     {
-      "path": "NairTenenbaum/IrreducibleSystem.lean",
-      "sha256": "5d287696203cb56e06cb720127b8c365ace7c3faea1634487f10702227aa2492"
+      "path": "NairTenenbaum/Contributions/IntegerIntervalBound.lean",
+      "sha256": "437d72560780a056fe9edbcef200f281e8a00bd1ef23fffa265b4768926696a1"
     },
     {
-      "path": "NairTenenbaum/JointCongruence.lean",
-      "sha256": "6844522fdb32a11769fedbc8bdae969f87ec53843e3a3dda358423787c765126"
+      "path": "NairTenenbaum/Contributions/IntegerIntervalDecomposition.lean",
+      "sha256": "54d8060b3789c821f03c66c4f418eddd05fd7d7a69fb949503e595f121d8e592"
     },
     {
-      "path": "NairTenenbaum/JointDensityComparison.lean",
-      "sha256": "8d21d5e84388d7772b38944cf69c3d2cd89eccbef5ffa91409a7fac4a934d5c1"
+      "path": "NairTenenbaum/Contributions/IntermediateContributionReal.lean",
+      "sha256": "63b52d1b48b413eea337b8822e341859ce8012ab68f4fd52eefc61079b78ccd8"
     },
     {
-      "path": "NairTenenbaum/LargePrefixMainTerm.lean",
-      "sha256": "982d764275a26120538a80e23f71333a01f50728c22a05fd8bfa5cc7fbbaa187"
+      "path": "NairTenenbaum/Contributions/RealIntervalBounds.lean",
+      "sha256": "76b49074a29ac3725179230a1ccdcc540738960d2956c27113c4d75303ba4cdd"
     },
     {
-      "path": "NairTenenbaum/LargePrefixScales.lean",
-      "sha256": "e2c927cc54f1968ec5ed820a49793afa64c5b0e00e68fdcbf6ba2b68e324ac5f"
+      "path": "NairTenenbaum/Contributions/SecondContribution.lean",
+      "sha256": "14b964c70476cf18575aa15129ed53329492d667bb23bb4edf1a996a80dbedef"
     },
     {
-      "path": "NairTenenbaum/LargeRoughContribution.lean",
-      "sha256": "9bf9f86907a8eb2df8ede98905762d874924326c8f25cd014d6b35f6784a2d87"
+      "path": "NairTenenbaum/Contributions/SecondContributionCounting.lean",
+      "sha256": "2fb2da5c50bf84b94627923345d25f3d8712199d7f51d5bc705c00b1eaa4d33e"
     },
     {
-      "path": "NairTenenbaum/LargeRoughContributionReal.lean",
-      "sha256": "12efb2cbbd48ecfa05629e2fcdb4d3a0796248037df9e5918bb1b9ad72b70478"
+      "path": "NairTenenbaum/Contributions/SecondContributionWeights.lean",
+      "sha256": "ad091cbcfa1cc583ef4304b3818fffbf2c0a8d2f6669e5051ea35a37cffffc8a"
     },
     {
-      "path": "NairTenenbaum/MainTermLowerBound.lean",
-      "sha256": "4d7df5e4e9d48e1bfdca5cdfea74b7e8d766b3acfcd7e77db2b7fe3954b1a977"
+      "path": "NairTenenbaum/Contributions/ShortSumDecomposition.lean",
+      "sha256": "fc49f4e73e58d4336e4eddbf4317d4628862194b776f8213111d37b75d8499ed"
     },
     {
-      "path": "NairTenenbaum/MinimalMajorant.lean",
-      "sha256": "816b86a54129be8d4613b399ace1a76b6249160510b86406624ffc6992030af1"
+      "path": "NairTenenbaum/Contributions/ThirdContribution.lean",
+      "sha256": "8cbd5dbe1aa6412d723e05faba5f48da728b3689da78dcb1793781cd08828a39"
     },
     {
-      "path": "NairTenenbaum/MomentKernel.lean",
-      "sha256": "f2555bfbbe87d0e35ffaf9bd8c6537c5d8dbf26e0c6a997b240729273749a63b"
+      "path": "NairTenenbaum/Contributions/ThirdContributionWeights.lean",
+      "sha256": "099a7b1103974159586585ca66e1719a0f3ec4bbf4c20999301f03be571c5b64"
     },
     {
-      "path": "NairTenenbaum/MomentPrimeBounds.lean",
-      "sha256": "5710f21a9a6c239a8ecd2a970a5a619825a115baa28647c6553c236b0b127a91"
+      "path": "NairTenenbaum/Contributions/ValueBoundContributions.lean",
+      "sha256": "2becfade850d68324d6d921e5645d7c189a09dbfbda67a0c56a27503133f68e9"
     },
     {
-      "path": "NairTenenbaum/MultivariableComparison.lean",
-      "sha256": "23f7c9adb4d331e8a61a16930ef890a22849d2fd79117eb95e0795b577ccb73e"
+      "path": "NairTenenbaum/Hooley/Hooley.lean",
+      "sha256": "5abb37766087579e68e5bfab5e45588b4c6358fc536304892d66b6d7ff00a2a6"
     },
     {
-      "path": "NairTenenbaum/OmittedEulerFactors.lean",
-      "sha256": "2950fb87a33d47f37ee32403920c69171b315fe16564bdb7939904617e7097e6"
+      "path": "NairTenenbaum/Hooley/HooleyShortSum.lean",
+      "sha256": "d701bc575a5bbab09290fd9bceded928b625c8a0c64de3b4c8609e5b915c29a0"
     },
     {
-      "path": "NairTenenbaum/PolynomialHeight.lean",
-      "sha256": "9cf3594b2d8111b3b031e3eb0fc731d75b5757b6d63621fbb63a15e2896c6f31"
+      "path": "NairTenenbaum/Polynomials/DiscriminantBezout.lean",
+      "sha256": "c9a97d58cce4972a91285638290bb6c6f4bc3bac2c9d8df48eaa847408865d91"
     },
     {
-      "path": "NairTenenbaum/PolynomialLocal.lean",
-      "sha256": "853c11583f502416bf18e582bdbb9692dac35af6c3a69c6eae00d35949d9595d"
+      "path": "NairTenenbaum/Polynomials/DiscriminantSplitting.lean",
+      "sha256": "1e08eebda1858cf390fdfd4f97ab70c0a87fb45d6d2c8c7bafe75bdc4137b7e6"
     },
     {
-      "path": "NairTenenbaum/PolynomialSieve.lean",
-      "sha256": "652528461242d4cece3d5a128fc4b049b481e361c00e03c7d589680516f6426b"
+      "path": "NairTenenbaum/Polynomials/FamilyFactorization.lean",
+      "sha256": "cafc69b85449482ef5998ddac7c3b0c356fcfaf6a605e2a12f8a247cb93c0394"
     },
     {
-      "path": "NairTenenbaum/PolynomialStructure.lean",
-      "sha256": "4ecf40d068718b811adb725822de91b600ec3a8d3739376bd468af3dc8e007be"
+      "path": "NairTenenbaum/Polynomials/IrreducibleSystem.lean",
+      "sha256": "60007ba4276eca42e64d32e8e92c63ae5bd8b3dfaaec40bd3119eb71dd9a2dd9"
     },
     {
-      "path": "NairTenenbaum/PolynomialSystem.lean",
-      "sha256": "b4cbcf92cfd7e65b3e51bd0d5391ebfcca764a315c54aa7e60d4db03c2c69c5a"
+      "path": "NairTenenbaum/Polynomials/PolynomialHeight.lean",
+      "sha256": "a3c996577ac4f16fb95652c2534a937306995421b70f61d2fddee0be31c9b0e7"
     },
     {
-      "path": "NairTenenbaum/PolynomialValueBounds.lean",
-      "sha256": "44f91f2d700447df5f53b412965f3ceef478e5ac706b371ea5758fd629b01938"
+      "path": "NairTenenbaum/Polynomials/PolynomialLocal.lean",
+      "sha256": "127697118cfc343cb9c7bfbd9fe08d4a3ce64aab211ff1456f63650f612d712e"
     },
     {
-      "path": "NairTenenbaum/PolynomialValueTuples.lean",
-      "sha256": "12cc21329eb6a6c2cb30d78236ab49cd7d4bdcbd23a7c78f4f236806eaba7d75"
+      "path": "NairTenenbaum/Polynomials/PolynomialSieve.lean",
+      "sha256": "9fa6fe29538c69fa81fc353de790c55b471fc7a121c8a10af6a2aa49b847874a"
     },
     {
-      "path": "NairTenenbaum/PrimeBandBounds.lean",
-      "sha256": "fd4f4045e8077144901d840570b84f1c31023e259dd5636e56b31b1e1d158bc4"
+      "path": "NairTenenbaum/Polynomials/PolynomialStructure.lean",
+      "sha256": "7b67b553f35343e06f8505c0d9ed524b8970d7d30eac8c2b8fa658719a3c1f82"
     },
     {
-      "path": "NairTenenbaum/PrimeBandContribution.lean",
-      "sha256": "6ca360f0d09d2075607647d6cf35d0f866abb8dcc50adb91858a4a75217d7d2d"
+      "path": "NairTenenbaum/Polynomials/PolynomialSystem.lean",
+      "sha256": "90b0ec369867bcb3cd04168f0d748b837b7e7727dd3fd088bebff34fb3903330"
     },
     {
-      "path": "NairTenenbaum/PrimeBandCover.lean",
-      "sha256": "3a0377f516de032151c3a68c6214eb0242d89b84f41928c1b67290c011745d66"
+      "path": "NairTenenbaum/Polynomials/PolynomialValueBounds.lean",
+      "sha256": "b9d12b5c25d070bababf62c06343d75cc9a27cd49bd171afc449444b853b6d02"
     },
     {
-      "path": "NairTenenbaum/PrimeBandCutoff.lean",
-      "sha256": "8be5424188f53ea60b89dd369d997ccdcd10f6c790a77060cd454fb0d975be30"
+      "path": "NairTenenbaum/Polynomials/PolynomialValueTuples.lean",
+      "sha256": "2d0fdf4ded4e034c76f4ded28ec7e477e03d33dd7911025eca269057fc5bfbd4"
     },
     {
-      "path": "NairTenenbaum/PrimeBandDecay.lean",
-      "sha256": "7e13b419a3f05c0358d27d2781cdd4f0c2584c89f324132a7ff79851a43ee802"
+      "path": "NairTenenbaum/Polynomials/RootCount.lean",
+      "sha256": "e437e038b66a517b9e0613fd56ef1e60dc86fad4bd46868e8a78ee5868f6c04c"
     },
     {
-      "path": "NairTenenbaum/PrimeBandMajorant.lean",
-      "sha256": "db069cb90d1791bcb92691c77d07e9f5fbc6a63cf769aa7f506fd097bd006a66"
+      "path": "NairTenenbaum/Polynomials/SubstitutionDensity.lean",
+      "sha256": "8f5464137a81c6538c28f3888c027a89bd35b3d2f65112bc73ef5550966afca6"
     },
     {
-      "path": "NairTenenbaum/PrimeBandSummation.lean",
-      "sha256": "8c79f43843b9b2952a31710d482c5b17455b089522707f8804d9f03262f1abca"
+      "path": "NairTenenbaum/PrimeArguments/PrimeArgumentExceptional.lean",
+      "sha256": "af958dfea6b63d3ea5e1dce83f6597db02ee1ce0acd6b7474063e5118562bace"
     },
     {
-      "path": "NairTenenbaum/PrimeFactorBounds.lean",
-      "sha256": "2e597724f69b34e3c2b17623e985915df1453d3fa771b7273b847862a4a114fe"
+      "path": "NairTenenbaum/PrimeArguments/PrimeArgumentHeight.lean",
+      "sha256": "70c7bb835d57a37952be62a266c92571140b8f78e42ee09eb49758ad78c04c66"
     },
     {
-      "path": "NairTenenbaum/PrimeLogSums.lean",
-      "sha256": "ac1c608cb636564660a47177d3a695300993229748f4e0129b1b80a3c952b5a9"
+      "path": "NairTenenbaum/Progressions/AffineBadDiscriminant.lean",
+      "sha256": "399833c4665852146a5830a1e1bebde26307a8191d7a3abf4117c1564d280763"
     },
     {
-      "path": "NairTenenbaum/PrimeMajorant.lean",
-      "sha256": "4b0f4c759b1a281f3af5d0ccafb9689f34d0e72a09d9f9d162c682b59200198e"
+      "path": "NairTenenbaum/Progressions/AffineDiscriminant.lean",
+      "sha256": "e37fa1bb8c05ec5e336d654fb87d7443a90a6d8eedd2a809b052030043548e12"
     },
     {
-      "path": "NairTenenbaum/PrimePowerComparison.lean",
-      "sha256": "515d7ead4e3aab0eac8521bc2221bce3dbbd16cecfab0f29c5654daa1dfe05fd"
+      "path": "NairTenenbaum/Progressions/AffinePolynomialSystem.lean",
+      "sha256": "d670b4ff6eaf50d1cc9cf90bd9f39857aa8893e0a488524b3629c02bccd16f33"
     },
     {
-      "path": "NairTenenbaum/PrimePowerCounting.lean",
-      "sha256": "394ebf966b9098cebc03af92f819e257dd8a94733023a28908e322f8adea2d56"
+      "path": "NairTenenbaum/Progressions/AffineRootCounts.lean",
+      "sha256": "1999763ec5b2a6af9a4901b5c9c015fada4071ad715d17d6747b51a706e218d1"
     },
     {
-      "path": "NairTenenbaum/PrimePowerRoots.lean",
-      "sha256": "af068b5b4436f0aaa43fae2b53e7b529d8f511ac466f922add419900755b8f71"
+      "path": "NairTenenbaum/Progressions/AffineWeights.lean",
+      "sha256": "bf39248fe03cab1c614e4aff5ba849009e86124c6689aa24fd99cb371d496a4e"
     },
     {
-      "path": "NairTenenbaum/PrimePowerThreshold.lean",
-      "sha256": "09429e8847a6bc2f88e33bfb0ca59bc9ca34896ef75e795e4971baed44c9c830"
+      "path": "NairTenenbaum/Progressions/ProgressionBound.lean",
+      "sha256": "f6199eb3f477040ba36f70dfe8f8c3c1a9298f84ac9ad24854fe37ade68a994f"
     },
     {
-      "path": "NairTenenbaum/PrimeSplitting.lean",
-      "sha256": "7b3eb72b15f7ae632b8cc99faa77e59120eb59649a4edc2e5e2ab2b83623bcd7"
+      "path": "NairTenenbaum/Progressions/ProgressionIntervals.lean",
+      "sha256": "bd70ec12a492f46c350b853c11160b0387d8b211536d68aa61e13af29d05ae6b"
     },
     {
-      "path": "NairTenenbaum/PrimeThreshold.lean",
-      "sha256": "7b01c6619af972fd65ce411dc343ca9b35f379d9931ca11013c848dc1a627b7a"
+      "path": "NairTenenbaum/Results/CorollaryOne.lean",
+      "sha256": "f35b3a7e9cda86b7976ab0fa526c14242a9f2b7383faecc37ab331621e96092b"
     },
     {
-      "path": "NairTenenbaum/ProductArithmetic.lean",
-      "sha256": "1d6044e1dbdd595265030d31be114fc0753886cdc3d82ade39c548a195c30788"
+      "path": "NairTenenbaum/Results/CorollaryThree.lean",
+      "sha256": "f78923a7b8aff6e5867ab0ba6529ec5afb34780fadbaa0295a8350ab60135cec"
     },
     {
-      "path": "NairTenenbaum/ProgressionBound.lean",
-      "sha256": "43338c90f6ea4062a5ef4f7965a0e4e90c79e4b205b20d746a4b9514d3c0b43a"
+      "path": "NairTenenbaum/Results/FamilyTheorems.lean",
+      "sha256": "56b47617a3eb8f0a556ae674c0d4a9042e6ee52d766abfcad720ab1fc108c219"
     },
     {
-      "path": "NairTenenbaum/ProgressionIntervals.lean",
-      "sha256": "2c8b4c9477a887b4ca4cc49273be4e95de7b8f8963c99396a4a5562c56ca0a94"
+      "path": "NairTenenbaum/Results/Targets.lean",
+      "sha256": "084ea00a0ef2dfdb0cba5b5db06266da8d3e5cdb387aafc31523e6ff9b35ac9a"
     },
     {
-      "path": "NairTenenbaum/RealIntervalBounds.lean",
-      "sha256": "2cc0f0ec1960edfc7e2f1bd61c50932c32d9df7cb478b01da0cf2f4fae110e43"
+      "path": "NairTenenbaum/Results/TheoremOne.lean",
+      "sha256": "9207295a82ffbd83facfb6ef9e2789d331ab0a1e90a43e9b755758b7a906458b"
     },
     {
-      "path": "NairTenenbaum/RootAuxiliary.lean",
-      "sha256": "717bd51be429c006a428d39f12daff899250ee7a0c5877ba9c142216d2893420"
+      "path": "NairTenenbaum/Sieve/BadPrimeCongruence.lean",
+      "sha256": "8220e910139491ff84ff216140e8fb30116be3600ee2eb2f2057bdc2266a2577"
     },
     {
-      "path": "NairTenenbaum/RootCount.lean",
-      "sha256": "0e709f5e802643d07bbc3d0622ca61f240abc6500a04474b4a7094c516d15b73"
+      "path": "NairTenenbaum/Sieve/BadPrimeMass.lean",
+      "sha256": "9e255b1f8c2f0b3d7f83877fc7f34e67371877252af8bd7e89aeec517ed87545"
     },
     {
-      "path": "NairTenenbaum/RootSmoothTail.lean",
-      "sha256": "6c663d92f50c6a32a5423d66e9b4f3799cdd6add522226d523d8c37793862668"
+      "path": "NairTenenbaum/Sieve/BadPrimeMoments.lean",
+      "sha256": "551a51e39312f4a98887497fc854d4198d15fe789d1e36bd29f7637d00688c5f"
     },
     {
-      "path": "NairTenenbaum/RoughMass.lean",
-      "sha256": "07dbface392972f922d8c3eaad8e3cfe1e7f30e0ee600654021a2aea18ec2a30"
+      "path": "NairTenenbaum/Sieve/BadPrimeRoots.lean",
+      "sha256": "208dce084690df845dec289ec4ab8317346c4ab441eeecb4dcea95477b089d13"
     },
     {
-      "path": "NairTenenbaum/ScalarComparison.lean",
-      "sha256": "d78848fb699a87a876105db96e7252b48d040bca2b47593a8413bbd6f8876225"
+      "path": "NairTenenbaum/Sieve/BadPrimeSieve.lean",
+      "sha256": "79c94f7c2db2f39fbd6374bd717d468b3294547343b78892bcd8a7fce8e45c29"
     },
     {
-      "path": "NairTenenbaum/SecondContribution.lean",
-      "sha256": "595f44503e4b4c6bef93ea25b48977bc0fdefb0039ec15a08662eec6ee68e2bc"
+      "path": "NairTenenbaum/Sieve/ConditionalPolynomialSieve.lean",
+      "sha256": "24440b7183274715c3a404a1533d4bd1b1050bd3ba384f60d0decdfc00a95e73"
     },
     {
-      "path": "NairTenenbaum/SecondContributionCounting.lean",
-      "sha256": "ac76cf64a6651209f42e6bb5795143faced2d3c49648c36291b5afb80af3e5bd"
+      "path": "NairTenenbaum/Sieve/JointCongruence.lean",
+      "sha256": "898f0a2198100b63711cb2370c7e86df6b638f618472bece4699e06e2ec23fe6"
     },
     {
-      "path": "NairTenenbaum/SecondContributionWeights.lean",
-      "sha256": "f3fd40e38efaa249c6bf12490c4046d029a7f41855736003beee2cd975eb21d8"
+      "path": "NairTenenbaum/Sieve/JointDensityComparison.lean",
+      "sha256": "7ff5e6a30e95a252e9e58be0a3bb48ff3866adbb8b860b6e473ff922d5080fa2"
     },
     {
-      "path": "NairTenenbaum/SelbergCoefficientBounds.lean",
-      "sha256": "9c9cdef10ab732cc1097ae54d6f7ae04b808b5a4976b6eb5bc1313bea4326e40"
+      "path": "NairTenenbaum/Sieve/LocalConditionalSieve.lean",
+      "sha256": "b3f146534b5535754c8d8f680c8c950db4d92f4f6028a07f95e66fddf2c8d952"
     },
     {
-      "path": "NairTenenbaum/SelbergDenominator.lean",
-      "sha256": "5089dc4b903ab67a7dd8486c6d6f1e5ee002b23e5f53f8f42cac601d1272c829"
+      "path": "NairTenenbaum/Sieve/OmittedEulerFactors.lean",
+      "sha256": "99ec0e97ee1c9bfd97e05e76c77588402089126d856fd733c341c9b2b72a4ac9"
     },
     {
-      "path": "NairTenenbaum/SelbergRemainder.lean",
-      "sha256": "0134f09dd34bcbf10081169dbeabd79b422af5bf1ef79a98bba8fbb7cd359333"
+      "path": "NairTenenbaum/Sieve/SelbergCoefficientBounds.lean",
+      "sha256": "af74e2a8f87e00bee63816d0bf82e43abbd737befd6d98809f57350ee27223e5"
     },
     {
-      "path": "NairTenenbaum/SelbergWeights.lean",
-      "sha256": "cb682f12a8f315f50e1c1930965891b9d63825d5cc045721f7480ec8d31fbe44"
+      "path": "NairTenenbaum/Sieve/SelbergDenominator.lean",
+      "sha256": "ea2792bdb1ae2366efa778f07cf0cbcd4acc0cf4d4987d16253978524f0f563e"
     },
     {
-      "path": "NairTenenbaum/ShortSumDecomposition.lean",
-      "sha256": "20198c8eece6c62c598298d2f421a6b908213c6e56bb8bff2e00b6ec214b70d6"
+      "path": "NairTenenbaum/Sieve/SelbergRemainder.lean",
+      "sha256": "20672296505c3fe650c0c700ee79f692af000601a8324d5268bce86e42287174"
     },
     {
-      "path": "NairTenenbaum/SieveCutoffComparison.lean",
-      "sha256": "7db64b5dd023c635a1112d3f7756744c889a2dd7bad239399bfea5539b549db8"
+      "path": "NairTenenbaum/Sieve/SelbergWeights.lean",
+      "sha256": "622ac5a884fbe3c51d740a1dd71df9a5bcf219f07d1babe506197279a9d7e303"
     },
     {
-      "path": "NairTenenbaum/SieveLevel.lean",
-      "sha256": "9cde895a19bf68375e155c0f7a41c86cf89a7d55383d1916dcdb17f7d1008954"
+      "path": "NairTenenbaum/Sieve/SieveCutoffComparison.lean",
+      "sha256": "4e13772f3945b03e72fad0a76d95178be7305bf491def01ec3c8a3dde7b067f5"
     },
     {
-      "path": "NairTenenbaum/SievePrimes.lean",
-      "sha256": "c33f6202bc626f15fc4a64261c506068dc9f3e0fdcbfebd4c4f94a04dac6667c"
+      "path": "NairTenenbaum/Sieve/SieveLevel.lean",
+      "sha256": "31fcb4d3d51b779ceda407429726450566a94f96134d169e7211b11a8ea36403"
     },
     {
-      "path": "NairTenenbaum/SieveProductLowerBound.lean",
-      "sha256": "0fa42f7ac4bce1058ac8ff2be1e82145b83fc672ca451ac7ef480517709311d4"
+      "path": "NairTenenbaum/Sieve/SievePrimes.lean",
+      "sha256": "2722d1fa81c903c5275a15c3956e5926250c1b5f18536ac5f35f6804fe12fb81"
     },
     {
-      "path": "NairTenenbaum/SieveScales.lean",
-      "sha256": "62f9ee555fb2370b905da6e3cf30ffb484ac3a463cdb45ada50e36e646984797"
+      "path": "NairTenenbaum/Sieve/SieveProductLowerBound.lean",
+      "sha256": "d42774b9319d42c4406b7f9305703cfcde5e8c92e0c896987936a75904e60fb8"
     },
     {
-      "path": "NairTenenbaum/SmallDivisorMainTerm.lean",
-      "sha256": "658e8f22bd9ebc55fea214ab6ee79aa24c83ea6300b6d5503b55a0bc8d60c325"
+      "path": "NairTenenbaum/Sieve/SieveScales.lean",
+      "sha256": "9224ace74bf760af03acdca26c237218c883f4ca34ea026e783882209344acb4"
     },
     {
-      "path": "NairTenenbaum/SmallDivisorMajorant.lean",
-      "sha256": "f350fac5b6d7bfc6115e4cc1458675ccbb45fbc81f0360c1489dbe03cb7f1c7d"
+      "path": "NairTenenbaum/Sieve/SiftedDivisorSplit.lean",
+      "sha256": "b24e74580a99340fb8770f9af80d65ff8ada71b6208706f58c0aba38df59abdb"
     },
     {
-      "path": "NairTenenbaum/SmallDivisorSieve.lean",
-      "sha256": "f12681de3e8efcfc11871878577773318b221de3dbeb1b750b39ebcacd34313b"
+      "path": "NairTenenbaum/Sieve/SmallDivisorMainTerm.lean",
+      "sha256": "44052a34923e50cddedb685071be163fc1821628c23d551f931563aa7567001b"
     },
     {
-      "path": "NairTenenbaum/SmallDivisorSum.lean",
-      "sha256": "010921990d822e89e60e692a56063eb7795e8f8a8e95fa51f86d5bd0c7042604"
+      "path": "NairTenenbaum/Sieve/SmallDivisorMajorant.lean",
+      "sha256": "6656468d758189e0bb32cd3160aa93c161451b766b1c1f29f5b07907e172a3fb"
     },
     {
-      "path": "NairTenenbaum/SmoothCutoffComparison.lean",
-      "sha256": "e096c8a5436698c4252373d25803d789ece8602e9632838de4a6d028039e87dd"
+      "path": "NairTenenbaum/Sieve/SmallDivisorSieve.lean",
+      "sha256": "7008dc92206fd0e03c8c8a84a6ca7b1ef8910f9bec33351baf2adab184f9ee67"
     },
     {
-      "path": "NairTenenbaum/SmoothDivisorCounting.lean",
-      "sha256": "274fb9b2ef00d73bc11f3761949ff98be16ecca4305639ec9783eac19c1f0ca6"
+      "path": "NairTenenbaum/Sieve/SmallDivisorSum.lean",
+      "sha256": "1b562fe381810ff8557dd96f4d8ff1bebb636e7504bf49aea82ccf89bf6f7304"
     },
     {
-      "path": "NairTenenbaum/SmoothDivisorDensity.lean",
-      "sha256": "6b74eb90199408c18d327973370c24cc371fd8de996c6db2c3b5f1791bd084b7"
+      "path": "NairTenenbaum/Smooth/LargePrefixMainTerm.lean",
+      "sha256": "ad4236b13ed171a122ff474764fbe744ba1d864f3fbe64088abb0055f79728cc"
     },
     {
-      "path": "NairTenenbaum/SmoothMoment.lean",
-      "sha256": "d09dd0775a9fd1deb691d1a397732d8879475187461a85a55bb99c4586fc384b"
+      "path": "NairTenenbaum/Smooth/LargePrefixScales.lean",
+      "sha256": "80504213d6d81960be2bd575d573864f670e982e6bac1f1e68424a7b5ad04ba0"
     },
     {
-      "path": "NairTenenbaum/SmoothMomentUniformity.lean",
-      "sha256": "0217d92e3a7602dd0577a0ebce905edf228603b935c4b808e0996c2344baf202"
+      "path": "NairTenenbaum/Smooth/MomentKernel.lean",
+      "sha256": "b7d21be9b0ce7e1e29610dde22895502f3f479475eefab2356cad9634b4d2a8a"
     },
     {
-      "path": "NairTenenbaum/SmoothTailMajorant.lean",
-      "sha256": "72d2746fdac925eb5198854e6bbca678c9b0f90a5fe40416e7fafb6a29233c3f"
+      "path": "NairTenenbaum/Smooth/MomentPrimeBounds.lean",
+      "sha256": "89649a05d5206a16eafd332052705dbd0bfc10a7cdbb1b14c6105e9f89f2310d"
     },
     {
-      "path": "NairTenenbaum/SmoothTailSieve.lean",
-      "sha256": "254bb8322e64f15f5e70e95c05f8f21b0580f0c2d596b84e37887eec03eee900"
+      "path": "NairTenenbaum/Smooth/PrimeBandBounds.lean",
+      "sha256": "7758232023e0fff6e375b1b41a9103fd7116fa32f4d4f0005d5e098c560c4946"
     },
     {
-      "path": "NairTenenbaum/SmoothTailSieveReindex.lean",
-      "sha256": "769cfdad77c3ddf7d30a9282fc79a11d6028e446a1420ec74e9743f9331f72b1"
+      "path": "NairTenenbaum/Smooth/PrimeBandContribution.lean",
+      "sha256": "4ba1004c0bdd37197e0c79aa733cfa2dedacc39a4106ca7d4cf774a4302ca5f0"
     },
     {
-      "path": "NairTenenbaum/SmoothTailUniformity.lean",
-      "sha256": "546857068091ef58af4c4dd34d45c9dccec234e65f6e50abef5dacdd501dc107"
+      "path": "NairTenenbaum/Smooth/PrimeBandCover.lean",
+      "sha256": "52344243a1aa82f7d2ccdf229739eda1e1a0b832d275501288842803ba4e0ed7"
     },
     {
-      "path": "NairTenenbaum/SmoothTruncation.lean",
-      "sha256": "cdf145cbd1f37c3e0be127ec84edb18f4f59bfd5b06e20b9aba4b8528a755326"
+      "path": "NairTenenbaum/Smooth/PrimeBandCutoff.lean",
+      "sha256": "af6f429359f417ab401bed7f9816bff2a11949c7d4b52c78423238a94b7d85f0"
     },
     {
-      "path": "NairTenenbaum/SmoothTruncationUniform.lean",
-      "sha256": "c656a52b1f635d9fcdae5360a6ceb7f7813d8de641475119b2bb91111abc07e3"
+      "path": "NairTenenbaum/Smooth/PrimeBandDecay.lean",
+      "sha256": "6c050ab3bd29eafd0625e6da2d06623ad212e2a75c8aeffa503458257fed1798"
     },
     {
-      "path": "NairTenenbaum/SmoothWeightSum.lean",
-      "sha256": "1e432ee7dea6549da7a5505ff236491ede60ea33a258e4aca47363032834a33e"
+      "path": "NairTenenbaum/Smooth/PrimeBandMajorant.lean",
+      "sha256": "34203933834741aa07c068d05a4296016b0558d53f03e4abc72953491b125d1a"
     },
     {
-      "path": "NairTenenbaum/SplitSmoothTail.lean",
-      "sha256": "509d9505227f8ec883493ea5c0a338948caf09ff5675dca3cf294a7c0635a217"
+      "path": "NairTenenbaum/Smooth/PrimeBandSummation.lean",
+      "sha256": "b6bd6667fe8cfca3b9f4e68dc53e3f2c151745d47654f3787aea532a529b3dfc"
     },
     {
-      "path": "NairTenenbaum/SubstitutionDensity.lean",
-      "sha256": "6d3b23a04faf8670bad5192fcc67f11d405ffd83a27a790df94ba95b9cf8b493"
+      "path": "NairTenenbaum/Smooth/RootSmoothTail.lean",
+      "sha256": "8c78820c9bb39d98e934b43e727f8748e627b56aa4f4be6836e7bede11f5e186"
     },
     {
-      "path": "NairTenenbaum/Targets.lean",
-      "sha256": "6da8da35b8f5dcd949c6fa6be15ac7c5cd07d92339a9d9337281c316f4967f35"
+      "path": "NairTenenbaum/Smooth/SmoothCutoffComparison.lean",
+      "sha256": "9cb382eef9776ec9a61b88997515189cf20c529ab4a4f55475431034bb96fbc4"
     },
     {
-      "path": "NairTenenbaum/TheoremOne.lean",
-      "sha256": "f7752c99314f3e3ea65fa3cab8b89c7103f4739f1bedb6523720f1715aa23617"
+      "path": "NairTenenbaum/Smooth/SmoothDivisorCounting.lean",
+      "sha256": "5f1c463087f4901e0d9c8c92c7353fdc14604b0086a6dc07ac0085c81502114c"
     },
     {
-      "path": "NairTenenbaum/ThirdContribution.lean",
-      "sha256": "5f2798b702e97e6dd5bcb0eaaaf450650ff75353cdba4a04514bdd7c6c863923"
+      "path": "NairTenenbaum/Smooth/SmoothDivisorDensity.lean",
+      "sha256": "4bf7f08881d9539bcf88786f54f5b4bbbc511d083d96afde1d1d6b23053536a6"
     },
     {
-      "path": "NairTenenbaum/ThirdContributionWeights.lean",
-      "sha256": "ac384bafadd8d924927644a78d3b205a4760bccb5370e8888e8a2be30d9711dc"
+      "path": "NairTenenbaum/Smooth/SmoothMoment.lean",
+      "sha256": "1a06846976e2f1a553661c82f7f2af671854bac1fbfbd35b0f095fed3063af01"
     },
     {
-      "path": "NairTenenbaum/TiltedAuxiliary.lean",
-      "sha256": "4c4ae26815e5a24e908ae1037922abcbbcf86927b1012c1b29916f4183ec68de"
+      "path": "NairTenenbaum/Smooth/SmoothMomentUniformity.lean",
+      "sha256": "1609ba122268047c0655c2edd1a87cb6aa67f87d7bfa1dfb8b2258ba1895a53c"
     },
     {
-      "path": "NairTenenbaum/TiltedTotientComparison.lean",
-      "sha256": "480c6b85c16754d1882852673309bc2402b41a3aae4646a607db29ebb376c435"
+      "path": "NairTenenbaum/Smooth/SmoothTailMajorant.lean",
+      "sha256": "83fde3c49eaad8d4c21e80c712af29df09b47b9dcd9f52a53535d2cd391a3844"
     },
     {
-      "path": "NairTenenbaum/TotientProducts.lean",
-      "sha256": "59467c87d064e0f74a3b42a521bbb67afd2e6a7bc20892fb18d57d1ce84ef706"
+      "path": "NairTenenbaum/Smooth/SmoothTailSieve.lean",
+      "sha256": "93b58c8c60f44c01081315aa86006c2770ea72ee9d7419293a8e5a2984a85ce1"
     },
     {
-      "path": "NairTenenbaum/TotientSmoothTail.lean",
-      "sha256": "213a9c16cd5637569022e43af3424dbdfbb7d4b08ef95e0c3e477ad42a2af68f"
+      "path": "NairTenenbaum/Smooth/SmoothTailSieveReindex.lean",
+      "sha256": "0311268ecc2e20721339e8c667f231600f6011768b0704ed6ea27e836b6f757b"
     },
     {
-      "path": "NairTenenbaum/TotientTwist.lean",
-      "sha256": "4b4e982b8708a5acc22e5c4c89bdb189a8b6f34cad77f0301851fb11f19a61a4"
+      "path": "NairTenenbaum/Smooth/SmoothTailUniformity.lean",
+      "sha256": "b003e7c4dd0f93ece3add40d2978a830c9fcc76c2345bb2cb06c1f62ee057f72"
     },
     {
-      "path": "NairTenenbaum/TupleComparison.lean",
-      "sha256": "f3b069f1f3728bf5acb5164d0e77d612302f857bc7e3b38b98f9c045cdd23484"
+      "path": "NairTenenbaum/Smooth/SmoothTruncation.lean",
+      "sha256": "45c15e37d319560bbb5696d435ff8ea4babec5641a6b5888b805bb0400c08ecb"
     },
     {
-      "path": "NairTenenbaum/UnitaryComparison.lean",
-      "sha256": "4cda3206db2620ef89366998b5f4e24f888ede28916e62f9270ff3f62fe817be"
+      "path": "NairTenenbaum/Smooth/SmoothTruncationUniform.lean",
+      "sha256": "13bd86a04cc727761560af28bd348a614f4b5a4e5c4815065d62b1a5c6b33ed9"
     },
     {
-      "path": "NairTenenbaum/ValueBoundContributions.lean",
-      "sha256": "e6019ddfe257ea1d6efd4bb470112dff227d116853d5b8c2eb2a2ff99e13fba2"
+      "path": "NairTenenbaum/Smooth/SmoothWeightSum.lean",
+      "sha256": "751553a4a0183712279149d478870ce15e6b55f7e62cce527121ff9ac3a32c50"
     },
     {
-      "path": "NairTenenbaum/ValueWeightBounds.lean",
-      "sha256": "51af834e7093cb0c508041d678f6b94abf53a6e0189d4337f7fe0e42d233ddc7"
+      "path": "NairTenenbaum/Smooth/SplitSmoothTail.lean",
+      "sha256": "fd33041c0b8bb337a3cfaa22839f0ee7eefca0919338265d59e1716c85a80851"
     },
     {
-      "path": "NairTenenbaum/WeightTruncation.lean",
-      "sha256": "f7cb40866ffa8c95eab4996d4efac5429d35c234f63cdc2398c08d2dbc9d2e91"
+      "path": "NairTenenbaum/Smooth/TiltedAuxiliary.lean",
+      "sha256": "3a10525e3a455ea0e8db3de7c31512401eaa4e443b5a60651740f83f98807cbb"
     },
     {
-      "path": "NairTenenbaum/Weights.lean",
-      "sha256": "9910000dcabce5ad4f131fb2000b387f6434fbce1730f4904af71a1da4497dc3"
+      "path": "NairTenenbaum/Smooth/TiltedTotientComparison.lean",
+      "sha256": "551aae90d364ccb6e12aa696e6d6b0aa68f50f1d2d3075f184a04c9a8f1169ed"
+    },
+    {
+      "path": "NairTenenbaum/Smooth/TotientSmoothTail.lean",
+      "sha256": "cad8c08a1980828d3879cb58e44d3537a74d2db589da6dfeb98369ecb7ab9de6"
     }
   ],
-  "revision": "0f778ee8366de1204c118e212264ef096ec82b49",
-  "license": "Apache-2.0"
+  "revision": "9c3c9236a66f9ba1e04a237089ff836adde0cd6c",
+  "license": "Apache-2.0",
+  "root_modules": [
+    "NairTenenbaum.Arithmetic.PrimeLogSums",
+    "NairTenenbaum.Hooley.HooleyShortSum",
+    "NairTenenbaum.Polynomials.DiscriminantBezout",
+    "NairTenenbaum.Polynomials.RootCount",
+    "NairTenenbaum.Progressions.AffinePolynomialSystem",
+    "NairTenenbaum.Sieve.SelbergDenominator",
+    "NairTenenbaum.Sieve.SelbergRemainder"
+  ]
 }

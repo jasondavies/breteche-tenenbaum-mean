@@ -2,7 +2,7 @@ module
 
 public import BretecheTenenbaumMean.WeightedMangoldt
 public import BretecheTenenbaumMean.PrimeSums.ProductLower
-public import NairTenenbaum.SelbergDenominator
+public import NairTenenbaum.Sieve.SelbergDenominator
 
 @[expose] public section
 

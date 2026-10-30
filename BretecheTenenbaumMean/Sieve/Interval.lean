@@ -1,6 +1,6 @@
 module
 
-public import NairTenenbaum.SelbergRemainder
+public import NairTenenbaum.Sieve.SelbergRemainder
 public import BretecheTenenbaumMean.PrimeSums.Product
 
 @[expose] public section

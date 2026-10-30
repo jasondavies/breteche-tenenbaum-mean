@@ -13,7 +13,7 @@ rev = "v4.35.0"
 [[require]]
 name = "nair_tenenbaum"
 git = "https://github.com/jasondavies/nair-tenenbaum-short-sums.git"
-rev = "0f778ee8366de1204c118e212264ef096ec82b49"
+rev = "9c3c9236a66f9ba1e04a237089ff836adde0cd6c"
 
 [[require]]
 name = "TauCeti"

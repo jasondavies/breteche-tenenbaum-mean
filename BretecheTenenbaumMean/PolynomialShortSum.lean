@@ -1,7 +1,7 @@
 module
 
 public import BretecheTenenbaumMean.Delta
-public import NairTenenbaum.HooleyShortSum
+public import NairTenenbaum.Hooley.HooleyShortSum
 
 @[expose] public section
 

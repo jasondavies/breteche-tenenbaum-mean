@@ -3,7 +3,7 @@ module
 public import Mathlib.Algebra.Polynomial.FieldDivision
 public import Mathlib.Algebra.Polynomial.Degree.SmallDegree
 public import Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind
-public import NairTenenbaum.RootCount
+public import NairTenenbaum.Polynomials.RootCount
 
 @[expose] public section
 

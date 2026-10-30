@@ -68,9 +68,9 @@ related_formalizations:
     relationship: builds-on
     note: >-
       Jason Davies's Apache-2.0 development is a Git dependency pinned to
-      0f778ee8366de1204c118e212264ef096ec82b49. Its 127-module HooleyShortSum
-      dependency cone matches the former vendored snapshot byte-for-byte;
-      the revision and file hashes are recorded in
+      9c3c9236a66f9ba1e04a237089ff836adde0cd6c. Its 128-module imported
+      dependency cone follows the reorganized upstream library and shared
+      short-sum proofs, without local source changes. The revision and file hashes are recorded in
       paper/NAIR_TENENBAUM_SOURCES.json. The short-sum input specializes
       Nair–Tenenbaum Corollary 3, proved from Theorem 1. The Selberg sieve
       used for prime averaging is imported from the same dependency.

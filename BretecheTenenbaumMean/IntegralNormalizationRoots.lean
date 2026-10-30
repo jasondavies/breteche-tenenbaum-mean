@@ -1,6 +1,6 @@
 module
 
-public import NairTenenbaum.RootCount
+public import NairTenenbaum.Polynomials.RootCount
 public import Mathlib.RingTheory.Polynomial.IntegralNormalization
 
 @[expose] public section

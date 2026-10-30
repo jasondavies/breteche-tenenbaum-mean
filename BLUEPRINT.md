@@ -73,7 +73,7 @@ the unweighted argument, which is the unit-weight case of those proofs.
 | Largest-prime recursion and its finite iteration (2.15) | `LargestPrime`, `OrderedRecursion`, `PrimeRecursion`, `WeightedLargestPrime`, `WeightedPrimeRecursion` | `sum_smoothSupport_by_largest_prime`, `WeightedModel.truncatedMoment_largest_prime_le`, `sum_ordered_recursion_le`, `WeightedModel.truncatedMoment_recursion_bound`; one constant uniform in all moment and threshold data |
 | Moment-product estimate (2.17) and exceptional midpoint | `WeightedTruncatedProducts` | `WeightedModel.momentProductSum_le`, `WeightedModel.momentProductSum_four_two_le`; exact normalizer bound before Mertens |
 | Penalty integral in (2.19) | `LogarithmicPenaltyIntegral` | `logarithmic_penalty_integral_bound`; explicit `(1/δ + sqrt(π/δ)) sqrt(log T)` bound independent of the upper endpoint |
-| Optimized finite Selberg sieve | `NairTenenbaum.SelbergWeights`, `NairTenenbaum.SelbergDenominator`, `NairTenenbaum.SelbergCoefficientBounds`, `NairTenenbaum.SelbergRemainder` | Imported from the pinned Nair–Tenenbaum dependency; `NairTenenbaum.exists_selberg_upper_bound`, with explicit cutoff and remainder |
+| Optimized finite Selberg sieve | `NairTenenbaum.Sieve.SelbergWeights`, `NairTenenbaum.Sieve.SelbergDenominator`, `NairTenenbaum.Sieve.SelbergCoefficientBounds`, `NairTenenbaum.Sieve.SelbergRemainder` | Imported from the pinned Nair–Tenenbaum dependency; `NairTenenbaum.exists_selberg_upper_bound`, with explicit cutoff and remainder |
 | Short prime intervals | `Sieve.Interval`, `PrimeSums.ShortIntervals` | `card_multiples_Ioc_error`, `prime_interval_sieve_bound`, `prime_count_real_interval_le`, `prime_reciprocal_interval_bound`; square-root errors and both endpoints |
 | Divisor tuples and arbitrary positive-order overlaps | `TupleWindows` | `moment_eq_tuple_sum`, `coherent_tuple_count_le`; the tuple-count error is at most `2^j M_j(n)` |
 | Prime averaging in §2.3 | `PrimeWindowAverage` | `delta_pow_prime_average_bound`, `mixedMoment_prime_average_bound`, `mixedMoment_prime_band_bound`; uniform constant, exact `log(3y)` offset and fourth-root error |
@@ -535,9 +535,10 @@ sinc away from zero, and Lebesgue measure gives that singleton mass zero.
 
 `PolynomialShortSum` identifies the two projects’ definitions of Δ and
 bridges both the short interval sum and the root-weighted harmonic sum.
-The 127-module dependency cone of the proved Nair–Tenenbaum theorem is
+The 128-module dependency cone of our Nair–Tenenbaum imports is
 imported from the pinned `nair_tenenbaum` Git dependency and fully included
-in the axiom audit. Its source hashes match the former vendored snapshot.
+in the axiom audit. The reorganized upstream sources are used unchanged;
+their current hashes are recorded in `paper/NAIR_TENENBAUM_SOURCES.json`.
 
 `WeightedProbability` defines the finite model for a nonnegative
 multiplicative weight `w`, with exact normalizer `∏(1+w(p)/p)`.

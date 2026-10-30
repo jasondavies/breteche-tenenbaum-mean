@@ -54,9 +54,9 @@ v0.4 JSON Schema. The module/size scan covers all local Lean sources, including
 vendored modules. The project-specific preflight checks all ten comparison
 targets, the definition block, dependency revisions, and the hashes of 15
 vendored modules. After fetching dependencies,
-`python3 scripts/check-palomar.py --check-dependencies` also checks all 127
+`python3 scripts/check-palomar.py --check-dependencies` also checks all 128
 imported Nair–Tenenbaum module hashes against the pinned Git revision
-`0f778ee8366de1204c118e212264ef096ec82b49`, plus all 109 imported Tau Ceti
+`9c3c9236a66f9ba1e04a237089ff836adde0cd6c`, plus all 109 imported Tau Ceti
 modules at the v4.35.0 release commit
 `1f9b4414105d86e487a4ac4c3d3397076a44d0d2`. The root project's Mathlib
 v4.35.0 pin is retained, overriding Tau Ceti's own Mathlib revision; this
@@ -70,17 +70,18 @@ On this hosted environment bubblewrap required elevated process permissions;
 the first sandbox-restricted attempt failed to create its network namespace.
 The CI configuration enables the necessary namespaces on its disposable runner.
 
-The full Lean build passed (9,514 jobs). The exhaustive axiom audit checked
-7,347 project, vendor, and imported dependency declarations and found only `propext`,
+The full Lean build passed (9,515 jobs). The exhaustive axiom audit checked
+7,297 project, vendor, and imported dependency declarations and found only `propext`,
 `Classical.choice`, and `Quot.sound`. Metadata validation, the source scan,
 and the provenance preflight all passed.
 
-Comparator passed all ten statement comparisons, finishing with
+Comparator passed all ten statement comparisons with Nair–Tenenbaum at
+`9c3c9236a66f9ba1e04a237089ff836adde0cd6c`, finishing with
 `Your solution is okay!`. Lean's default kernel, NanoDa, and con-ron each
-accepted the Solution; con-ron reported 88,550 accepted declarations in the
-exported dependency closure.
-These local checks completed on 2026-10-30 with Lean 4.35.0. GitHub CI has
-not yet run because the snapshot has not been pushed.
+accepted the Solution; con-ron reported 88,556 accepted declarations in the
+exported dependency closure. These local checks completed on 2026-10-30
+with Lean 4.35.0. GitHub CI has not yet run because the snapshot has not
+been pushed.
 
 ## Publish the reviewed snapshot
 

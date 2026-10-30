@@ -1,6 +1,6 @@
 module
 
-public import NairTenenbaum.PrimeLogSums
+public import NairTenenbaum.Arithmetic.PrimeLogSums
 public import BretecheTenenbaumMean.PrimeSums.Strict
 
 @[expose] public section
